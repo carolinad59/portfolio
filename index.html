@@ -20,8 +20,15 @@
 
   <div class="app">
 
+    <!-- ================= MOBILE MENU CONTROLS ================= -->
+    <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="sidebar">
+      <svg class="icon icon-menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+      <svg class="icon icon-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+    </button>
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
     <!-- ================= SIDEBAR ================= -->
-    <aside class="sidebar" aria-label="Profil et contact" data-i18n-label="sidebarAria">
+    <aside class="sidebar" id="sidebar" aria-label="Profil et contact" data-i18n-label="sidebarAria">
       <div class="sidebar-fixed-top">
         <div class="avatar-wrap">
           <img src="assets/profile.jpg" alt="Portrait de Caroline Darche-Olsson" width="600" height="600" data-i18n-alt="avatarAlt">

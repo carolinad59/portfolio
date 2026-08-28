@@ -65,6 +65,7 @@
     root.setAttribute("lang", lang);
     langCode.textContent = lang.toUpperCase();
     themeToggle.setAttribute("aria-label", themeLabel(root.getAttribute("data-theme")));
+    menuToggle.setAttribute("aria-label", menuLabel(appEl.classList.contains("sidebar-open")));
 
     langOptions.forEach((btn) => {
       const active = btn.dataset.lang === lang;
@@ -106,6 +107,41 @@
     if (e.key === "Escape" && !langMenu.hidden) {
       closeLangMenu();
       langToggle.focus();
+    }
+  });
+
+  /* ------------------------------------------------------------------ */
+  /* Mobile sidebar drawer                                               */
+  /* ------------------------------------------------------------------ */
+  const appEl = document.querySelector(".app");
+  const menuToggle = document.getElementById("menu-toggle");
+  const sidebarBackdrop = document.getElementById("sidebar-backdrop");
+
+  function menuLabel(open) {
+    const dict = I18N.translations[currentLang] || I18N.translations.fr;
+    return open ? dict.menuClose : dict.menuOpen;
+  }
+
+  function closeSidebar() {
+    appEl.classList.remove("sidebar-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", menuLabel(false));
+  }
+  function openSidebar() {
+    appEl.classList.add("sidebar-open");
+    menuToggle.setAttribute("aria-expanded", "true");
+    menuToggle.setAttribute("aria-label", menuLabel(true));
+  }
+
+  menuToggle.addEventListener("click", () => {
+    if (appEl.classList.contains("sidebar-open")) closeSidebar();
+    else openSidebar();
+  });
+  sidebarBackdrop.addEventListener("click", closeSidebar);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && appEl.classList.contains("sidebar-open")) {
+      closeSidebar();
+      menuToggle.focus();
     }
   });
 
