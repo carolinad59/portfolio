@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caroline Darche-Olsson — Biologiste moléculaire &amp; développeuse</title>
+  <meta name="description" content="CV interactif de Caroline Darche-Olsson, technicienne / ingénieure en biologie moléculaire et cellulaire qui conçoit aussi ses propres outils web.">
+  <meta name="color-scheme" content="light dark">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="intro-run">
+  <a class="skip-link" href="#panels" data-i18n="skip">Aller au contenu principal</a>
+
+  <div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar" aria-label="Profil et contact" data-i18n-label="sidebarAria">
+      <div class="sidebar-fixed-top">
+        <div class="avatar-wrap">
+          <img src="assets/profile.jpg" alt="Portrait de Caroline Darche-Olsson" width="600" height="600" data-i18n-alt="avatarAlt">
+          <span class="avatar-ring" aria-hidden="true"></span>
+        </div>
+
+        <span class="identity-chip">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 5l-2 14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-i18n="identity">Biologiste</span>
+        </span>
+      </div>
+
+      <div class="sidebar-scroll">
+
+        <div class="side-box">
+          <p class="side-kicker" data-i18n="objTitle">Objectif professionnel</p>
+          <p class="side-text" data-i18n="objText">
+            Rejoindre une équipe R&amp;D en biotechnologie, pharmacie ou cosmétique et
+            contribuer au développement de projets polyvalents et innovants.
+          </p>
+        </div>
+
+        <div class="side-box">
+          <p class="side-kicker" data-i18n="contactTitle">Contact</p>
+          <ul class="contact-list">
+            <li>
+              <a class="contact-row" href="tel:+33686102903">
+                <span class="c-icon c-hue5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2C10.5 21 3 13.5 3 6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span>06 86 10 29 03</span>
+              </a>
+            </li>
+            <li>
+              <a class="contact-row" href="mailto:carolinadarche@gmail.com">
+                <span class="c-icon c-hue2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM4 7l8 6 8-6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="truncate">carolinadarche@gmail.com</span>
+              </a>
+            </li>
+            <li>
+              <span class="contact-row">
+                <span class="c-icon c-hue4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z M12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span>06100 Nice, France</span>
+              </span>
+            </li>
+            <li>
+              <a class="contact-row" href="https://www.linkedin.com/in/carolina-darche-olsson/" target="_blank" rel="noopener noreferrer">
+                <span class="c-icon c-linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h3v11H4zM5.5 3a1.8 1.8 0 1 1 0 3.6A1.8 1.8 0 0 1 5.5 3ZM10 9h3v1.7c.6-1 1.7-1.9 3.4-1.9 3 0 4.6 1.8 4.6 5.3V20h-3v-5.4c0-1.6-.6-2.7-2-2.7-1.1 0-1.8.8-2.1 1.5-.1.3-.1.6-.1 1V20h-3Z" fill="currentColor"/></svg></span>
+                <span>LinkedIn</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="side-box">
+          <p class="side-kicker" data-i18n="langTitle">Langues</p>
+          <ul class="lang-list">
+            <li><span class="lang-name" data-i18n="langFr">Français</span><span class="lang-level" data-i18n="levelNative">Natif</span></li>
+            <li><span class="lang-name" data-i18n="langEn">Anglais</span><span class="lang-level">C1</span></li>
+            <li><span class="lang-name" data-i18n="langEs">Espagnol</span><span class="lang-level" data-i18n="levelBilingual">Bilingue</span></li>
+          </ul>
+        </div>
+
+        <div class="side-box">
+          <p class="side-kicker" data-i18n="hobbiesTitle">Loisirs</p>
+          <ul class="trait-list">
+            <li>
+              <span class="trait-icon c-hue1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4M7 8v8M17 8v8M20 10v4M7 12h10" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span data-i18n="hobbyPill1">Salle de sport</span>
+            </li>
+            <li>
+              <span class="trait-icon c-hue4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20c9-1 14-6 14-15C10 6 5 11 5 20Z M5 20c2-4 5-7 9-9" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span data-i18n="hobbyPill2">Nature</span>
+            </li>
+            <li>
+              <span class="trait-icon c-hue2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 5l-2 14" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span data-i18n="hobbyPill3">Programmation</span>
+            </li>
+            <li>
+              <span class="trait-icon c-hue5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v7a1.5 1.5 0 0 1-3 0V2M5.5 9v13M15.5 2c-1.7 0-2.5 2.3-2.5 5s.8 5 2.5 5v9" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span data-i18n="hobbyPill4">Restaurants</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="side-box">
+          <p class="side-kicker" data-i18n="qualitiesTitle">Qualités</p>
+          <p class="trait-tagline">
+            <span class="trait-word" data-i18n="qualityPill1">Rigoureuse</span>
+            <span class="trait-dot" aria-hidden="true">·</span>
+            <span class="trait-word" data-i18n="qualityPill2">Ponctuelle</span>
+            <span class="trait-dot" aria-hidden="true">·</span>
+            <span class="trait-word" data-i18n="qualityPill3">Investie</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="cv-btn-wrap">
+        <a class="btn btn-primary cv-btn" href="assets/CV_Caroline_Darche-Olsson.pdf" download>
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M4 19.5h16" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-i18n="cvBtn">Télécharger le CV</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+    <div class="main">
+      <header class="main-header">
+        <div class="header-row">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-token">//</span> <span data-i18n="eyebrow">biologie moléculaire × développement web</span></p>
+            <h1>Caroline <span class="text-accent">DARCHE-OLSSON</span></h1>
+            <p class="role">
+              <span data-i18n="roleTitle">Ingénieure en biologie moléculaire et cellulaire</span> ·
+              <span id="typed-label">Experte en</span> <span id="typed-word" class="typed-word">RT-qPCR</span><span class="typed-cursor" aria-hidden="true">_</span>
+            </p>
+            <div class="availability-row">
+              <span class="availability-badge">
+                <span class="availability-dot" aria-hidden="true"></span>
+                <span data-i18n="availText">Disponible à partir de septembre 2026</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="header-actions">
+            <div class="lang-switch">
+              <button type="button" class="icon-btn lang-toggle" id="lang-toggle" aria-haspopup="listbox" aria-expanded="false" aria-label="Changer de langue" data-i18n-label="langSwitchAria">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
+                <span class="lang-code" id="lang-code">FR</span>
+              </button>
+              <ul class="lang-menu" id="lang-menu" role="listbox" aria-label="Choisir la langue" hidden>
+                <li role="option" aria-selected="true"><button type="button" class="lang-option is-active" data-lang="fr">Français</button></li>
+                <li role="option" aria-selected="false"><button type="button" class="lang-option" data-lang="es">Español</button></li>
+                <li role="option" aria-selected="false"><button type="button" class="lang-option" data-lang="en">English</button></li>
+              </ul>
+            </div>
+
+            <button type="button" class="icon-btn theme-toggle" id="theme-toggle" aria-label="Activer le thème sombre" aria-pressed="false">
+              <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+              <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" fill="currentColor"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="gradient-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      </header>
+
+      <nav class="tabs" role="tablist" aria-label="Sections du CV" data-i18n-label="tabsAria">
+        <button type="button" class="tab-btn is-active" role="tab" id="tab-exp" aria-selected="true" aria-controls="panel-exp">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v5.2L4.8 17a2 2 0 0 0 1.7 3h11a2 2 0 0 0 1.7-3L14 8.2V3" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-i18n="tabExp">Expérience professionnelle</span>
+        </button>
+        <button type="button" class="tab-btn" role="tab" id="tab-comp" aria-selected="false" aria-controls="panel-comp" tabindex="-1">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 5l-2 14" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-i18n="tabComp">Compétences</span>
+        </button>
+        <button type="button" class="tab-btn" role="tab" id="tab-proj" aria-selected="false" aria-controls="panel-proj" tabindex="-1">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
+          <span data-i18n="tabProj">Projets</span>
+        </button>
+        <button type="button" class="tab-btn" role="tab" id="tab-edu" aria-selected="false" aria-controls="panel-edu" tabindex="-1">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5Z M6 11.5V17c0 1.2 2.7 3 6 3s6-1.8 6-3v-5.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-i18n="tabEdu">Formation académique</span>
+        </button>
+        <button type="button" class="tab-btn" role="tab" id="tab-profile" aria-selected="false" aria-controls="panel-profile" tabindex="-1">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-i18n="tabProfile">Mon profil en 30s</span>
+        </button>
+      </nav>
+
+      <main id="panels" class="panels">
+
+        <!-- ===== Expérience ===== -->
+        <div class="panel is-active" id="panel-exp" role="tabpanel" aria-labelledby="tab-exp">
+
+          <dl class="stat-row">
+            <div class="stat-chip"><dt data-i18n="statTechniques">Techniques</dt><dd>+16</dd></div>
+            <div class="stat-chip"><dt data-i18n="statClientStudies">Études clients</dt><dd>6</dd></div>
+            <div class="stat-chip"><dt data-i18n="statArticles">Articles en rédaction</dt><dd>1</dd></div>
+            <div class="stat-chip"><dt data-i18n="statApps">Apps web</dt><dd>2</dd></div>
+            <div class="stat-chip"><dt data-i18n="langTitle">Langues</dt><dd>3</dd></div>
+          </dl>
+
+          <div class="timeline">
+            <div class="timeline-item is-open accent-hue1">
+              <button type="button" class="timeline-toggle" aria-expanded="true" aria-controls="exp-1">
+                <span class="timeline-head">
+                  <span class="timeline-title"><span data-i18n="exp1Job">Ingénieure en biologie</span> — <span class="inline-link">ExAdEx Innov</span></span>
+                  <span class="timeline-date" data-i18n="exp1Date">Fév. – Sept. 2026</span>
+                </span>
+                <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="timeline-details" id="exp-1">
+                <div class="timeline-details-inner">
+                  <ul>
+                    <li data-i18n="exp1B1">Réalisation et suivi d'études clients sur des modèles de tissu adipeux humain <em>ex vivo</em>, de la partie expérimentale à l'analyse des résultats.</li>
+                    <li data-i18n="exp1B2">Participation aux projets de R&amp;D : caractérisation de modèles, évaluation de composés et développement de nouvelles approches expérimentales.</li>
+                    <li data-i18n="exp1B3">Conception du <a class="inline-link" href="https://exadex.github.io/Longevity_Lab" target="_blank" rel="noopener noreferrer">Longevity Lab</a> et de l'inventaire ExAdEx.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item accent-hue2">
+              <button type="button" class="timeline-toggle" aria-expanded="false" aria-controls="exp-2">
+                <span class="timeline-head">
+                  <span class="timeline-title"><span data-i18n="exp2Job">Ingénieure d'études en biologie moléculaire et cellulaire</span> — Institut Biologie Valrose, CNRS Nice</span>
+                  <span class="timeline-date" data-i18n="exp2Date">Mai. 2023 – Juill. 2025</span>
+                </span>
+                <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="timeline-details" id="exp-2">
+                <div class="timeline-details-inner">
+                  <ul>
+                    <li data-i18n="exp2B1">Rédaction et optimisation de protocoles pour l'étude des interactions protéine–canal ionique dans le contexte du cancer colorectal.</li>
+                    <li data-i18n="exp2B2">Réalisation de techniques de culture cellulaire, de biologie moléculaire, de biochimie et de microscopie ainsi qu'analyse et interprétation des résultats.</li>
+                    <li data-i18n="exp2B3">Gestion du laboratoire, des stocks et formation des nouveaux arrivants.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item accent-hue4">
+              <button type="button" class="timeline-toggle" aria-expanded="false" aria-controls="exp-3">
+                <span class="timeline-head">
+                  <span class="timeline-title" data-i18n="exp3Title">Stages de master</span>
+                  <span class="timeline-date" data-i18n="exp3Date">2021 et 2022</span>
+                </span>
+                <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="timeline-details" id="exp-3">
+                <div class="timeline-details-inner">
+                  <ul>
+                    <li><strong>M2, CNRS Lyon – LBTI.</strong> <span data-i18n="exp3B1">Étude de mutations associées à la sarcoïdose.</span></li>
+                    <li><strong>M1, Université de Séville.</strong> <span data-i18n="exp3B2">Agrégation protéique chez <em>C. elegans</em>.</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Compétences ===== -->
+        <div class="panel" id="panel-comp" role="tabpanel" aria-labelledby="tab-comp" hidden>
+          <div class="skills-grid">
+
+            <div class="skill-group skill-explorer">
+              <div class="skill-group-head">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v5.2L4.8 17a2 2 0 0 0 1.7 3h11a2 2 0 0 0 1.7-3L14 8.2V3" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <h3 data-i18n="skillTech">Techniques expérimentales</h3>
+              </div>
+
+              <div class="skill-cat-list" role="tablist" aria-label="Catégories de techniques" data-i18n-label="skillCatAria">
+                <button type="button" class="skill-cat-btn is-active" role="tab" data-cat="1" aria-selected="true" data-i18n="cat1">Biologie moléculaire</button>
+                <button type="button" class="skill-cat-btn" role="tab" data-cat="2" aria-selected="false" data-i18n="cat2">Culture cellulaire</button>
+                <button type="button" class="skill-cat-btn" role="tab" data-cat="3" aria-selected="false" data-i18n="cat3">Modèles ex vivo</button>
+                <button type="button" class="skill-cat-btn" role="tab" data-cat="4" aria-selected="false" data-i18n="cat4">Analyse des protéines</button>
+                <button type="button" class="skill-cat-btn" role="tab" data-cat="5" aria-selected="false" data-i18n="cat5">Imagerie cellulaire</button>
+                <button type="button" class="skill-cat-btn" role="tab" data-cat="6" aria-selected="false" data-i18n="cat6">Analyses cellulaires &amp; fonctionnelles</button>
+                <button type="button" class="skill-cat-btn" role="tab" data-cat="7" aria-selected="false" data-i18n="cat7">Microbiologie</button>
+                <button type="button" class="skill-cat-btn" role="tab" data-cat="8" aria-selected="false" data-i18n="cat8">Analyse de données</button>
+              </div>
+
+              <ul class="pill-list skill-cat-panel" data-cat-panel="1">
+                <li data-i18n="molbio1">Extraction d'ARN</li>
+                <li>RT-qPCR</li>
+                <li data-i18n="molbio3">Clonage moléculaire</li>
+                <li data-i18n="molbio4">Mutagénèse dirigée</li>
+                <li data-i18n="molbio5">Transfection cellulaire</li>
+              </ul>
+              <ul class="pill-list skill-cat-panel" data-cat-panel="2" hidden>
+                <li data-i18n="cellcult1">Culture cellulaire 2D</li>
+                <li data-i18n="cellcult2">Sphéroïdes tumoraux 3D</li>
+                <li data-i18n="molbio5">Transfection cellulaire</li>
+              </ul>
+              <ul class="pill-list skill-cat-panel" data-cat-panel="3" hidden>
+                <li data-i18n="exvivo1">Modèles de tissu adipeux humain <em>ex vivo</em></li>
+              </ul>
+              <ul class="pill-list skill-cat-panel" data-cat-panel="4" hidden>
+                <li>ELISA</li>
+                <li>SDS-PAGE</li>
+                <li>Western blot</li>
+                <li data-i18n="prot4">Co-immunoprécipitation (co-IP)</li>
+                <li>GST pull-down</li>
+                <li data-i18n="prot6">Purification protéique</li>
+              </ul>
+              <ul class="pill-list skill-cat-panel" data-cat-panel="5" hidden>
+                <li data-i18n="img1">Immunofluorescence</li>
+                <li data-i18n="img2">Microscopie confocale</li>
+                <li data-i18n="img3">PLA – Proximity Ligation Assay</li>
+              </ul>
+              <ul class="pill-list skill-cat-panel" data-cat-panel="6" hidden>
+                <li data-i18n="funct1">Essais de viabilité cellulaire</li>
+                <li data-i18n="funct2">Cytométrie en flux</li>
+                <li data-i18n="funct3">Essais métaboliques Seahorse XF</li>
+              </ul>
+              <ul class="pill-list skill-cat-panel" data-cat-panel="7" hidden>
+                <li data-i18n="micro1">Culture et analyses microbiologiques</li>
+              </ul>
+              <ul class="pill-list skill-cat-panel" data-cat-panel="8" hidden>
+                <li>ImageJ</li>
+                <li>GraphPad Prism</li>
+                <li data-i18n="data3">Analyse et interprétation de données expérimentales</li>
+              </ul>
+            </div>
+
+            <div class="skill-group">
+              <div class="skill-group-head">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h9l3 3v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z M9 10h6M9 14h6M9 18h3" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <h3 data-i18n="skillConduct">Conduite d'études &amp; laboratoire</h3>
+              </div>
+              <ul class="pill-list">
+                <li data-i18n="conductPill1">Gestion et suivi d'études clients</li>
+                <li data-i18n="conductPill2">Planification et réalisation expérimentale</li>
+                <li data-i18n="conductPill3">Analyse et interprétation des résultats</li>
+                <li data-i18n="conductPill4">Rédaction et amélioration de SOP</li>
+                <li data-i18n="conductPill5">Pratiques GMP/GLP et contrôle qualité</li>
+                <li data-i18n="conductPill6">Traçabilité des échantillons</li>
+                <li data-i18n="conductPill7">Gestion des stocks, commandes et équipements</li>
+              </ul>
+            </div>
+
+            <div class="skill-group">
+              <div class="skill-group-head">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 5l-2 14" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <h3 data-i18n="skillProg">Programmation &amp; analyse</h3>
+              </div>
+              <ul class="achievement-list">
+                <li data-i18n="progAch1">Création d'applications web sur mesure pour l'analyse et la visualisation de données scientifiques</li>
+                <li data-i18n="progAch2">Transformation d'un inventaire Excel en une plateforme web interactive, accessible pour l'équipe</li>
+              </ul>
+              <ul class="pill-list pill-list-mono">
+                <li>HTML</li>
+                <li>JavaScript</li>
+                <li>VS Code</li>
+                <li>GitHub</li>
+                <li>Android Studio</li>
+                <li>Pack Office</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ===== Projets ===== -->
+        <div class="panel" id="panel-proj" role="tabpanel" aria-labelledby="tab-proj" hidden>
+
+          <div class="filters" role="group" aria-label="Filtrer les projets par catégorie" data-i18n-label="filterAria">
+            <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true" data-i18n="filterAll">Tous</button>
+            <button type="button" class="filter-btn" data-filter="dev" aria-pressed="false" data-i18n="filterDev">Dev web</button>
+            <button type="button" class="filter-btn" data-filter="bio-mol" aria-pressed="false" data-i18n="filterBioMol">Biologie moléculaire</button>
+            <button type="button" class="filter-btn" data-filter="culture" aria-pressed="false" data-i18n="filterCulture">Culture &amp; tissus</button>
+          </div>
+
+          <div class="portfolio-grid" id="portfolio-grid">
+
+            <article class="card" data-category="dev">
+              <div class="card-top">
+                <span class="badge badge-dev" data-i18n="badgeDev">Projet digital</span>
+                <span class="card-context">ExAdEx Innov · 2026</span>
+              </div>
+              <h3>Longevity Lab</h3>
+              <p data-i18n="card1Desc">Application web conçue pour évaluer l'effet d'actifs sur les signatures du vieillissement tissulaire.</p>
+              <ul class="tag-list"><li>HTML</li><li>JavaScript</li><li data-i18n="tagDataViz">Data viz</li></ul>
+              <a class="card-link" href="https://exadex.github.io/Longevity_Lab/index.html" target="_blank" rel="noopener noreferrer">
+                <span data-i18n="cardLinkView">Voir le projet</span>
+                <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </article>
+
+            <article class="card" data-category="dev">
+              <div class="card-top">
+                <span class="badge badge-dev" data-i18n="badgeDev">Projet digital</span>
+                <span class="card-context">ExAdEx Innov · 2026</span>
+              </div>
+              <h3>Inventaire ExAdEx</h3>
+              <p data-i18n="card2Desc">Migration d'un inventaire Excel vers une plateforme web interactive : stocks, commandes, localisations et historiques.</p>
+              <ul class="tag-list"><li>HTML</li><li>JavaScript</li><li data-i18n="tagDataManage">Gestion de données</li></ul>
+            </article>
+
+            <article class="card" data-category="culture">
+              <div class="card-top">
+                <span class="badge badge-tech" data-i18n="badgeTech">Domaine technique</span>
+                <span class="card-context">ExAdEx Innov</span>
+              </div>
+              <h3 data-i18n="card3Title">Modèles ex vivo de tissu adipeux humain</h3>
+              <p data-i18n="card3Desc">Études clients de la partie expérimentale à l'analyse des résultats ; caractérisation de modèles et évaluation de composés.</p>
+              <ul class="tag-list"><li data-i18n="tagCulture">Culture 2D/3D</li><li data-i18n="tagExVivo">Modèles ex vivo</li><li>ELISA</li></ul>
+            </article>
+
+            <article class="card" data-category="bio-mol">
+              <div class="card-top">
+                <span class="badge badge-tech" data-i18n="badgeTech">Domaine technique</span>
+                <span class="card-context">CNRS Nice</span>
+              </div>
+              <h3 data-i18n="card4Title">Interactions protéine–canal ionique</h3>
+              <p data-i18n="card4Desc">Rédaction et optimisation de protocoles pour l'étude des interactions protéine–canal ionique dans le contexte du cancer colorectal.</p>
+              <ul class="tag-list"><li data-i18n="filterBioMol">Biologie moléculaire</li><li data-i18n="tagBiochem">Biochimie</li><li data-i18n="tagCloning">Clonage</li></ul>
+            </article>
+
+          </div>
+          <p class="filter-empty" id="filter-empty" hidden data-i18n="filterEmpty">Aucun élément dans cette catégorie.</p>
+        </div>
+
+        <!-- ===== Formation ===== -->
+        <div class="panel" id="panel-edu" role="tabpanel" aria-labelledby="tab-edu" hidden>
+          <div class="timeline">
+            <span class="edu-line" aria-hidden="true"></span>
+            <div class="edu-row">
+              <span class="edu-year">2022</span>
+              <span class="edu-dot accent-hue1" aria-hidden="true"></span>
+              <div class="timeline-item is-open accent-hue1">
+                <button type="button" class="timeline-toggle" aria-expanded="true" aria-controls="edu-1">
+                  <span class="timeline-head">
+                    <span class="timeline-title" data-i18n="edu1Title">Master en Biologie Moléculaire et Cellulaire — parcours Génétique de la Cellule et Pathologie</span>
+                  </span>
+                </button>
+                <div class="timeline-details" id="edu-1">
+                  <div class="timeline-details-inner">
+                    <ul><li>Université Claude Bernard Lyon 1</li></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="edu-row">
+              <span class="edu-year">2020</span>
+              <span class="edu-dot accent-hue4" aria-hidden="true"></span>
+              <div class="timeline-item is-open accent-hue4">
+                <button type="button" class="timeline-toggle" aria-expanded="true" aria-controls="edu-2">
+                  <span class="timeline-head">
+                    <span class="timeline-title" data-i18n="edu2Title">Licence en Biologie International</span>
+                  </span>
+                </button>
+                <div class="timeline-details" id="edu-2">
+                  <div class="timeline-details-inner">
+                    <ul>
+                      <li>Boston University, <span data-i18n="usaWord">États-Unis</span> (2020)</li>
+                      <li>Université Grenoble Alpes (2017 – 2019)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="edu-row">
+              <span class="edu-year">2017</span>
+              <span class="edu-dot accent-hue2" aria-hidden="true"></span>
+              <div class="timeline-item is-open accent-hue2">
+                <button type="button" class="timeline-toggle" aria-expanded="true" aria-controls="edu-3">
+                  <span class="timeline-head">
+                    <span class="timeline-title" data-i18n="edu3Title">Baccalauréat</span>
+                  </span>
+                </button>
+                <div class="timeline-details" id="edu-3">
+                  <div class="timeline-details-inner">
+                    <ul><li>Salesianos de San Pedro, <span data-i18n="sevilleWord">Séville</span></li></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Profil en 30 secondes ===== -->
+        <div class="panel" id="panel-profile" role="tabpanel" aria-labelledby="tab-profile" hidden>
+          <p class="qp-heading" data-i18n="qpHeading">Mon profil en 30 secondes</p>
+
+          <div class="quickprofile">
+            <span class="quickprofile-line" aria-hidden="true"></span>
+
+            <section class="quickprofile-block">
+              <span class="quickprofile-node qp-c1" aria-hidden="true"></span>
+              <div class="quickprofile-content">
+                <p class="quickprofile-kicker" data-i18n="qpWhoTitle">Qui je suis</p>
+                <p class="quickprofile-text" data-i18n="qpWhoText">Ingénieure en biologie moléculaire et cellulaire, je conçois aussi mes propres outils web pour l'analyse de données scientifiques.<br>Basée à Nice, disponible dès septembre 2026.</p>
+              </div>
+            </section>
+
+            <section class="quickprofile-block">
+              <span class="quickprofile-node qp-c2" aria-hidden="true"></span>
+              <div class="quickprofile-content">
+                <p class="quickprofile-kicker" data-i18n="qpStrengthsTitle">Mes points forts</p>
+                <ul class="contribution-list">
+                  <li>
+                    <span class="trait-icon c-hue1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v5.2L4.8 17a2 2 0 0 0 1.7 3h11a2 2 0 0 0 1.7-3L14 8.2V3" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <div>
+                      <p class="contribution-name" data-i18n="contrib1Name">Expérimentation</p>
+                      <p class="contribution-desc" data-i18n="contrib1Desc">Conduite autonome d'études <em>in vitro</em> et <em>ex vivo</em>.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="trait-icon c-hue4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h10M4 12h16M4 18h7" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/><circle cx="16" cy="6" r="2" fill="currentColor"/><circle cx="9" cy="18" r="2" fill="currentColor"/></svg></span>
+                    <div>
+                      <p class="contribution-name" data-i18n="contrib2Name">Optimisation</p>
+                      <p class="contribution-desc" data-i18n="contrib2Desc">Développement et amélioration de protocoles.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="trait-icon c-hue2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 5l-2 14" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <div>
+                      <p class="contribution-name" data-i18n="contrib3Name">Digitalisation</p>
+                      <p class="contribution-desc" data-i18n="contrib3Desc">Création d'outils scientifiques et de gestion de laboratoire.</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="quickprofile-block">
+              <span class="quickprofile-node qp-c3" aria-hidden="true"></span>
+              <div class="quickprofile-content">
+                <p class="quickprofile-kicker" data-i18n="qpExpTitle">Expérience clé</p>
+                <div class="quickprofile-exp">
+                  <div class="quickprofile-exp-item">
+                    <p class="quickprofile-exp-org">ExAdEx Innov</p>
+                    <p class="quickprofile-exp-role" data-i18n="exp1Job">Ingénieure en biologie</p>
+                    <p class="quickprofile-exp-date" data-i18n="qpExp1Date">8 mois · Fév. – Sept. 2026</p>
+                  </div>
+                  <div class="quickprofile-exp-item">
+                    <p class="quickprofile-exp-org">Institut Biologie Valrose, CNRS</p>
+                    <p class="quickprofile-exp-role" data-i18n="exp2Job">Ingénieure d'études en biologie moléculaire et cellulaire</p>
+                    <p class="quickprofile-exp-date" data-i18n="qpExp2Date">2 ans · Mai. 2023 – Juill. 2025</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="quickprofile-block">
+              <span class="quickprofile-node qp-c4" aria-hidden="true"></span>
+              <div class="quickprofile-content">
+                <p class="quickprofile-kicker" data-i18n="qpProjectsTitle">Projets phares</p>
+                <div class="quickprofile-projects">
+                  <a class="quickprofile-project" href="https://exadex.github.io/Longevity_Lab/index.html" target="_blank" rel="noopener noreferrer">
+                    <p class="quickprofile-project-name">Longevity Lab</p>
+                    <p class="quickprofile-project-desc" data-i18n="card1Desc">Application web conçue pour évaluer l'effet d'actifs sur les signatures du vieillissement tissulaire.</p>
+                  </a>
+                  <div class="quickprofile-project">
+                    <p class="quickprofile-project-name">Inventaire ExAdEx</p>
+                    <p class="quickprofile-project-desc" data-i18n="card2Desc">Migration d'un inventaire Excel vers une plateforme web interactive : stocks, commandes, localisations et historiques.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="quickprofile-block">
+              <span class="quickprofile-node qp-c5" aria-hidden="true"></span>
+              <div class="quickprofile-content">
+                <p class="quickprofile-kicker" data-i18n="qpLookingTitle">Ce que je recherche</p>
+                <p class="quickprofile-text" data-i18n="qpLookingText">Rejoindre une équipe R&amp;D en biotechnologie, pharmacie ou cosmétique, où je peux allier expérimentation et développement d'outils numériques.</p>
+              </div>
+            </section>
+          </div>
+
+          <div class="quickprofile-cta">
+            <a class="btn btn-primary" href="mailto:carolinadarche@gmail.com">
+              <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM4 7l8 6 8-6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-i18n="qpContactBtn">Me contacter</span>
+            </a>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
