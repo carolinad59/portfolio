@@ -881,5 +881,9 @@ a.inline-link:hover, a.inline-link:focus-visible { text-decoration: underline; }
   .tabs { padding: 1rem 1.2rem 0; }
   .panels { padding: 1.4rem 1.2rem 2rem; }
   .header-row { flex-wrap: wrap; }
-  .role { min-height: 6.3em; }
 }
+
+/* Narrower reservations for .role so the gap under the typed word only
+   grows as much as each width actually needs (measured empirically). */
+@media (max-width: 520px) { .role { min-height: 4.8em; } }
+@media (max-width: 380px) { .role { min-height: 6.3em; } }
