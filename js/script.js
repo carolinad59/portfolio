@@ -247,7 +247,7 @@
   /* ------------------------------------------------------------------ */
   /* Timeline accordion                                                  */
   /* ------------------------------------------------------------------ */
-  document.querySelectorAll(".timeline-toggle").forEach((btn) => {
+  document.querySelectorAll("button.timeline-toggle").forEach((btn) => {
     btn.addEventListener("click", () => {
       const item = btn.closest(".timeline-item");
       const isOpen = item.classList.toggle("is-open");

@@ -870,6 +870,10 @@ a.inline-link:hover, a.inline-link:focus-visible { text-decoration: underline; }
   .main-header { padding: 4.6rem 2.2rem 0; }
   .main { min-height: 0; }
   .panels { overflow-y: visible; }
+
+  /* Reserve room for the longest possible "Experte en <mot>" line so the
+     typed-word rotation never reflows the page underneath it. */
+  .role { min-height: 3.2em; }
 }
 
 @media (max-width: 640px) {
@@ -877,4 +881,5 @@ a.inline-link:hover, a.inline-link:focus-visible { text-decoration: underline; }
   .tabs { padding: 1rem 1.2rem 0; }
   .panels { padding: 1.4rem 1.2rem 2rem; }
   .header-row { flex-wrap: wrap; }
+  .role { min-height: 6.3em; }
 }
