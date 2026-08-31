@@ -256,6 +256,52 @@
   });
 
   /* ------------------------------------------------------------------ */
+  /* Career helix (Mon parcours)                                         */
+  /* ------------------------------------------------------------------ */
+  const helixWrap = document.querySelector(".helix-v-wrap");
+  if (helixWrap) {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!reduceMotion && "IntersectionObserver" in window) {
+      helixWrap.classList.add("reveal-pending");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            helixWrap.classList.add("is-visible");
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.35 });
+      observer.observe(helixWrap);
+    }
+
+    const parallaxEl = helixWrap.querySelector(".helix-parallax");
+    if (parallaxEl && !reduceMotion) {
+      let ticking = false;
+      const updateParallax = () => {
+        ticking = false;
+        const rect = helixWrap.getBoundingClientRect();
+        const viewportH = window.innerHeight || document.documentElement.clientHeight;
+        if (rect.bottom < 0 || rect.top > viewportH) return;
+        const center = rect.top + rect.height / 2;
+        const progress = (center - viewportH / 2) / viewportH;
+        const offset = Math.max(-16, Math.min(16, progress * -16));
+        parallaxEl.style.transform = `translateY(${offset}px)`;
+      };
+      const requestTick = () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(updateParallax);
+        }
+      };
+      document.getElementById("panels")?.addEventListener("scroll", requestTick, { passive: true });
+      window.addEventListener("scroll", requestTick, { passive: true });
+      window.addEventListener("resize", requestTick);
+      updateParallax();
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
   /* Portfolio filter                                                    */
   /* ------------------------------------------------------------------ */
   const filterButtons = document.querySelectorAll(".filter-btn");
