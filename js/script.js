@@ -210,9 +210,42 @@
         panel.hidden = !active;
       });
 
+      document.body.classList.toggle("show-cv-subtabs", targetId === "panel-classique");
+
       document.getElementById("panels").scrollTo({ top: 0, behavior: "auto" });
 
       updateConnectorLines();
+    });
+  });
+
+  /* ------------------------------------------------------------------ */
+  /* "CV classique" sub-tabs — Expérience / Compétences / Projets /       */
+  /* Formation, shown one at a time inside the merged tab.                */
+  /* ------------------------------------------------------------------ */
+  const subtabButtons = document.querySelectorAll(".subtab-btn");
+  const subpanels = document.querySelectorAll(".cv-classique-subpanel");
+
+  subtabButtons.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      subtabButtons.forEach((t) => {
+        t.classList.remove("is-active");
+        t.setAttribute("aria-selected", "false");
+        t.setAttribute("tabindex", "-1");
+      });
+      tab.classList.add("is-active");
+      tab.setAttribute("aria-selected", "true");
+      tab.setAttribute("tabindex", "0");
+
+      const targetId = tab.getAttribute("aria-controls");
+      subpanels.forEach((panel) => {
+        const active = panel.id === targetId;
+        panel.classList.toggle("is-active", active);
+        panel.hidden = !active;
+      });
+
+      document.getElementById("panels").scrollTo({ top: 0, behavior: "auto" });
+
+      if (targetId === "panel-edu") updateConnectorLines();
     });
   });
 
@@ -363,6 +396,112 @@
       span.dataset.hue = String(next);
     });
   });
+
+  /* ------------------------------------------------------------------ */
+  /* Compétences 2 — interactive workstation scene                       */
+  /* Hover shows a popup pinned beside the object and auto-hides on      */
+  /* mouseleave; a click pins it until explicitly closed. Click always   */
+  /* wins over hover — once pinned, hover/focus changes elsewhere are    */
+  /* ignored until the popup is closed via the × or an outside click.    */
+  /* ------------------------------------------------------------------ */
+  const comp2Panel = document.getElementById("panel-comp2");
+  if (comp2Panel) {
+    const popup = document.getElementById("comp2Popup");
+    const popupCat = document.getElementById("comp2PopupCat");
+    const popupSkills = document.getElementById("comp2PopupSkills");
+    const popupClose = document.getElementById("comp2PopupClose");
+    const dataRoot = comp2Panel.querySelector(".comp2-data");
+    let pinned = false;
+    let activeEl = null;
+    let hideTimer = null;
+
+    function positionPopup(el) {
+      const rect = el.getBoundingClientRect();
+      const margin = 12;
+      const edge = 10;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const popRect = popup.getBoundingClientRect();
+      const spaceRight = vw - rect.right;
+      const spaceLeft = rect.left;
+      let left;
+      if (spaceRight >= popRect.width + margin || spaceRight >= spaceLeft) {
+        left = rect.right + margin;
+        if (left + popRect.width > vw - edge) left = vw - popRect.width - edge;
+      } else {
+        left = rect.left - margin - popRect.width;
+      }
+      left = Math.max(edge, Math.min(left, vw - popRect.width - edge));
+      let top = rect.top + rect.height / 2 - popRect.height / 2;
+      top = Math.max(edge, Math.min(top, vh - popRect.height - edge));
+      popup.style.left = `${left}px`;
+      popup.style.top = `${top}px`;
+    }
+
+    function fillContent(el) {
+      const key = el.dataset.skill;
+      const cat = el.dataset.cat;
+      const catEl = dataRoot.querySelector(`.comp2-cat-label[data-cat="${cat}"]`);
+      const skillsEl = dataRoot.querySelector(`ul[data-key="${key}"]`);
+      popupCat.textContent = catEl ? catEl.textContent : "";
+      popupSkills.innerHTML = skillsEl ? skillsEl.innerHTML : "";
+      popup.style.setProperty("--comp2-cat-color", `var(--comp2-${cat})`);
+    }
+
+    function openFor(el, pin) {
+      if (pinned && !pin && el !== activeEl) return;
+      clearTimeout(hideTimer);
+      activeEl = el;
+      if (pin) pinned = true;
+      fillContent(el);
+      popup.hidden = false;
+      requestAnimationFrame(() => {
+        positionPopup(el);
+        popup.classList.add("is-open");
+      });
+    }
+
+    function closePopup(force) {
+      if (pinned && !force) return;
+      pinned = false;
+      activeEl = null;
+      popup.classList.remove("is-open");
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        if (!popup.classList.contains("is-open")) popup.hidden = true;
+      }, 200);
+    }
+
+    comp2Panel.querySelectorAll(".comp2-obj").forEach((el) => {
+      el.addEventListener("mouseenter", () => { if (!pinned) openFor(el, false); });
+      el.addEventListener("mouseleave", () => { if (!pinned) closePopup(false); });
+      el.addEventListener("focus", () => { if (!pinned) openFor(el, false); });
+      el.addEventListener("blur", () => { if (!pinned) closePopup(false); });
+      el.addEventListener("click", () => openFor(el, true));
+      el.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openFor(el, true);
+        }
+      });
+    });
+
+    popupClose.addEventListener("click", () => closePopup(true));
+    document.addEventListener("click", (e) => {
+      if (!pinned) return;
+      if (popup.contains(e.target)) return;
+      if (e.target.closest && e.target.closest(".comp2-obj")) return;
+      closePopup(true);
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && pinned) closePopup(true);
+    });
+    const repositionIfOpen = () => {
+      if (activeEl && popup.classList.contains("is-open")) positionPopup(activeEl);
+    };
+    window.addEventListener("resize", repositionIfOpen);
+    window.addEventListener("scroll", repositionIfOpen, true);
+  }
 
   /* ------------------------------------------------------------------ */
   /* Init                                                                 */

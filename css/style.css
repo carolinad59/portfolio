@@ -325,20 +325,18 @@ a.contact-row:hover { background: var(--bg-soft); }
 }
 .btn-primary:active { transform: translateY(-1px) scale(1); }
 :root[data-theme="dark"] .btn-primary { color: #04211f; }
-.cv-btn { width: 100%; animation: cv-btn-shake 20s ease-in-out infinite; }
+.cv-btn { width: 100%; animation: cv-btn-grow 20s ease-in-out infinite; }
 .cv-btn:hover { animation-play-state: paused; }
 .cv-btn svg { transition: transform var(--transition-fast); }
 .cv-btn:hover svg { transform: translateY(3px); }
 
-@keyframes cv-btn-shake {
-  0%, 98% { transform: translateX(0); }
-  98.3% { transform: translateX(-6px); }
-  98.6% { transform: translateX(5px); }
-  98.9% { transform: translateX(-4px); }
-  99.2% { transform: translateX(3px); }
-  99.5% { transform: translateX(-2px); }
-  99.8% { transform: translateX(1px); }
-  100% { transform: translateX(0); }
+/* Two quick pulses back-to-back, then a long ~17s pause before the next pair. */
+@keyframes cv-btn-grow {
+  0%, 82% { transform: scale(1); }
+  85% { transform: scale(1.08); }
+  88% { transform: scale(1); }
+  91% { transform: scale(1.08); }
+  94%, 100% { transform: scale(1); }
 }
 
 /* ==========================================================================
@@ -346,7 +344,7 @@ a.contact-row:hover { background: var(--bg-soft); }
    ========================================================================== */
 .main {
   display: grid;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto auto auto 1fr;
   min-width: 0;
   min-height: 0;
 }
@@ -474,7 +472,7 @@ a.contact-row:hover { background: var(--bg-soft); }
 @media (prefers-reduced-motion: reduce) {
   .gradient-bar span, .eyebrow, .main-header h1, .role, .header-actions, .avatar-wrap:hover,
   .sidebar-fixed-top, .side-box, .cv-btn-wrap, .tabs,
-  body.intro-run .stat-chip, body.intro-run #panel-exp .timeline-item,
+  body.intro-run .stat-chip, body.intro-run #panel-exp .timeline-item, body.intro-run .cv-classique-title,
   #panel-edu .edu-dot, .availability-row, .availability-dot, .quickprofile-block, .cv-btn { animation: none; }
 }
 
@@ -486,8 +484,11 @@ a.contact-row:hover { background: var(--bg-soft); }
   padding: 0.6rem 2.2rem 0;
   border-bottom: 1px solid var(--border);
   overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.32s backwards;
 }
+.tabs::-webkit-scrollbar { display: none; }
 .tab-btn {
   display: inline-flex; align-items: center; gap: 0.5rem;
   padding: 0.7em 1.1em;
@@ -499,6 +500,11 @@ a.contact-row:hover { background: var(--bg-soft); }
 }
 .tab-btn:hover { color: var(--text); }
 .tab-btn.is-active { color: var(--accent); border-color: var(--accent); }
+/* The active-state color + underline already shows which tab is current;
+   the generic focus ring on top of that read as a stray floating frame
+   after a click, so tab buttons get a tighter, hugging one instead. */
+.tab-btn:focus-visible { outline-offset: -2px; }
+.tab-btn[hidden] { display: none; }
 
 /* ==========================================================================
    Panels
@@ -508,6 +514,46 @@ a.contact-row:hover { background: var(--bg-soft); }
 .panel { display: none; animation: panelIn 220ms ease; }
 .panel.is-active { display: block; }
 @keyframes panelIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* "CV classique" merges 4 former tabs into one scroll; this just marks
+   where one section ends and the next begins. */
+.cv-classique-title { font-size: 1.9rem; margin: 0 0 1.4rem; }
+
+/* A second, secondary row of tabs — one section shown at a time, like the
+   original individual tabs. Sticky-inside-#panels kept fighting the
+   scroll container's own (breakpoint-dependent) padding and leaving a
+   gap, so instead this sits outside #panels entirely, right below the
+   main tabs — exactly how the main tabs themselves stay put — and is
+   shown/hidden by toggling body.show-cv-subtabs from the tab-click
+   handler in script.js rather than by being nested inside the panel. */
+.cv-classique-subtabs {
+  display: none;
+  gap: 0.3rem; flex-wrap: wrap;
+  padding: 0.6rem 2.2rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+body.show-cv-subtabs .cv-classique-subtabs { display: flex; }
+/* Only plays once, on the initial page load — switching back to this tab
+   later just shows it instantly, like everything else on the page. */
+body.intro-run.show-cv-subtabs .cv-classique-subtabs { animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.5s backwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-classique-subtabs { animation: none; }
+}
+.subtab-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.55em 0.9em;
+  font-weight: 600; font-size: 0.9rem;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+.subtab-btn:hover { color: var(--text); background: var(--bg-soft); }
+.subtab-btn.is-active { color: var(--surface); background: var(--accent); }
+.subtab-btn:focus-visible { outline-offset: -2px; }
+.cv-classique-subpanel { display: none; animation: panelIn 220ms ease; }
+.cv-classique-subpanel.is-active { display: block; }
 
 /* ==========================================================================
    Quick profile (30-second summary)
@@ -563,7 +609,7 @@ a.contact-row:hover { background: var(--bg-soft); }
   text-transform: uppercase; letter-spacing: 0.05em;
   color: var(--accent); margin: 0 0 0.55rem;
 }
-.quickprofile-text { font-size: 0.98rem; line-height: 1.55; margin: 0; max-width: 62ch; }
+.quickprofile-text { font-size: 0.98rem; line-height: 1.55; margin: 0; }
 
 
 .quickprofile-exp { display: flex; flex-wrap: wrap; gap: 1rem; }
@@ -613,6 +659,15 @@ body.intro-run .stat-chip:nth-child(2) { animation-delay: 0.54s; }
 body.intro-run .stat-chip:nth-child(3) { animation-delay: 0.68s; }
 body.intro-run .stat-chip:nth-child(4) { animation-delay: 0.82s; }
 body.intro-run .stat-chip:nth-child(5) { animation-delay: 0.96s; }
+
+/* "CV classique" section titles were added after the intro-run choreography
+   was tuned, so they never got a delay slot — same entrance as everything
+   else, staggered to land between the stat-chip cascade and the timeline. */
+body.intro-run .cv-classique-title { animation: slide-in-right 0.9s cubic-bezier(0.19, 1, 0.22, 1) backwards; }
+body.intro-run #panel-exp .cv-classique-title { animation-delay: 0.5s; }
+body.intro-run #panel-comp .cv-classique-title { animation-delay: 1.1s; }
+body.intro-run #panel-proj .cv-classique-title { animation-delay: 1.3s; }
+body.intro-run #panel-edu .cv-classique-title { animation-delay: 1.5s; }
 
 @keyframes slide-in-right {
   from { opacity: 0; transform: translateX(56px); filter: blur(5px); }
@@ -739,37 +794,303 @@ a.inline-link:hover, a.inline-link:focus-visible { text-decoration: underline; }
 .skill-group-head h3 { font-size: 1.12rem; }
 
 /* ==========================================================================
-   Mon parcours (vertical career helix)
+   Mon parcours (horizontal career helix — pseudo-3D)
    ========================================================================== */
-.parcours-heading { font-size: 1.55rem; font-weight: 700; margin: 0 0 0.3rem; }
-.parcours-sub { color: var(--text-muted); margin: 0 0 1.6rem; }
-
-.helix-v-wrap { display: flex; justify-content: center; overflow-x: auto; padding-bottom: 0.2rem; }
-.helix-chart-v { width: 100%; max-width: 620px; min-width: 480px; height: auto; overflow: visible; margin: 0 auto; }
-
-.helix-strand { fill: none; stroke-width: 3; stroke-linecap: round; }
-.helix-strand-a { stroke: var(--accent); }
-.helix-strand-b { stroke: var(--accent-2); }
-.helix-rung { stroke: var(--border); stroke-width: 1.5; }
-
-.helix-leader { stroke: var(--border); stroke-width: 1; stroke-dasharray: 2 3; }
-.helix-dot { fill: var(--hue); stroke: var(--surface); stroke-width: 2; transition: r var(--transition-fast); }
-.helix-node { outline: none; cursor: default; }
-.helix-node:hover .helix-dot, .helix-node:focus-visible .helix-dot { r: 9.5; }
-.helix-node:hover .helix-leader, .helix-node:focus-visible .helix-leader { stroke: var(--hue); }
-.helix-title { font-size: 19px; font-weight: 700; fill: var(--text); }
-.helix-sub { font-size: 14px; fill: var(--text-muted); font-family: var(--font-mono); }
-
-/* Braid-in: strands draw themselves top to bottom, rungs and nodes follow the draw progress.
-   Default state is fully visible (no dependency on JS); JS opts a wrapper into the
-   "reveal-pending" hidden-start state right before it starts observing scroll position. */
-.helix-strand {
-  stroke-dasharray: 1060;
-  stroke-dashoffset: 0;
-  transition: stroke-dashoffset 1.8s cubic-bezier(0.65, 0, 0.35, 1);
+.helix-v-wrap { display: flex; justify-content: center; overflow-x: auto; padding: 1rem 0; }
+.helix-chart-v {
+  width: 100%; max-width: 980px; min-width: 720px; height: auto; overflow: visible; margin: 0 auto;
 }
-.helix-strand-b { transition-delay: 0.12s; }
-.helix-rung {
+
+/* Strand "tube" shading: a fixed horizontal gradient the strand's own sine-wave
+   x-position sweeps through, reading as light hitting a cylinder as it twists. */
+.helix-stop-dark-a { stop-color: color-mix(in srgb, var(--accent) 55%, black); }
+.helix-stop-light-a { stop-color: color-mix(in srgb, var(--accent) 55%, white); }
+.helix-stop-dark-b { stop-color: color-mix(in srgb, var(--accent-2) 55%, black); }
+.helix-stop-light-b { stop-color: color-mix(in srgb, var(--accent-2) 55%, white); }
+
+.helix-parallax { transition: transform 0.2s linear; filter: url(#helixShadow); }
+.helix-strand { fill: none; stroke-width: 7; stroke-linecap: round; }
+.helix-strand-a { stroke: url(#helixGradA); }
+.helix-strand-b { stroke: url(#helixGradB); }
+
+/* Base pairs: a two-tone rung split at the midpoint by nucleotide identity,
+   with 2 or 3 short ticks standing in for the A–T / G–C hydrogen bonds.
+   Retraction is done with stroke-dasharray/-dashoffset, not a transform —
+   transform-box: fill-box on a perfectly vertical <line> has a degenerate
+   (zero-width) reference box, which some engines render with a hairline
+   sub-pixel snap once any transform context is established on it. Dasharray
+   avoids that class of bug entirely and was already proven safe here (see
+   .helix-strand's own draw-in). Each line carries its own exact length as
+   --len (baked in per element, since it differs at every x along the sine
+   curve), and each segment collapses toward the strand-side end it's
+   anchored to (never the shared center point) by shifting the dash offset
+   in the sign that keeps that end fixed. */
+.helix-bp-seg {
+  /* butt, not round: a round cap on two half-segments meeting at the strand
+     crossing draws a little dot right on top of it — flat caps just show
+     the crossing itself, cleanly, with nothing sitting on it. */
+  stroke-width: 3; stroke-linecap: butt;
+  stroke-dasharray: var(--len);
+  stroke-dashoffset: 0;
+  /* Exit (regrow): wait for the fork to finish re-coiling, then grow back. */
+  transition: stroke-dashoffset 0.32s ease 0.55s;
+}
+.helix-bond {
+  stroke: var(--text-muted); stroke-width: 1.1; stroke-linecap: round; opacity: 0.75;
+  /* Exit (reform): wait for the rung itself to have regrown first. */
+  transition: opacity 0.16s ease 0.85s;
+}
+
+/* Replication start, in real order: the hydrogen bonds tear apart first, then
+   the two nucleotide half-rungs retract into their own strand and vanish —
+   only then does the fork itself unwind (see .helix-fork-morph below). Each
+   node's own ~10 base pairs live as its direct children (not the shared
+   .helix-basepairs group before it — a selector can't :hover-reach a
+   *preceding* sibling), so a plain descendant selector reaches exactly the
+   right ones and no others. */
+.helix-node:hover .helix-bond, .helix-node:focus-visible .helix-bond {
+  opacity: 0;
+  transition: opacity 0.16s ease;
+}
+.helix-node:hover .helix-bp-seg-hi, .helix-node:focus-visible .helix-bp-seg-hi {
+  /* hi segments are drawn outer-point-first, so a positive offset eats away
+     from their second (center) point, leaving the outer point fixed. */
+  stroke-dashoffset: var(--len);
+  transition: stroke-dashoffset 0.32s ease 0.14s;
+}
+.helix-node:hover .helix-bp-seg-lo, .helix-node:focus-visible .helix-bp-seg-lo {
+  /* lo segments are drawn center-point-first, so the offset needs the
+     opposite sign to eat away from their second (outer) point instead. */
+  stroke-dashoffset: calc(var(--len) * -1);
+  transition: stroke-dashoffset 0.32s ease 0.14s;
+}
+
+/* The leader's own "2 3" dasharray is the permanent dotted pattern, not a
+   reveal mechanism — shifting its dashoffset by a multiple of the 5-unit
+   repeat (as an earlier attempt did with -75) just cycles the dots in place
+   and looks like nothing happened at all, and animating the SVG-geometry
+   "y1" property before that never rendered either. Shortening it for real
+   uses transform: scaleY, anchored (via transform-origin) at the label-side
+   end so that end stays fixed while the node-side end draws inward — the
+   same mechanism already relied on elsewhere in this file, just on a plain
+   standalone line instead of a joint shared by two segments. */
+.helix-leader {
+  stroke: var(--text-muted); stroke-width: 1.2; stroke-dasharray: 2 3;
+  transform-box: fill-box;
+  transform: scaleY(1);
+  transition: stroke 0.3s ease, transform 0.5s ease 0.42s;
+}
+.helix-node { outline: none; cursor: default; }
+.helix-node:hover .helix-leader, .helix-node:focus-visible .helix-leader { stroke: var(--hue); }
+/* Top leader: label end sits at the smaller y (135), so anchor there.
+   Bottom leader: label end sits at the larger y (425), so anchor there
+   instead. Either way the node-side end is what draws inward to 205/355 —
+   70/145 of the full length — matching the fork's flat top/bottom, timed to
+   the same 0.42s delay as the fork's own opening so the two finish together. */
+.helix-leader-top { transform-origin: top; }
+.helix-leader-bottom { transform-origin: bottom; }
+.helix-node:hover .helix-leader-top, .helix-node:focus-visible .helix-leader-top,
+.helix-node:hover .helix-leader-bottom, .helix-node:focus-visible .helix-leader-bottom {
+  transform: scaleY(0.483);
+}
+
+/* Three separate markers share the crossing, never two at once:
+   - .helix-dot is the resting milestone marker. It vanishes fast the instant
+     the pointer arrives, and only grows back — slowly, after a delay long
+     enough for the fork to have fully re-coiled — once it leaves. It never
+     moves; its exit target (r: 8, from the SVG attribute) never changes, so
+     one straightforward transition suffices.
+   - .helix-fork-pol1 (leading) and .helix-fork-pol2 (lagging) are the
+     polymerase markers. Their resting/exit state is simply r: 0 too — always
+     the same target whether the fork just opened or has been closed all
+     along — so leaving hover just needs a quick, undelayed shrink, with no
+     coupling to the milestone dot's own delayed reappearance. */
+.helix-dot {
+  fill: var(--hue); stroke: var(--surface); stroke-width: 2.5;
+  transform-box: fill-box;
+  filter: url(#helixShadow);
+  /* Exit: reappear only once the fork has finished re-coiling (~0.6s), then grow back in. */
+  transition: r 0.3s ease 0.6s, fill 0.3s ease;
+}
+.helix-node:hover .helix-dot, .helix-node:focus-visible .helix-dot {
+  r: 0;
+  /* Enter: vanish immediately — the polymerase markers below take over. */
+  transition: r 0.12s ease, fill 0.3s ease;
+}
+
+.helix-fork-pol1, .helix-fork-pol2 {
+  offset-rotate: 0deg;
+  transform-box: fill-box;
+  r: 0;
+  /* Exit: always shrinking back to the same r: 0 target, so a quick,
+     undelayed transition is all that's needed regardless of fork state. */
+  transition: r 0.15s ease;
+}
+.helix-fork-pol1 { fill: var(--hue); stroke: var(--surface); stroke-width: 2.5; filter: url(#helixShadow); }
+.helix-fork-pol2 { fill: var(--hue); stroke: var(--surface); stroke-width: 1.5; }
+.helix-node:hover .helix-fork-pol1, .helix-node:focus-visible .helix-fork-pol1 {
+  /* Enter: appear/grow/glide/shrink loop starts once the fork has opened. */
+  animation: helix-pol-lead 4.4s linear 0.85s infinite;
+}
+.helix-node:hover .helix-fork-pol2, .helix-node:focus-visible .helix-fork-pol2 {
+  animation: helix-pol-lag 4.4s linear 0.85s infinite;
+}
+/* Each cycle, in order: nothing at the crossing (0%) → the marker appears
+   mini (8%) → grows to full size (18%) → glides the opened strand at full
+   size (18%–82%) → reaches the far end and shrinks back down (82%–92%) →
+   vanishes (100%), then loops. Leading strand glides smoothly throughout;
+   lagging strand's own glide segment is overridden to jump in discontinuous
+   Okazaki-fragment steps, while its appear/grow/shrink phases stay smooth. */
+@keyframes helix-pol-lead {
+  0%   { r: 0;   offset-distance: 100%; }
+  8%   { r: 3;   offset-distance: 100%; }
+  18%  { r: 9.5; offset-distance: 100%; }
+  82%  { r: 9.5; offset-distance: 0%; }
+  92%  { r: 3;   offset-distance: 0%; }
+  100% { r: 0;   offset-distance: 0%; }
+}
+@keyframes helix-pol-lag {
+  0%   { r: 0; offset-distance: 0%; }
+  8%   { r: 2; offset-distance: 0%; }
+  18%  { r: 5; offset-distance: 0%; animation-timing-function: steps(6, jump-end); }
+  82%  { r: 5; offset-distance: 100%; }
+  92%  { r: 2; offset-distance: 100%; }
+  100% { r: 0; offset-distance: 100%; }
+}
+
+.helix-label { font-family: inherit; text-align: center; padding: 4px 8px; margin: -4px -8px; border-radius: 10px; background: transparent; transition: background 0.3s ease, transform 0.4s ease; display: flex; flex-direction: column; height: 100%; overflow: visible; }
+.helix-label-title { font-weight: 700; font-size: 23px; line-height: 1.28; color: var(--text); margin: 0 0 4px; transform-origin: center; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease; }
+.helix-label-sub { font-size: 19px; color: var(--text-muted); font-family: var(--font-mono); margin: 0; transform-origin: center; transition: transform 0.3s ease, color 0.3s ease; }
+/* The foreignObject box is now much taller than any realistic content on
+   whichever side the label can grow into — flex + justify-content anchors
+   the text against the edge nearest the helix (which never moves, no matter
+   how many lines a future title/subtitle/description wrap onto), and lets
+   it grow away from the strand into the spare room instead. Nothing here
+   needs retuning when the text itself changes. */
+.helix-label-top { justify-content: flex-end; }
+.helix-label-bottom { justify-content: flex-start; }
+/* Hidden by default; expands into the room the label vacates on hover. */
+.helix-label-desc {
+  font-size: 15px; line-height: 1.4; color: var(--text-muted);
+  margin: 0; max-height: 0; opacity: 0; overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.35s ease;
+}
+
+.helix-node:hover .helix-label-title, .helix-node:focus-visible .helix-label-title {
+  transform: scale(1.05);
+  color: var(--hue);
+}
+.helix-node:hover .helix-label-sub, .helix-node:focus-visible .helix-label-sub {
+  transform: scale(1.05);
+  color: var(--text);
+}
+/* Title (and its subtitle) move further away from the strand, and the
+   description grows into the gap that opens up right behind them. */
+.helix-node:hover .helix-label-top, .helix-node:focus-visible .helix-label-top {
+  transform: translateY(-34px);
+}
+.helix-node:hover .helix-label-bottom, .helix-node:focus-visible .helix-label-bottom {
+  transform: translateY(34px);
+}
+.helix-node:hover .helix-label-desc, .helix-node:focus-visible .helix-label-desc {
+  max-height: 110px; opacity: 1; margin-top: 6px;
+  transition: max-height 0.35s ease 0.08s, opacity 0.3s ease 0.08s, margin-top 0.35s ease 0.08s;
+}
+
+/* Invisible, generous hover/focus hit-area: the whole strand span between
+   (but excluding) this milestone's two flanking empty crossings, plus its
+   label — not just whatever happens to be painted there. The empty points
+   themselves are deliberately left out of every node's rect (10px margin on
+   each side) since each one belongs to two neighbouring experiences at once
+   and hovering it shouldn't arbitrarily pick one. */
+.helix-hit-area { pointer-events: all; }
+
+/* Replication fork on hover: the double helix locally unwinds — strand paths
+   locally over-open and a background-colour mask hides the un-opened crossing
+   underneath — strictly bounded to that milestone (dx ±20 out of the 215-unit
+   gap to its neighbours), so it never reaches adjacent points. */
+.helix-fork-mask { fill: var(--bg); stroke: none; }
+.helix-fork-structural-instance {
+  opacity: 0; pointer-events: none;
+  /* Stay masking until the strand on top has finished re-coiling — otherwise
+     the original closed crossing peeks through before the morph catches up. */
+  transition: opacity 0.3s ease 0.55s;
+}
+.helix-node:hover .helix-fork-structural-instance, .helix-node:focus-visible .helix-fork-structural-instance {
+  opacity: 1;
+  /* Entering: wait for the bonds to break and the rungs to retract (~0.46s)
+     before masking the crossing and opening the fork on top of it. */
+  transition: opacity 0.3s ease 0.42s;
+}
+
+/* The actual unwinding: each strand is one <path> living directly under
+   .helix-node (not inside the shared <use> — a selector can't :hover-target
+   content *inside* a <use> from outside it, which is why the earlier
+   stroke-dashoffset version silently never fired). Its resting "d" already
+   draws the ordinary twisted curve for that stretch — sitting exactly on top
+   of the live helix, invisible at opacity 0 — and hovering morphs it, point
+   for point, to the flat "opened" shape while the mask (opacity now shared)
+   blanks out the original underneath. Same point count in both "d" values
+   is what makes the morph interpolate smoothly instead of jump-cutting. */
+.helix-fork-morph {
+  fill: none; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round;
+  opacity: 0;
+  /* Reverting (mouse leaves / focus moves away): re-twist first, THEN fade —
+     opacity waits behind a delay at least as long as the "d" morph, so the
+     re-coil is still fully visible instead of vanishing mid-way through it. */
+  transition: opacity 0.3s ease 0.55s, d 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.helix-fork-morph-a { stroke: var(--accent); }
+.helix-fork-morph-b { stroke: var(--accent-2); }
+.helix-node:hover .helix-fork-morph, .helix-node:focus-visible .helix-fork-morph {
+  opacity: 1;
+  /* Entering: wait out the bond-break + retraction phases, then open. */
+  transition: opacity 0.3s ease 0.42s, d 0.65s cubic-bezier(0.65, 0, 0.35, 1) 0.46s;
+}
+.helix-node:hover .helix-fork-morph-b, .helix-node:focus-visible .helix-fork-morph-b {
+  transition-delay: 0.42s, 0.54s;
+}
+.helix-node:hover .helix-fork-morph-a, .helix-node:focus-visible .helix-fork-morph-a {
+  d: path('M -107.5 -0.0 L -96.8 -36.6 L -86.0 -73.3 L -75.2 -75.0 L -64.5 -75.0 L -53.8 -75.0 L -43.0 -75.0 L -32.2 -75.0 L -21.5 -75.0 L -10.8 -75.0 L 0.0 -75.0 L 10.8 -75.0 L 21.5 -75.0 L 32.2 -75.0 L 43.0 -75.0 L 53.8 -75.0 L 64.5 -75.0 L 75.2 -75.0 L 86.0 -73.3 L 96.8 -36.6 L 107.5 -0.0');
+}
+.helix-node:hover .helix-fork-morph-b, .helix-node:focus-visible .helix-fork-morph-b {
+  d: path('M -107.5 0.0 L -96.8 36.6 L -86.0 73.3 L -75.2 75.0 L -64.5 75.0 L -53.8 75.0 L -43.0 75.0 L -32.2 75.0 L -21.5 75.0 L -10.8 75.0 L 0.0 75.0 L 10.8 75.0 L 21.5 75.0 L 32.2 75.0 L 43.0 75.0 L 53.8 75.0 L 64.5 75.0 L 75.2 75.0 L 86.0 73.3 L 96.8 36.6 L 107.5 0.0');
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .helix-fork-structural-instance { transition: opacity 0.15s ease; }
+  .helix-fork-morph { transition: opacity 0.15s ease; }
+  .helix-leader { transition: stroke 0.15s ease; }
+  .helix-bp-seg, .helix-bond {
+    transition-duration: 0.001s !important;
+    transition-delay: 0s !important;
+  }
+  .helix-node:hover .helix-dot, .helix-node:focus-visible .helix-dot { r: 8; transition: none; }
+  .helix-node:hover .helix-fork-pol1, .helix-node:focus-visible .helix-fork-pol1,
+  .helix-node:hover .helix-fork-pol2, .helix-node:focus-visible .helix-fork-pol2 { animation: none; r: 0; }
+  .helix-label-title, .helix-label-sub { transition: color 0.15s ease; }
+  .helix-node:hover .helix-label-title, .helix-node:focus-visible .helix-label-title,
+  .helix-node:hover .helix-label-sub, .helix-node:focus-visible .helix-label-sub { transform: none; }
+  .helix-node:hover .helix-leader-top, .helix-node:focus-visible .helix-leader-top,
+  .helix-node:hover .helix-leader-bottom, .helix-node:focus-visible .helix-leader-bottom { transition: none; }
+  .helix-label { transition: background 0.15s ease; }
+  .helix-node:hover .helix-label-top, .helix-node:focus-visible .helix-label-top,
+  .helix-node:hover .helix-label-bottom, .helix-node:focus-visible .helix-label-bottom { transform: none; }
+  .helix-label-desc { transition: none; }
+  .helix-node:hover .helix-label-desc, .helix-node:focus-visible .helix-label-desc { transition: none; }
+}
+
+/* Braid-in: strands draw themselves top to bottom, base pairs and nodes follow the
+   draw progress. Default state is fully visible (no dependency on JS); JS opts a
+   wrapper into the "reveal-pending" hidden-start state right before it starts
+   observing scroll position. */
+.helix-strand {
+  stroke-dasharray: 2073;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 3.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.helix-strand-b { transition-delay: 0.15s; }
+.helix-basepair {
   opacity: 1; transform: none;
   transform-box: fill-box; transform-origin: center;
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -779,24 +1100,116 @@ a.inline-link:hover, a.inline-link:focus-visible { text-decoration: underline; }
   transform-box: fill-box; transform-origin: center;
   transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.helix-v-wrap.reveal-pending .helix-strand { stroke-dashoffset: 1060; }
-.helix-v-wrap.reveal-pending .helix-rung { opacity: 0; transform: scaleX(0); }
+.helix-v-wrap.reveal-pending .helix-strand { stroke-dashoffset: 2073; }
+.helix-v-wrap.reveal-pending .helix-basepair { opacity: 0; transform: scaleX(0); }
 .helix-v-wrap.reveal-pending .helix-node { opacity: 0; transform: scale(0.3); }
 .helix-v-wrap.reveal-pending.is-visible .helix-strand { stroke-dashoffset: 0; }
-.helix-v-wrap.reveal-pending.is-visible .helix-rung { opacity: 1; transform: none; }
+.helix-v-wrap.reveal-pending.is-visible .helix-basepair { opacity: 1; transform: none; }
 .helix-v-wrap.reveal-pending.is-visible .helix-node { opacity: 1; transform: none; }
-
-/* Gentle scroll parallax once settled — JS drives the transform */
-.helix-parallax { transition: transform 0.2s linear; }
 
 @media (prefers-reduced-motion: reduce) {
   .helix-v-wrap.reveal-pending .helix-strand,
   .helix-v-wrap.reveal-pending.is-visible .helix-strand { stroke-dashoffset: 0; transition: none; }
-  .helix-v-wrap.reveal-pending .helix-rung,
+  .helix-v-wrap.reveal-pending .helix-basepair,
   .helix-v-wrap.reveal-pending .helix-node,
-  .helix-v-wrap.reveal-pending.is-visible .helix-rung,
+  .helix-v-wrap.reveal-pending.is-visible .helix-basepair,
   .helix-v-wrap.reveal-pending.is-visible .helix-node { opacity: 1; transform: none; transition: none; }
   .helix-parallax { transform: none !important; transition: none; }
+}
+
+/* ==========================================================================
+   Compétences 2 (interactive workstation scene)
+   ========================================================================== */
+/* Defined on the whole panel, not just the scene box, so the legend below
+   (a sibling of .comp2-scene-wrap) can resolve these colors too — custom
+   properties only cascade to descendants, and the legend previously sat
+   outside the element that defined them, which is why its dots rendered
+   with no color at all. */
+#panel-comp2 {
+  --comp2-decor: color-mix(in srgb, var(--border) 65%, var(--text-muted));
+  --comp2-decor-fill: var(--bg-soft);
+  --comp2-floor: var(--bg-soft);
+  --comp2-a: var(--hue1);
+  --comp2-a-soft: color-mix(in srgb, var(--hue1) 14%, transparent);
+  --comp2-b: var(--accent-2);
+  --comp2-b-soft: color-mix(in srgb, var(--accent-2) 14%, transparent);
+  --comp2-c: var(--accent);
+  --comp2-c-soft: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+.comp2-title { text-align: center; margin: 0 0 0.5rem; }
+.comp2-intro { color: var(--text-muted); font-size: 0.95rem; line-height: 1.55; text-align: center; margin: 0 0 1.4rem 0; }
+.parcours-intro { margin-bottom: 0.6rem; }
+
+.comp2-scene-wrap {
+  position: relative;
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: clamp(0.75rem, 2.5vw, 1.6rem);
+  overflow: hidden;
+}
+svg.comp2-scene { width: 100%; height: auto; display: block; }
+
+.comp2-obj { cursor: pointer; }
+.comp2-hit { fill: transparent; }
+.comp2-obj-fill { transition: opacity 0.18s ease, transform 0.18s ease; transform-box: fill-box; transform-origin: center; }
+.comp2-obj:hover .comp2-obj-fill { opacity: 0.72; transform: scale(1.035); }
+/* No native focus ring on click — only for keyboard focus (:focus-visible). */
+.comp2-obj { outline: none; }
+.comp2-obj:focus-visible .comp2-obj-fill {
+  opacity: 0.72; transform: scale(1.035);
+  filter: drop-shadow(0 0 0 2px var(--surface)) drop-shadow(0 0 0 3px currentColor);
+}
+
+.comp2-legend {
+  display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; justify-content: center;
+  margin-top: 1.2rem;
+}
+.comp2-legend-item { display: flex; align-items: center; gap: 0.6rem; font-size: 1.05rem; color: var(--text-muted); }
+.comp2-legend-dot { width: 14px; height: 14px; border-radius: 50%; flex: none; }
+
+/* Popup: sized to its content, pinned beside the object that opened it. */
+.comp2-popup {
+  position: fixed;
+  z-index: 40;
+  width: max-content;
+  max-width: min(320px, calc(100vw - 2rem));
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 0.85rem 1.6rem 0.9rem 1rem;
+  opacity: 0;
+  transform: translateY(4px) scale(0.98);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+  pointer-events: none;
+}
+.comp2-popup.is-open { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
+.comp2-popup-close {
+  position: absolute; top: 0.4rem; right: 0.4rem; width: 22px; height: 22px;
+  border-radius: 50%; border: 1px solid var(--border); background: var(--bg); color: var(--text);
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  font-size: 0.75rem; line-height: 1; padding: 0;
+}
+.comp2-popup-close:focus-visible, .comp2-obj:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.comp2-popup-cat {
+  font-family: var(--font-mono); font-size: 0.66rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--comp2-cat-color, var(--accent));
+  margin: 0 0 0.45rem;
+}
+.comp2-popup-skills { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+.comp2-popup-skills li {
+  font-size: 0.84rem; line-height: 1.4; color: var(--text); padding-left: 0.9rem; position: relative;
+}
+.comp2-popup-skills li::before {
+  content: ""; position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px;
+  border-radius: 50%; background: var(--comp2-cat-color, var(--accent));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .comp2-obj-fill, .comp2-popup { transition: none; }
 }
 
 .pill-list { display: flex; flex-wrap: wrap; gap: 0.45rem; }

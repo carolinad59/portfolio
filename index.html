@@ -32,7 +32,7 @@
 
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="intro-run">
+<body class="intro-run show-cv-subtabs">
   <a class="skip-link" href="#panels" data-i18n="skip">Aller au contenu principal</a>
 
   <div class="app">
@@ -195,21 +195,9 @@
       </header>
 
       <nav class="tabs" role="tablist" aria-label="Sections du CV" data-i18n-label="tabsAria">
-        <button type="button" class="tab-btn is-active" role="tab" id="tab-exp" aria-selected="true" aria-controls="panel-exp">
+        <button type="button" class="tab-btn is-active" role="tab" id="tab-classique" aria-selected="true" aria-controls="panel-classique">
           <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v5.2L4.8 17a2 2 0 0 0 1.7 3h11a2 2 0 0 0 1.7-3L14 8.2V3" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span data-i18n="tabExp">Expérience professionnelle</span>
-        </button>
-        <button type="button" class="tab-btn" role="tab" id="tab-comp" aria-selected="false" aria-controls="panel-comp" tabindex="-1">
-          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 5l-2 14" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span data-i18n="tabComp">Compétences</span>
-        </button>
-        <button type="button" class="tab-btn" role="tab" id="tab-proj" aria-selected="false" aria-controls="panel-proj" tabindex="-1">
-          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
-          <span data-i18n="tabProj">Projets</span>
-        </button>
-        <button type="button" class="tab-btn" role="tab" id="tab-edu" aria-selected="false" aria-controls="panel-edu" tabindex="-1">
-          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5Z M6 11.5V17c0 1.2 2.7 3 6 3s6-1.8 6-3v-5.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span data-i18n="tabEdu">Formation académique</span>
+          <span data-i18n="tabClassique">Mon CV</span>
         </button>
         <button type="button" class="tab-btn" role="tab" id="tab-profile" aria-selected="false" aria-controls="panel-profile" tabindex="-1">
           <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -219,13 +207,38 @@
           <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3c4 3 4 6 0 9s-4 6 0 9M18 3c-4 3-4 6 0 9s4 6 0 9" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <span data-i18n="tabParcours">Mon parcours</span>
         </button>
+        <button type="button" class="tab-btn" role="tab" id="tab-comp2" aria-selected="false" aria-controls="panel-comp2" tabindex="-1" hidden>
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v5.5L4.5 17a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 8.5V3" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="15" r="1.4" fill="currentColor" stroke="none"/></svg>
+          <span data-i18n="tabComp2">Compétences 2</span>
+        </button>
+      </nav>
+
+      <nav class="cv-classique-subtabs" role="tablist" aria-label="Sections de Mon CV" data-i18n-label="tabsAria">
+        <button type="button" class="subtab-btn is-active" role="tab" id="subtab-exp" aria-selected="true" aria-controls="panel-exp">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v5.2L4.8 17a2 2 0 0 0 1.7 3h11a2 2 0 0 0 1.7-3L14 8.2V3" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-i18n="tabExp">Expérience professionnelle</span>
+        </button>
+        <button type="button" class="subtab-btn" role="tab" id="subtab-proj" aria-selected="false" aria-controls="panel-proj" tabindex="-1">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
+          <span data-i18n="tabProj">Projets</span>
+        </button>
+        <button type="button" class="subtab-btn" role="tab" id="subtab-comp" aria-selected="false" aria-controls="panel-comp" tabindex="-1">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 5l-2 14" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-i18n="tabComp">Compétences</span>
+        </button>
+        <button type="button" class="subtab-btn" role="tab" id="subtab-edu" aria-selected="false" aria-controls="panel-edu" tabindex="-1">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5Z M6 11.5V17c0 1.2 2.7 3 6 3s6-1.8 6-3v-5.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-i18n="tabEdu">Formation académique</span>
+        </button>
       </nav>
 
       <main id="panels" class="panels">
 
-        <!-- ===== Expérience ===== -->
-        <div class="panel is-active" id="panel-exp" role="tabpanel" aria-labelledby="tab-exp">
+        <!-- ===== CV classique: Expérience + Compétences + Projets + Formation, merged into one scrollable tab ===== -->
+        <div class="panel is-active" id="panel-classique" role="tabpanel" aria-labelledby="tab-classique">
 
+        <!-- ===== Expérience ===== -->
+        <div class="cv-classique-subpanel is-active" id="panel-exp">
           <dl class="stat-row">
             <div class="stat-chip"><dt data-i18n="statTechniques">Techniques</dt><dd>+16</dd></div>
             <div class="stat-chip"><dt data-i18n="statClientStudies">Études clients</dt><dd>6</dd></div>
@@ -246,9 +259,10 @@
               <div class="timeline-details" id="exp-1">
                 <div class="timeline-details-inner">
                   <ul>
-                    <li data-i18n="exp1B1">Réalisation et suivi d'études clients sur des modèles de tissu adipeux humain <em>ex vivo</em>, de la partie expérimentale à l'analyse des résultats.</li>
-                    <li data-i18n="exp1B2">Participation aux projets de R&amp;D : caractérisation de modèles, évaluation de composés et développement de nouvelles approches expérimentales.</li>
-                    <li data-i18n="exp1B3">Conception du <a class="inline-link" href="https://exadex.github.io/Longevity_Lab" target="_blank" rel="noopener noreferrer">Longevity Lab</a> et de l'inventaire ExAdEx.</li>
+                    <li data-i18n="exp1B1">Pilotage de 6 études clients sur des modèles in vitro, de la partie expérimentale à la rédaction de rapports et l'analyse des résultats.</li>
+                    <li data-i18n="exp1B2">Participation à 3 projets R&amp;D : caractérisation de modèles, évaluation de composés et développement de nouvelles approches expérimentales.</li>
+                    <li data-i18n="exp1B3">Programmation des outils numériques <a class="inline-link" href="https://exadex.github.io/Longevity_Lab" target="_blank" rel="noopener noreferrer">Longevity Lab</a> et inventaire ExAdEx.</li>
+                    <li data-i18n="exp1B4">Gestion du laboratoire, des stocks et des commandes.</li>
                   </ul>
                 </div>
               </div>
@@ -265,8 +279,8 @@
               <div class="timeline-details" id="exp-2">
                 <div class="timeline-details-inner">
                   <ul>
-                    <li data-i18n="exp2B1">Rédaction et optimisation de protocoles pour l'étude des interactions protéine–canal ionique dans le contexte du cancer colorectal.</li>
-                    <li data-i18n="exp2B2">Réalisation de techniques de culture cellulaire, de biologie moléculaire, de biochimie et de microscopie ainsi qu'analyse et interprétation des résultats.</li>
+                    <li data-i18n="exp2B1">Rédaction et optimisation de protocoles pour l'étude des interactions protéine–canal ionique dans le cancer colorectal.</li>
+                    <li data-i18n="exp2B2">Culture cellulaire, biologie moléculaire, biochimie, microscopie, analyse et interprétation des résultats.</li>
                     <li data-i18n="exp2B3">Gestion du laboratoire, des stocks et formation des nouveaux arrivants.</li>
                   </ul>
                 </div>
@@ -305,9 +319,74 @@
           </div>
         </div>
 
+        <!-- ===== Projets ===== -->
+        <div class="cv-classique-subpanel" id="panel-proj" hidden>
+          <div class="filters" role="group" aria-label="Filtrer les projets par catégorie" data-i18n-label="filterAria">
+            <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true" data-i18n="filterAll">Tous</button>
+            <button type="button" class="filter-btn" data-filter="dev" aria-pressed="false" data-i18n="filterDev">Projet digital</button>
+            <button type="button" class="filter-btn" data-filter="bio-mol" aria-pressed="false" data-i18n="filterBioMol">Projet technique</button>
+          </div>
+
+          <div class="portfolio-grid" id="portfolio-grid">
+
+            <article class="card" data-category="dev">
+              <div class="card-top">
+                <span class="badge badge-dev" data-i18n="badgeDev">Projet digital</span>
+                <span class="card-context">ExAdEx Innov · 2026</span>
+              </div>
+              <h3>Longevity Lab</h3>
+              <p data-i18n="card1Desc">Application web conçue pour visualiser et comparer l'effet d'un ou plusieurs actifs sur les signatures du vieillissement tissulaire.</p>
+              <a class="btn btn-primary card-cta" href="https://exadex.github.io/Longevity_Lab/index.html" target="_blank" rel="noopener noreferrer">
+                <span data-i18n="cardLinkView">Voir le projet</span>
+                <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <ul class="tag-list"><li>HTML</li><li>JavaScript</li><li data-i18n="tagDataViz">Data viz</li></ul>
+            </article>
+
+            <article class="card" data-category="dev">
+              <div class="card-top">
+                <span class="badge badge-dev" data-i18n="badgeDev">Projet digital</span>
+                <span class="card-context">ExAdEx Innov · 2026</span>
+              </div>
+              <h3>Inventaire ExAdEx</h3>
+              <p data-i18n="card2Desc">Migration d'un inventaire Excel vers une plateforme web : stocks, commandes, localisations, agents interactifs, historique.</p>
+              <ul class="tag-list"><li>HTML</li><li>JavaScript</li><li data-i18n="tagDataManage">Gestion de données</li></ul>
+            </article>
+
+            <article class="card" data-category="bio-mol">
+              <div class="card-top">
+                <span class="badge badge-tech" data-i18n="badgeTech">Projet technique</span>
+                <span class="card-context">CNRS Nice</span>
+              </div>
+              <h3 data-i18n="card4Title">Interactions protéine–canal ionique</h3>
+              <p data-i18n="card4Desc">Génération de constructions tronquées du canal ionique KCNQ1 et identification, au niveau de l'acide aminé, de son site d'interaction avec la β-caténine dans le contexte du cancer colorectal.</p>
+              <ul class="tag-list"><li data-i18n="tagMolBio">Biologie moléculaire</li><li data-i18n="tagBiochem">Biochimie</li><li data-i18n="tagCloning">Clonage</li></ul>
+            </article>
+
+          </div>
+          <p class="filter-empty" id="filter-empty" hidden data-i18n="filterEmpty">Aucun élément dans cette catégorie.</p>
+        </div>
         <!-- ===== Compétences ===== -->
-        <div class="panel" id="panel-comp" role="tabpanel" aria-labelledby="tab-comp" hidden>
+        <div class="cv-classique-subpanel" id="panel-comp" hidden>
           <div class="skills-grid">
+
+            <div class="skill-group">
+              <div class="skill-group-head">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 5l-2 14" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <h3 data-i18n="skillProg">Programmation &amp; codage</h3>
+              </div>
+              <ul class="achievement-list">
+                <li data-i18n="progAch1">Conception d'outils et d'applications web sur mesure (visualisation de données, plateformes internes) pour répondre aux besoins de l'équipe</li>
+                <li data-i18n="progAch2">Compétences développées en autodidacte</li>
+              </ul>
+              <ul class="pill-list pill-list-mono">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>GitHub</li>
+                <li>VS Code</li>
+              </ul>
+            </div>
 
             <div class="skill-group skill-explorer">
               <div class="skill-group-head">
@@ -318,7 +397,6 @@
               <div class="skill-cat-list" role="tablist" aria-label="Catégories de techniques" data-i18n-label="skillCatAria">
                 <button type="button" class="skill-cat-btn is-active" role="tab" data-cat="1" aria-selected="true" data-i18n="cat1">Biologie moléculaire</button>
                 <button type="button" class="skill-cat-btn" role="tab" data-cat="2" aria-selected="false" data-i18n="cat2">Culture cellulaire</button>
-                <button type="button" class="skill-cat-btn" role="tab" data-cat="3" aria-selected="false" data-i18n="cat3">Modèles ex vivo</button>
                 <button type="button" class="skill-cat-btn" role="tab" data-cat="4" aria-selected="false" data-i18n="cat4">Analyse des protéines</button>
                 <button type="button" class="skill-cat-btn" role="tab" data-cat="5" aria-selected="false" data-i18n="cat5">Imagerie cellulaire</button>
                 <button type="button" class="skill-cat-btn" role="tab" data-cat="6" aria-selected="false" data-i18n="cat6">Analyses cellulaires &amp; fonctionnelles</button>
@@ -337,8 +415,6 @@
                 <li data-i18n="cellcult1">Culture cellulaire 2D</li>
                 <li data-i18n="cellcult2">Sphéroïdes tumoraux 3D</li>
                 <li data-i18n="molbio5">Transfection cellulaire</li>
-              </ul>
-              <ul class="pill-list skill-cat-panel" data-cat-panel="3" hidden>
                 <li data-i18n="exvivo1">Modèles de tissu adipeux humain <em>ex vivo</em></li>
               </ul>
               <ul class="pill-list skill-cat-panel" data-cat-panel="4" hidden>
@@ -375,100 +451,21 @@
                 <h3 data-i18n="skillConduct">Conduite d'études &amp; laboratoire</h3>
               </div>
               <ul class="pill-list">
-                <li data-i18n="conductPill1">Gestion et suivi d'études clients</li>
-                <li data-i18n="conductPill2">Planification et réalisation expérimentale</li>
-                <li data-i18n="conductPill3">Analyse et interprétation des résultats</li>
-                <li data-i18n="conductPill4">Rédaction et amélioration de SOP</li>
-                <li data-i18n="conductPill5">Pratiques GMP/GLP et contrôle qualité</li>
-                <li data-i18n="conductPill6">Traçabilité des échantillons</li>
-                <li data-i18n="conductPill7">Gestion des stocks, commandes et équipements</li>
-              </ul>
-            </div>
-
-            <div class="skill-group">
-              <div class="skill-group-head">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 5l-2 14" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <h3 data-i18n="skillProg">Programmation &amp; analyse</h3>
-              </div>
-              <ul class="achievement-list">
-                <li data-i18n="progAch1">Création d'applications web sur mesure pour l'analyse et la visualisation de données scientifiques</li>
-                <li data-i18n="progAch2">Transformation d'un inventaire Excel en une plateforme web interactive, accessible pour l'équipe</li>
-              </ul>
-              <ul class="pill-list pill-list-mono">
-                <li>HTML</li>
-                <li>JavaScript</li>
-                <li>VS Code</li>
-                <li>GitHub</li>
-                <li>Android Studio</li>
-                <li>Pack Office</li>
+                <li data-i18n="conductPill1">Conception, planification et pilotage d'études clients et R&amp;D</li>
+                <li data-i18n="conductPill2">Rédaction et amélioration de SOP</li>
+                <li data-i18n="conductPill3">Pratiques GMP/GLP et contrôle qualité</li>
+                <li data-i18n="conductPill4">Traçabilité des échantillons</li>
+                <li data-i18n="conductPill5">Analyse et interprétation des résultats</li>
+                <li data-i18n="conductPill6">Formation des nouveaux arrivants</li>
+                <li data-i18n="conductPill7">Gestion des stocks et commandes</li>
               </ul>
             </div>
 
           </div>
-        </div>
-
-        <!-- ===== Projets ===== -->
-        <div class="panel" id="panel-proj" role="tabpanel" aria-labelledby="tab-proj" hidden>
-
-          <div class="filters" role="group" aria-label="Filtrer les projets par catégorie" data-i18n-label="filterAria">
-            <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true" data-i18n="filterAll">Tous</button>
-            <button type="button" class="filter-btn" data-filter="dev" aria-pressed="false" data-i18n="filterDev">Dev web</button>
-            <button type="button" class="filter-btn" data-filter="bio-mol" aria-pressed="false" data-i18n="filterBioMol">Biologie moléculaire</button>
-            <button type="button" class="filter-btn" data-filter="culture" aria-pressed="false" data-i18n="filterCulture">Culture &amp; tissus</button>
-          </div>
-
-          <div class="portfolio-grid" id="portfolio-grid">
-
-            <article class="card" data-category="dev">
-              <div class="card-top">
-                <span class="badge badge-dev" data-i18n="badgeDev">Projet digital</span>
-                <span class="card-context">ExAdEx Innov · 2026</span>
-              </div>
-              <h3>Longevity Lab</h3>
-              <p data-i18n="card1Desc">Application web conçue pour évaluer l'effet d'actifs sur les signatures du vieillissement tissulaire.</p>
-              <a class="btn btn-primary card-cta" href="https://exadex.github.io/Longevity_Lab/index.html" target="_blank" rel="noopener noreferrer">
-                <span data-i18n="cardLinkView">Voir le projet</span>
-                <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-              <ul class="tag-list"><li>HTML</li><li>JavaScript</li><li data-i18n="tagDataViz">Data viz</li></ul>
-            </article>
-
-            <article class="card" data-category="dev">
-              <div class="card-top">
-                <span class="badge badge-dev" data-i18n="badgeDev">Projet digital</span>
-                <span class="card-context">ExAdEx Innov · 2026</span>
-              </div>
-              <h3>Inventaire ExAdEx</h3>
-              <p data-i18n="card2Desc">Migration d'un inventaire Excel vers une plateforme web interactive : stocks, commandes, localisations et historiques.</p>
-              <ul class="tag-list"><li>HTML</li><li>JavaScript</li><li data-i18n="tagDataManage">Gestion de données</li></ul>
-            </article>
-
-            <article class="card" data-category="culture">
-              <div class="card-top">
-                <span class="badge badge-tech" data-i18n="badgeTech">Domaine technique</span>
-                <span class="card-context">ExAdEx Innov</span>
-              </div>
-              <h3 data-i18n="card3Title">Modèles ex vivo de tissu adipeux humain</h3>
-              <p data-i18n="card3Desc">Études clients de la partie expérimentale à l'analyse des résultats ; caractérisation de modèles et évaluation de composés.</p>
-              <ul class="tag-list"><li data-i18n="tagCulture">Culture 2D/3D</li><li data-i18n="tagExVivo">Modèles ex vivo</li><li>ELISA</li></ul>
-            </article>
-
-            <article class="card" data-category="bio-mol">
-              <div class="card-top">
-                <span class="badge badge-tech" data-i18n="badgeTech">Domaine technique</span>
-                <span class="card-context">CNRS Nice</span>
-              </div>
-              <h3 data-i18n="card4Title">Interactions protéine–canal ionique</h3>
-              <p data-i18n="card4Desc">Rédaction et optimisation de protocoles pour l'étude des interactions protéine–canal ionique dans le contexte du cancer colorectal.</p>
-              <ul class="tag-list"><li data-i18n="filterBioMol">Biologie moléculaire</li><li data-i18n="tagBiochem">Biochimie</li><li data-i18n="tagCloning">Clonage</li></ul>
-            </article>
-
-          </div>
-          <p class="filter-empty" id="filter-empty" hidden data-i18n="filterEmpty">Aucun élément dans cette catégorie.</p>
         </div>
 
         <!-- ===== Formation ===== -->
-        <div class="panel" id="panel-edu" role="tabpanel" aria-labelledby="tab-edu" hidden>
+        <div class="cv-classique-subpanel" id="panel-edu" hidden>
           <div class="timeline">
             <span class="edu-line" aria-hidden="true"></span>
             <div class="edu-row">
@@ -525,6 +522,8 @@
               </div>
             </div>
           </div>
+        </div>
+
         </div>
 
         <!-- ===== Profil en 30 secondes ===== -->
@@ -598,7 +597,7 @@
                 <div class="quickprofile-projects">
                   <a class="quickprofile-project" href="https://exadex.github.io/Longevity_Lab/index.html" target="_blank" rel="noopener noreferrer">
                     <p class="quickprofile-project-name">Longevity Lab</p>
-                    <p class="quickprofile-project-desc" data-i18n="card1Desc">Application web conçue pour évaluer l'effet d'actifs sur les signatures du vieillissement tissulaire.</p>
+                    <p class="quickprofile-project-desc" data-i18n="card1Desc">Application web conçue pour visualiser et comparer l'effet d'un ou plusieurs actifs sur les signatures du vieillissement tissulaire.</p>
                   </a>
                 </div>
               </div>
@@ -624,96 +623,594 @@
 
         <!-- ===== Mon parcours ===== -->
         <div class="panel" id="panel-parcours" role="tabpanel" aria-labelledby="tab-parcours" hidden>
-          <p class="parcours-heading" data-i18n="careerTitle">Mon parcours</p>
-          <p class="parcours-sub" data-i18n="careerSub">De 2017 à 2026, entre biologie et développement.</p>
-
+          <p class="comp2-intro parcours-intro" data-i18n="parcoursIntro">Explorez mon parcours en cliquant sur n'importe quelle expérience pour en voir le détail.</p>
           <div class="helix-v-wrap">
-            <svg class="helix-chart-v" viewBox="0 0 680 830" role="img" aria-labelledby="helixDescV">
-              <title id="helixDescV" data-i18n="helixAria">Frise chronologique verticale en forme d'ADN de mon parcours académique et professionnel, de 2017 à 2026</title>
+            <svg class="helix-chart-v" viewBox="-60 -60 1120 680" role="img" data-i18n-label="helixAria" aria-label="Frise chronologique horizontale en forme d'ADN de mon parcours académique et professionnel, de 2017 à 2026">
+
+              <defs>
+                <linearGradient id="helixGradA" gradientUnits="userSpaceOnUse" x1="0" y1="205" x2="0" y2="355">
+                  <stop offset="0%" class="helix-stop-dark-a" />
+                  <stop offset="50%" class="helix-stop-light-a" />
+                  <stop offset="100%" class="helix-stop-dark-a" />
+                </linearGradient>
+                <linearGradient id="helixGradB" gradientUnits="userSpaceOnUse" x1="0" y1="205" x2="0" y2="355">
+                  <stop offset="0%" class="helix-stop-dark-b" />
+                  <stop offset="50%" class="helix-stop-light-b" />
+                  <stop offset="100%" class="helix-stop-dark-b" />
+                </linearGradient>
+                <filter id="helixShadow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-opacity="0.22" />
+                </filter>
+
+                <!-- Replication fork, local coords centred on a node at (0,0), instanced per node
+                     via <use x="nodeCX">. A single solid rectangle — wide and tall enough to fully
+                     cover the strands AND the base-pair rungs underneath, not just a thin outline
+                     traced along the curve — blanks out that whole span, then the two strands are
+                     redrawn as plain straight lines: flat from the node out to the real crossing at
+                     dx=±107.5, rising only to the helix's own natural peak height (never beyond it)
+                     over a short ramp near each end. No curve, no crossing: just opened flat. -->
+                <g id="helix-fork-structural">
+                  <rect class="helix-fork-mask" x="-107.5" y="-91" width="215" height="182" />
+                </g>
+              </defs>
 
               <g class="helix-parallax">
-                <path class="helix-strand helix-strand-a" d="M 294.2 50 L 298.0 54 L 302.1 58 L 306.4 62 L 310.8 66 L 315.4 70 L 320.2 74 L 325.0 78 L 330.0 82 L 335.0 86 L 340.0 90 L 345.0 94 L 350.0 98 L 355.0 102 L 359.8 106 L 364.6 110 L 369.2 114 L 373.6 118 L 377.9 122 L 382.0 126 L 385.8 130 L 389.4 134 L 392.7 138 L 395.7 142 L 398.5 146 L 400.9 150 L 402.9 154 L 404.7 158 L 406.0 162 L 407.1 166 L 407.7 170 L 408.0 174 L 407.9 178 L 407.4 182 L 406.6 186 L 405.4 190 L 403.9 194 L 401.9 198 L 399.7 202 L 397.1 206 L 394.3 210 L 391.1 214 L 387.6 218 L 383.9 222 L 380.0 226 L 375.8 230 L 371.4 234 L 366.9 238 L 362.2 242 L 357.4 246 L 352.5 250 L 347.5 254 L 342.5 258 L 337.5 262 L 332.5 266 L 327.5 270 L 322.6 274 L 317.8 278 L 313.1 282 L 308.6 286 L 304.2 290 L 300.0 294 L 296.1 298 L 292.4 302 L 288.9 306 L 285.7 310 L 282.9 314 L 280.3 318 L 278.1 322 L 276.1 326 L 274.6 330 L 273.4 334 L 272.6 338 L 272.1 342 L 272.0 346 L 272.3 350 L 272.9 354 L 274.0 358 L 275.3 362 L 277.1 366 L 279.1 370 L 281.5 374 L 284.3 378 L 287.3 382 L 290.6 386 L 294.2 390 L 298.0 394 L 302.1 398 L 306.4 402 L 310.8 406 L 315.4 410 L 320.2 414 L 325.0 418 L 330.0 422 L 335.0 426 L 340.0 430 L 345.0 434 L 350.0 438 L 355.0 442 L 359.8 446 L 364.6 450 L 369.2 454 L 373.6 458 L 377.9 462 L 382.0 466 L 385.8 470 L 389.4 474 L 392.7 478 L 395.7 482 L 398.5 486 L 400.9 490 L 402.9 494 L 404.7 498 L 406.0 502 L 407.1 506 L 407.7 510 L 408.0 514 L 407.9 518 L 407.4 522 L 406.6 526 L 405.4 530 L 403.9 534 L 401.9 538 L 399.7 542 L 397.1 546 L 394.3 550 L 391.1 554 L 387.6 558 L 383.9 562 L 380.0 566 L 375.8 570 L 371.4 574 L 366.9 578 L 362.2 582 L 357.4 586 L 352.5 590 L 347.5 594 L 342.5 598 L 337.5 602 L 332.5 606 L 327.5 610 L 322.6 614 L 317.8 618 L 313.1 622 L 308.6 626 L 304.2 630 L 300.0 634 L 296.1 638 L 292.4 642 L 288.9 646 L 285.7 650 L 282.9 654 L 280.3 658 L 278.1 662 L 276.1 666 L 274.6 670 L 273.4 674 L 272.6 678 L 272.1 682 L 272.0 686 L 272.3 690 L 272.9 694 L 274.0 698 L 275.3 702 L 277.1 706 L 279.1 710 L 281.5 714 L 284.3 718 L 287.3 722 L 290.6 726 L 294.2 730 L 298.0 734 L 302.1 738 L 306.4 742 L 310.8 746 L 315.4 750 L 320.2 754 L 325.0 758 L 330.0 762 L 335.0 766 L 340.0 770 L 345.0 774 L 350.0 778 L 355.0 782 L 359.8 786 L 364.6 790 L 369.2 794 L 373.6 798 L 377.9 802 L 382.0 806 L 385.8 810" />
-                <path class="helix-strand helix-strand-b" d="M 385.8 50 L 382.0 54 L 377.9 58 L 373.6 62 L 369.2 66 L 364.6 70 L 359.8 74 L 355.0 78 L 350.0 82 L 345.0 86 L 340.0 90 L 335.0 94 L 330.0 98 L 325.0 102 L 320.2 106 L 315.4 110 L 310.8 114 L 306.4 118 L 302.1 122 L 298.0 126 L 294.2 130 L 290.6 134 L 287.3 138 L 284.3 142 L 281.5 146 L 279.1 150 L 277.1 154 L 275.3 158 L 274.0 162 L 272.9 166 L 272.3 170 L 272.0 174 L 272.1 178 L 272.6 182 L 273.4 186 L 274.6 190 L 276.1 194 L 278.1 198 L 280.3 202 L 282.9 206 L 285.7 210 L 288.9 214 L 292.4 218 L 296.1 222 L 300.0 226 L 304.2 230 L 308.6 234 L 313.1 238 L 317.8 242 L 322.6 246 L 327.5 250 L 332.5 254 L 337.5 258 L 342.5 262 L 347.5 266 L 352.5 270 L 357.4 274 L 362.2 278 L 366.9 282 L 371.4 286 L 375.8 290 L 380.0 294 L 383.9 298 L 387.6 302 L 391.1 306 L 394.3 310 L 397.1 314 L 399.7 318 L 401.9 322 L 403.9 326 L 405.4 330 L 406.6 334 L 407.4 338 L 407.9 342 L 408.0 346 L 407.7 350 L 407.1 354 L 406.0 358 L 404.7 362 L 402.9 366 L 400.9 370 L 398.5 374 L 395.7 378 L 392.7 382 L 389.4 386 L 385.8 390 L 382.0 394 L 377.9 398 L 373.6 402 L 369.2 406 L 364.6 410 L 359.8 414 L 355.0 418 L 350.0 422 L 345.0 426 L 340.0 430 L 335.0 434 L 330.0 438 L 325.0 442 L 320.2 446 L 315.4 450 L 310.8 454 L 306.4 458 L 302.1 462 L 298.0 466 L 294.2 470 L 290.6 474 L 287.3 478 L 284.3 482 L 281.5 486 L 279.1 490 L 277.1 494 L 275.3 498 L 274.0 502 L 272.9 506 L 272.3 510 L 272.0 514 L 272.1 518 L 272.6 522 L 273.4 526 L 274.6 530 L 276.1 534 L 278.1 538 L 280.3 542 L 282.9 546 L 285.7 550 L 288.9 554 L 292.4 558 L 296.1 562 L 300.0 566 L 304.2 570 L 308.6 574 L 313.1 578 L 317.8 582 L 322.6 586 L 327.5 590 L 332.5 594 L 337.5 598 L 342.5 602 L 347.5 606 L 352.5 610 L 357.4 614 L 362.2 618 L 366.9 622 L 371.4 626 L 375.8 630 L 380.0 634 L 383.9 638 L 387.6 642 L 391.1 646 L 394.3 650 L 397.1 654 L 399.7 658 L 401.9 662 L 403.9 666 L 405.4 670 L 406.6 674 L 407.4 678 L 407.9 682 L 408.0 686 L 407.7 690 L 407.1 694 L 406.0 698 L 404.7 702 L 402.9 706 L 400.9 710 L 398.5 714 L 395.7 718 L 392.7 722 L 389.4 726 L 385.8 730 L 382.0 734 L 377.9 738 L 373.6 742 L 369.2 746 L 364.6 750 L 359.8 754 L 355.0 758 L 350.0 762 L 345.0 766 L 340.0 770 L 335.0 774 L 330.0 778 L 325.0 782 L 320.2 786 L 315.4 790 L 310.8 794 L 306.4 798 L 302.1 802 L 298.0 806 L 294.2 810" />
-                <g class="helix-rungs">
-                  <line class="helix-rung" style="transition-delay: 0.10s" x1="304.2" y1="60" x2="375.8" y2="60" />
-                  <line class="helix-rung" style="transition-delay: 0.15s" x1="325.0" y1="78" x2="355.0" y2="78" />
-                  <line class="helix-rung" style="transition-delay: 0.19s" x1="347.5" y1="96" x2="332.5" y2="96" />
-                  <line class="helix-rung" style="transition-delay: 0.23s" x1="369.2" y1="114" x2="310.8" y2="114" />
-                  <line class="helix-rung" style="transition-delay: 0.27s" x1="387.6" y1="132" x2="292.4" y2="132" />
-                  <line class="helix-rung" style="transition-delay: 0.32s" x1="400.9" y1="150" x2="279.1" y2="150" />
-                  <line class="helix-rung" style="transition-delay: 0.36s" x1="407.4" y1="168" x2="272.6" y2="168" />
-                  <line class="helix-rung" style="transition-delay: 0.40s" x1="406.6" y1="186" x2="273.4" y2="186" />
-                  <line class="helix-rung" style="transition-delay: 0.44s" x1="398.5" y1="204" x2="281.5" y2="204" />
-                  <line class="helix-rung" style="transition-delay: 0.49s" x1="383.9" y1="222" x2="296.1" y2="222" />
-                  <line class="helix-rung" style="transition-delay: 0.53s" x1="364.6" y1="240" x2="315.4" y2="240" />
-                  <line class="helix-rung" style="transition-delay: 0.57s" x1="342.5" y1="258" x2="337.5" y2="258" />
-                  <line class="helix-rung" style="transition-delay: 0.62s" x1="320.2" y1="276" x2="359.8" y2="276" />
-                  <line class="helix-rung" style="transition-delay: 0.66s" x1="300.0" y1="294" x2="380.0" y2="294" />
-                  <line class="helix-rung" style="transition-delay: 0.70s" x1="284.3" y1="312" x2="395.7" y2="312" />
-                  <line class="helix-rung" style="transition-delay: 0.74s" x1="274.6" y1="330" x2="405.4" y2="330" />
-                  <line class="helix-rung" style="transition-delay: 0.79s" x1="272.1" y1="348" x2="407.9" y2="348" />
-                  <line class="helix-rung" style="transition-delay: 0.83s" x1="277.1" y1="366" x2="402.9" y2="366" />
-                  <line class="helix-rung" style="transition-delay: 0.87s" x1="288.9" y1="384" x2="391.1" y2="384" />
-                  <line class="helix-rung" style="transition-delay: 0.91s" x1="306.4" y1="402" x2="373.6" y2="402" />
-                  <line class="helix-rung" style="transition-delay: 0.96s" x1="327.5" y1="420" x2="352.5" y2="420" />
-                  <line class="helix-rung" style="transition-delay: 1.00s" x1="350.0" y1="438" x2="330.0" y2="438" />
-                  <line class="helix-rung" style="transition-delay: 1.04s" x1="371.4" y1="456" x2="308.6" y2="456" />
-                  <line class="helix-rung" style="transition-delay: 1.08s" x1="389.4" y1="474" x2="290.6" y2="474" />
-                  <line class="helix-rung" style="transition-delay: 1.13s" x1="401.9" y1="492" x2="278.1" y2="492" />
-                  <line class="helix-rung" style="transition-delay: 1.17s" x1="407.7" y1="510" x2="272.3" y2="510" />
-                  <line class="helix-rung" style="transition-delay: 1.21s" x1="406.0" y1="528" x2="274.0" y2="528" />
-                  <line class="helix-rung" style="transition-delay: 1.25s" x1="397.1" y1="546" x2="282.9" y2="546" />
-                  <line class="helix-rung" style="transition-delay: 1.30s" x1="382.0" y1="564" x2="298.0" y2="564" />
-                  <line class="helix-rung" style="transition-delay: 1.34s" x1="362.2" y1="582" x2="317.8" y2="582" />
-                  <line class="helix-rung" style="transition-delay: 1.43s" x1="317.8" y1="618" x2="362.2" y2="618" />
-                  <line class="helix-rung" style="transition-delay: 1.47s" x1="298.0" y1="636" x2="382.0" y2="636" />
-                  <line class="helix-rung" style="transition-delay: 1.51s" x1="282.9" y1="654" x2="397.1" y2="654" />
-                  <line class="helix-rung" style="transition-delay: 1.55s" x1="274.0" y1="672" x2="406.0" y2="672" />
-                  <line class="helix-rung" style="transition-delay: 1.60s" x1="272.3" y1="690" x2="407.7" y2="690" />
-                  <line class="helix-rung" style="transition-delay: 1.64s" x1="278.1" y1="708" x2="401.9" y2="708" />
-                  <line class="helix-rung" style="transition-delay: 1.68s" x1="290.6" y1="726" x2="389.4" y2="726" />
-                  <line class="helix-rung" style="transition-delay: 1.72s" x1="308.6" y1="744" x2="371.4" y2="744" />
-                  <line class="helix-rung" style="transition-delay: 1.77s" x1="330.0" y1="762" x2="350.0" y2="762" />
-                  <line class="helix-rung" style="transition-delay: 1.81s" x1="352.5" y1="780" x2="327.5" y2="780" />
-                </g>
+                <path class="helix-strand helix-strand-a" d="M -60 325.8 L -56 318.6 L -52 310.8 L -48 302.7 L -44 294.2 L -40 285.5 L -36 276.7 L -32 268.0 L -28 259.4 L -24 251.2 L -20 243.3 L -16 235.9 L -12 229.1 L -8 223.1 L -4 217.8 L 0 213.3 L 4 209.8 L 8 207.2 L 12 205.6 L 16 205.0 L 20 205.4 L 24 206.9 L 28 209.4 L 32 212.8 L 36 217.1 L 40 222.4 L 44 228.3 L 48 235.0 L 52 242.3 L 56 250.2 L 60 258.4 L 64 266.9 L 68 275.6 L 72 284.4 L 76 293.1 L 80 301.6 L 84 309.8 L 88 317.7 L 92 325.0 L 96 331.7 L 100 337.6 L 104 342.9 L 108 347.2 L 112 350.6 L 116 353.1 L 120 354.6 L 124 355.0 L 128 354.4 L 132 352.8 L 136 350.2 L 140 346.7 L 144 342.2 L 148 336.9 L 152 330.9 L 156 324.1 L 160 316.7 L 164 308.8 L 168 300.6 L 172 292.0 L 176 283.3 L 180 274.5 L 184 265.8 L 188 257.3 L 192 249.2 L 196 241.4 L 200 234.2 L 204 227.6 L 208 221.7 L 212 216.6 L 216 212.3 L 220 209.0 L 224 206.7 L 228 205.3 L 232 205.0 L 236 205.7 L 240 207.4 L 244 210.1 L 248 213.8 L 252 218.4 L 256 223.8 L 260 230.0 L 264 236.8 L 268 244.3 L 272 252.2 L 276 260.5 L 280 269.1 L 284 277.8 L 288 286.6 L 292 295.2 L 296 303.7 L 300 311.8 L 304 319.5 L 308 326.7 L 312 333.2 L 316 339.0 L 320 344.0 L 324 348.1 L 328 351.3 L 332 353.5 L 336 354.8 L 340 354.9 L 344 354.1 L 348 352.3 L 352 349.4 L 356 345.7 L 360 341.0 L 364 335.5 L 368 329.2 L 372 322.3 L 376 314.8 L 380 306.8 L 384 298.4 L 388 289.8 L 392 281.1 L 396 272.3 L 400 263.7 L 404 255.3 L 408 247.2 L 412 239.5 L 416 232.4 L 420 226.0 L 424 220.3 L 428 215.4 L 432 211.4 L 436 208.3 L 440 206.2 L 444 205.2 L 448 205.1 L 452 206.1 L 456 208.0 L 460 211.0 L 464 214.9 L 468 219.6 L 472 225.3 L 476 231.6 L 480 238.6 L 484 246.2 L 488 254.2 L 492 262.6 L 496 271.3 L 500 280.0 L 504 288.7 L 508 297.4 L 512 305.8 L 516 313.8 L 520 321.4 L 524 328.4 L 528 334.7 L 532 340.4 L 536 345.1 L 540 349.0 L 544 352.0 L 548 353.9 L 552 354.9 L 556 354.8 L 560 353.8 L 564 351.7 L 568 348.6 L 572 344.6 L 576 339.7 L 580 334.0 L 584 327.6 L 588 320.5 L 592 312.8 L 596 304.7 L 600 296.3 L 604 287.7 L 608 278.9 L 612 270.2 L 616 261.6 L 620 253.2 L 624 245.2 L 628 237.7 L 632 230.8 L 636 224.5 L 640 219.0 L 644 214.3 L 648 210.6 L 652 207.7 L 656 205.9 L 660 205.1 L 664 205.2 L 668 206.5 L 672 208.7 L 676 211.9 L 680 216.0 L 684 221.0 L 688 226.8 L 692 233.3 L 696 240.5 L 700 248.2 L 704 256.3 L 708 264.8 L 712 273.4 L 716 282.2 L 720 290.9 L 724 299.5 L 728 307.8 L 732 315.7 L 736 323.2 L 740 330.0 L 744 336.2 L 748 341.6 L 752 346.2 L 756 349.9 L 760 352.6 L 764 354.3 L 768 355.0 L 772 354.7 L 776 353.3 L 780 351.0 L 784 347.7 L 788 343.4 L 792 338.3 L 796 332.4 L 800 325.8 L 804 318.6 L 808 310.8 L 812 302.7 L 816 294.2 L 820 285.5 L 824 276.7 L 828 268.0 L 832 259.4 L 836 251.2 L 840 243.3 L 844 235.9 L 848 229.1 L 852 223.1 L 856 217.8 L 860 213.3 L 864 209.8 L 868 207.2 L 872 205.6 L 876 205.0 L 880 205.4 L 884 206.9 L 888 209.4 L 892 212.8 L 896 217.1 L 900 222.4 L 904 228.3 L 908 235.0 L 912 242.3 L 916 250.2 L 920 258.4 L 924 266.9 L 928 275.6 L 932 284.4 L 936 293.1 L 940 301.6 L 944 309.8 L 948 317.7 L 952 325.0 L 956 331.7 L 960 337.6 L 964 342.9 L 968 347.2 L 972 350.6 L 976 353.1 L 980 354.6 L 984 355.0 L 988 354.4 L 992 352.8 L 996 350.2 L 1000 346.7 L 1004 342.2 L 1008 336.9 L 1012 330.9 L 1016 324.1 L 1020 316.7 L 1024 308.8 L 1028 300.6 L 1032 292.0 L 1036 283.3 L 1040 274.5 L 1044 265.8 L 1048 257.3 L 1052 249.2 L 1056 241.4 L 1060 234.2" />
+                <path class="helix-strand helix-strand-b" d="M -60 234.2 L -56 241.4 L -52 249.2 L -48 257.3 L -44 265.8 L -40 274.5 L -36 283.3 L -32 292.0 L -28 300.6 L -24 308.8 L -20 316.7 L -16 324.1 L -12 330.9 L -8 336.9 L -4 342.2 L 0 346.7 L 4 350.2 L 8 352.8 L 12 354.4 L 16 355.0 L 20 354.6 L 24 353.1 L 28 350.6 L 32 347.2 L 36 342.9 L 40 337.6 L 44 331.7 L 48 325.0 L 52 317.7 L 56 309.8 L 60 301.6 L 64 293.1 L 68 284.4 L 72 275.6 L 76 266.9 L 80 258.4 L 84 250.2 L 88 242.3 L 92 235.0 L 96 228.3 L 100 222.4 L 104 217.1 L 108 212.8 L 112 209.4 L 116 206.9 L 120 205.4 L 124 205.0 L 128 205.6 L 132 207.2 L 136 209.8 L 140 213.3 L 144 217.8 L 148 223.1 L 152 229.1 L 156 235.9 L 160 243.3 L 164 251.2 L 168 259.4 L 172 268.0 L 176 276.7 L 180 285.5 L 184 294.2 L 188 302.7 L 192 310.8 L 196 318.6 L 200 325.8 L 204 332.4 L 208 338.3 L 212 343.4 L 216 347.7 L 220 351.0 L 224 353.3 L 228 354.7 L 232 355.0 L 236 354.3 L 240 352.6 L 244 349.9 L 248 346.2 L 252 341.6 L 256 336.2 L 260 330.0 L 264 323.2 L 268 315.7 L 272 307.8 L 276 299.5 L 280 290.9 L 284 282.2 L 288 273.4 L 292 264.8 L 296 256.3 L 300 248.2 L 304 240.5 L 308 233.3 L 312 226.8 L 316 221.0 L 320 216.0 L 324 211.9 L 328 208.7 L 332 206.5 L 336 205.2 L 340 205.1 L 344 205.9 L 348 207.7 L 352 210.6 L 356 214.3 L 360 219.0 L 364 224.5 L 368 230.8 L 372 237.7 L 376 245.2 L 380 253.2 L 384 261.6 L 388 270.2 L 392 278.9 L 396 287.7 L 400 296.3 L 404 304.7 L 408 312.8 L 412 320.5 L 416 327.6 L 420 334.0 L 424 339.7 L 428 344.6 L 432 348.6 L 436 351.7 L 440 353.8 L 444 354.8 L 448 354.9 L 452 353.9 L 456 352.0 L 460 349.0 L 464 345.1 L 468 340.4 L 472 334.7 L 476 328.4 L 480 321.4 L 484 313.8 L 488 305.8 L 492 297.4 L 496 288.7 L 500 280.0 L 504 271.3 L 508 262.6 L 512 254.2 L 516 246.2 L 520 238.6 L 524 231.6 L 528 225.3 L 532 219.6 L 536 214.9 L 540 211.0 L 544 208.0 L 548 206.1 L 552 205.1 L 556 205.2 L 560 206.2 L 564 208.3 L 568 211.4 L 572 215.4 L 576 220.3 L 580 226.0 L 584 232.4 L 588 239.5 L 592 247.2 L 596 255.3 L 600 263.7 L 604 272.3 L 608 281.1 L 612 289.8 L 616 298.4 L 620 306.8 L 624 314.8 L 628 322.3 L 632 329.2 L 636 335.5 L 640 341.0 L 644 345.7 L 648 349.4 L 652 352.3 L 656 354.1 L 660 354.9 L 664 354.8 L 668 353.5 L 672 351.3 L 676 348.1 L 680 344.0 L 684 339.0 L 688 333.2 L 692 326.7 L 696 319.5 L 700 311.8 L 704 303.7 L 708 295.2 L 712 286.6 L 716 277.8 L 720 269.1 L 724 260.5 L 728 252.2 L 732 244.3 L 736 236.8 L 740 230.0 L 744 223.8 L 748 218.4 L 752 213.8 L 756 210.1 L 760 207.4 L 764 205.7 L 768 205.0 L 772 205.3 L 776 206.7 L 780 209.0 L 784 212.3 L 788 216.6 L 792 221.7 L 796 227.6 L 800 234.2 L 804 241.4 L 808 249.2 L 812 257.3 L 816 265.8 L 820 274.5 L 824 283.3 L 828 292.0 L 832 300.6 L 836 308.8 L 840 316.7 L 844 324.1 L 848 330.9 L 852 336.9 L 856 342.2 L 860 346.7 L 864 350.2 L 868 352.8 L 872 354.4 L 876 355.0 L 880 354.6 L 884 353.1 L 888 350.6 L 892 347.2 L 896 342.9 L 900 337.6 L 904 331.7 L 908 325.0 L 912 317.7 L 916 309.8 L 920 301.6 L 924 293.1 L 928 284.4 L 932 275.6 L 936 266.9 L 940 258.4 L 944 250.2 L 948 242.3 L 952 235.0 L 956 228.3 L 960 222.4 L 964 217.1 L 968 212.8 L 972 209.4 L 976 206.9 L 980 205.4 L 984 205.0 L 988 205.6 L 992 207.2 L 996 209.8 L 1000 213.3 L 1004 217.8 L 1008 223.1 L 1012 229.1 L 1016 235.9 L 1020 243.3 L 1024 251.2 L 1028 259.4 L 1032 268.0 L 1036 276.7 L 1040 285.5 L 1044 294.2 L 1048 302.7 L 1052 310.8 L 1056 318.6 L 1060 325.8" />
+                <g class="helix-basepairs">
+                  <g class="helix-basepair" style="transition-delay: 0.56s"><line class="helix-bp-seg helix-bp-seg-lo" x1="-50" y1="306.8" x2="-50" y2="280.0" stroke="var(--hue4)" style="--len:26.8" /><line class="helix-bp-seg helix-bp-seg-hi" x1="-50" y1="280.0" x2="-50" y2="253.2" stroke="var(--accent)" style="--len:26.8" /><line class="helix-bond helix-bond-hi" x1="-53.5" y1="276.0" x2="-46.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="-53.5" y1="280.0" x2="-46.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="-53.5" y1="284.0" x2="-46.5" y2="284.0" /></g>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <g class="helix-basepair" style="transition-delay: 3.68s"><line class="helix-bp-seg helix-bp-seg-hi" x1="1050" y1="253.2" x2="1050" y2="280.0" stroke="var(--hue1)" style="--len:26.8" /><line class="helix-bp-seg helix-bp-seg-lo" x1="1050" y1="280.0" x2="1050" y2="306.8" stroke="var(--accent-2)" style="--len:26.8" /><line class="helix-bond helix-bond-hi" x1="1046.5" y1="277.0" x2="1053.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="1046.5" y1="283.0" x2="1053.5" y2="283.0" /></g>                </g>
               </g>
 
-              <g class="helix-node" style="transition-delay: 0.21s" tabindex="0" data-hue="hue1">
-                <title data-i18n="helix1Full">Baccalauréat — Séville, 2017</title>
-                <line class="helix-leader" x1="340" y1="90" x2="435" y2="90" />
-                <circle class="helix-dot" cx="340" cy="90" r="7" style="--hue: var(--hue1)" />
-                <text class="helix-title" x="448" y="84" text-anchor="start" data-i18n="helix1Title">Baccalauréat</text>
-                <text class="helix-sub" x="448" y="104" text-anchor="start"><tspan class="helix-year">2017</tspan> · <tspan data-i18n="helix1Place">Séville</tspan></text>
+              <g class="helix-node" style="transition-delay: 0.52s; --hue: var(--hue1)" tabindex="0" data-hue="hue1" data-node="70" data-i18n-label="helix1Full" aria-label="Baccalauréat — Séville, 2017">
+                <rect class="helix-hit-area" x="-27.5" y="-60" width="195" height="680" fill="transparent" />
+                                
+                <g class="helix-basepair" style="transition-delay: 0.88s" data-node="70"><line class="helix-bp-seg helix-bp-seg-hi" x1="-10" y1="226.0" x2="-10" y2="280.0" stroke="var(--hue4)" style="--len:54.0" /><line class="helix-bp-seg helix-bp-seg-lo" x1="-10" y1="280.0" x2="-10" y2="334.0" stroke="var(--accent)" style="--len:54.0" /><line class="helix-bond helix-bond-hi" x1="-13.5" y1="276.0" x2="-6.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="-13.5" y1="280.0" x2="-6.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="-13.5" y1="284.0" x2="-6.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 0.99s" data-node="70"><line class="helix-bp-seg helix-bp-seg-hi" x1="10" y1="206.2" x2="10" y2="280.0" stroke="var(--hue1)" style="--len:73.8" /><line class="helix-bp-seg helix-bp-seg-lo" x1="10" y1="280.0" x2="10" y2="353.8" stroke="var(--accent-2)" style="--len:73.8" /><line class="helix-bond helix-bond-hi" x1="6.5" y1="277.0" x2="13.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="6.5" y1="283.0" x2="13.5" y2="283.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.07s" data-node="70"><line class="helix-bp-seg helix-bp-seg-hi" x1="30" y1="211.0" x2="30" y2="280.0" stroke="var(--hue4)" style="--len:69.0" /><line class="helix-bp-seg helix-bp-seg-lo" x1="30" y1="280.0" x2="30" y2="349.0" stroke="var(--accent)" style="--len:69.0" /><line class="helix-bond helix-bond-hi" x1="26.5" y1="276.0" x2="33.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="26.5" y1="280.0" x2="33.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="26.5" y1="284.0" x2="33.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.13s" data-node="70"><line class="helix-bp-seg helix-bp-seg-hi" x1="50" y1="238.6" x2="50" y2="280.0" stroke="var(--hue1)" style="--len:41.4" /><line class="helix-bp-seg helix-bp-seg-lo" x1="50" y1="280.0" x2="50" y2="321.4" stroke="var(--accent-2)" style="--len:41.4" /><line class="helix-bond helix-bond-hi" x1="46.5" y1="277.0" x2="53.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="46.5" y1="283.0" x2="53.5" y2="283.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.26s" data-node="70"><line class="helix-bp-seg helix-bp-seg-lo" x1="90" y1="321.4" x2="90" y2="280.0" stroke="var(--hue4)" style="--len:41.4" /><line class="helix-bp-seg helix-bp-seg-hi" x1="90" y1="280.0" x2="90" y2="238.6" stroke="var(--accent)" style="--len:41.4" /><line class="helix-bond helix-bond-hi" x1="86.5" y1="276.0" x2="93.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="86.5" y1="280.0" x2="93.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="86.5" y1="284.0" x2="93.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.31s" data-node="70"><line class="helix-bp-seg helix-bp-seg-lo" x1="110" y1="349.0" x2="110" y2="280.0" stroke="var(--hue1)" style="--len:69.0" /><line class="helix-bp-seg helix-bp-seg-hi" x1="110" y1="280.0" x2="110" y2="211.0" stroke="var(--accent-2)" style="--len:69.0" /><line class="helix-bond helix-bond-hi" x1="106.5" y1="277.0" x2="113.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="106.5" y1="283.0" x2="113.5" y2="283.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.36s" data-node="70"><line class="helix-bp-seg helix-bp-seg-lo" x1="130" y1="353.8" x2="130" y2="280.0" stroke="var(--hue4)" style="--len:73.8" /><line class="helix-bp-seg helix-bp-seg-hi" x1="130" y1="280.0" x2="130" y2="206.2" stroke="var(--accent)" style="--len:73.8" /><line class="helix-bond helix-bond-hi" x1="126.5" y1="276.0" x2="133.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="126.5" y1="280.0" x2="133.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="126.5" y1="284.0" x2="133.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.41s" data-node="70"><line class="helix-bp-seg helix-bp-seg-lo" x1="150" y1="334.0" x2="150" y2="280.0" stroke="var(--hue1)" style="--len:54.0" /><line class="helix-bp-seg helix-bp-seg-hi" x1="150" y1="280.0" x2="150" y2="226.0" stroke="var(--accent-2)" style="--len:54.0" /><line class="helix-bond helix-bond-hi" x1="146.5" y1="277.0" x2="153.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="146.5" y1="283.0" x2="153.5" y2="283.0" /></g>
+                
+                <use class="helix-fork-structural-instance" href="#helix-fork-structural" x="70" y="280" />
+                <path class="helix-fork-morph helix-fork-morph-a" transform="translate(70,280)" d="M -107.5 -0.0 L -96.8 -23.2 L -86.0 -44.1 L -75.2 -60.7 L -64.5 -71.3 L -53.8 -75.0 L -43.0 -71.3 L -32.2 -60.7 L -21.5 -44.1 L -10.8 -23.2 L 0.0 0.0 L 10.8 23.2 L 21.5 44.1 L 32.2 60.7 L 43.0 71.3 L 53.8 75.0 L 64.5 71.3 L 75.2 60.7 L 86.0 44.1 L 96.8 23.2 L 107.5 0.0" />
+                <path class="helix-fork-morph helix-fork-morph-b" transform="translate(70,280)" d="M -107.5 0.0 L -96.8 23.2 L -86.0 44.1 L -75.2 60.7 L -64.5 71.3 L -53.8 75.0 L -43.0 71.3 L -32.2 60.7 L -21.5 44.1 L -10.8 23.2 L 0.0 -0.0 L 10.8 -23.2 L 21.5 -44.1 L 32.2 -60.7 L 43.0 -71.3 L 53.8 -75.0 L 64.5 -71.3 L 75.2 -60.7 L 86.0 -44.1 L 96.8 -23.2 L 107.5 -0.0" />
+                <line class="helix-leader helix-leader-top" x1="70" y1="280" x2="70" y2="135" />
+                <circle class="helix-fork-pol1" id="pol1-70" cx="70" cy="280" r="0" style="--hue: var(--hue1); offset-path: path('M -37.5 280.0 L -15.5 205.0 L 155.5 205.0 L 177.5 280.0')" />
+                <circle class="helix-fork-pol2" cx="70" cy="280" r="0" style="--hue: var(--hue1); offset-path: path('M -37.5 280.0 L -15.5 355.0 L 155.5 355.0 L 177.5 280.0')" />
+                <circle class="helix-dot" id="pol-70" cx="70" cy="280" r="8" style="--hue: var(--hue1)" />
+                <foreignObject x="-80" y="-60" width="300" height="195">
+                  <div xmlns="http://www.w3.org/1999/xhtml" class="helix-label helix-label-top">
+                    <p class="helix-label-title" data-i18n="helix1Title">Baccalauréat</p>
+                    <p class="helix-label-sub"><span class="helix-year">2017</span> · <span data-i18n="helix1Place">Séville</span></p>
+                  </div>
+                </foreignObject>
               </g>
-              <g class="helix-node" style="transition-delay: 0.62s" tabindex="0" data-hue="hue2">
-                <title data-i18n="helix2Full">Licence en Biologie — Grenoble &amp; Boston, 2020</title>
-                <line class="helix-leader" x1="340" y1="260" x2="245" y2="260" />
-                <circle class="helix-dot" cx="340" cy="260" r="7" style="--hue: var(--hue2)" />
-                <text class="helix-title" x="232" y="254" text-anchor="end" data-i18n="helix2Title">Licence Biologie</text>
-                <text class="helix-sub" x="232" y="274" text-anchor="end"><tspan class="helix-year">2020</tspan> · <tspan data-i18n="helix2Place">Grenoble · Boston</tspan></text>
+              <g class="helix-node" style="transition-delay: 1.21s; --hue: var(--hue2)" tabindex="0" data-hue="hue2" data-node="285" data-i18n-label="helix2Full" aria-label="Licence en Biologie — Grenoble &amp; Boston, 2020">
+                <rect class="helix-hit-area" x="187.5" y="-60" width="195" height="680" fill="transparent" />
+                                <g class="helix-basepair" style="transition-delay: 1.48s" data-node="285"><line class="helix-bp-seg helix-bp-seg-hi" x1="190" y1="253.2" x2="190" y2="280.0" stroke="var(--hue1)" style="--len:26.8" /><line class="helix-bp-seg helix-bp-seg-lo" x1="190" y1="280.0" x2="190" y2="306.8" stroke="var(--accent-2)" style="--len:26.8" /><line class="helix-bond helix-bond-hi" x1="186.5" y1="277.0" x2="193.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="186.5" y1="283.0" x2="193.5" y2="283.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.52s" data-node="285"><line class="helix-bp-seg helix-bp-seg-hi" x1="210" y1="219.0" x2="210" y2="280.0" stroke="var(--hue4)" style="--len:61.0" /><line class="helix-bp-seg helix-bp-seg-lo" x1="210" y1="280.0" x2="210" y2="341.0" stroke="var(--accent)" style="--len:61.0" /><line class="helix-bond helix-bond-hi" x1="206.5" y1="276.0" x2="213.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="206.5" y1="280.0" x2="213.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="206.5" y1="284.0" x2="213.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.55s" data-node="285"><line class="helix-bp-seg helix-bp-seg-hi" x1="230" y1="205.1" x2="230" y2="280.0" stroke="var(--hue1)" style="--len:74.9" /><line class="helix-bp-seg helix-bp-seg-lo" x1="230" y1="280.0" x2="230" y2="354.9" stroke="var(--accent-2)" style="--len:74.9" /><line class="helix-bond helix-bond-hi" x1="226.5" y1="277.0" x2="233.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="226.5" y1="283.0" x2="233.5" y2="283.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.58s" data-node="285"><line class="helix-bp-seg helix-bp-seg-hi" x1="250" y1="216.0" x2="250" y2="280.0" stroke="var(--hue4)" style="--len:64.0" /><line class="helix-bp-seg helix-bp-seg-lo" x1="250" y1="280.0" x2="250" y2="344.0" stroke="var(--accent)" style="--len:64.0" /><line class="helix-bond helix-bond-hi" x1="246.5" y1="276.0" x2="253.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="246.5" y1="280.0" x2="253.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="246.5" y1="284.0" x2="253.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.61s" data-node="285"><line class="helix-bp-seg helix-bp-seg-hi" x1="270" y1="248.2" x2="270" y2="280.0" stroke="var(--hue1)" style="--len:31.8" /><line class="helix-bp-seg helix-bp-seg-lo" x1="270" y1="280.0" x2="270" y2="311.8" stroke="var(--accent-2)" style="--len:31.8" /><line class="helix-bond helix-bond-hi" x1="266.5" y1="277.0" x2="273.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="266.5" y1="283.0" x2="273.5" y2="283.0" /></g>
+                
+                <g class="helix-basepair" style="transition-delay: 1.66s" data-node="285"><line class="helix-bp-seg helix-bp-seg-lo" x1="310" y1="330.0" x2="310" y2="280.0" stroke="var(--hue1)" style="--len:50.0" /><line class="helix-bp-seg helix-bp-seg-hi" x1="310" y1="280.0" x2="310" y2="230.0" stroke="var(--accent-2)" style="--len:50.0" /><line class="helix-bond helix-bond-hi" x1="306.5" y1="277.0" x2="313.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="306.5" y1="283.0" x2="313.5" y2="283.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.69s" data-node="285"><line class="helix-bp-seg helix-bp-seg-lo" x1="330" y1="352.6" x2="330" y2="280.0" stroke="var(--hue4)" style="--len:72.6" /><line class="helix-bp-seg helix-bp-seg-hi" x1="330" y1="280.0" x2="330" y2="207.4" stroke="var(--accent)" style="--len:72.6" /><line class="helix-bond helix-bond-hi" x1="326.5" y1="276.0" x2="333.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="326.5" y1="280.0" x2="333.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="326.5" y1="284.0" x2="333.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.72s" data-node="285"><line class="helix-bp-seg helix-bp-seg-lo" x1="350" y1="351.0" x2="350" y2="280.0" stroke="var(--hue1)" style="--len:71.0" /><line class="helix-bp-seg helix-bp-seg-hi" x1="350" y1="280.0" x2="350" y2="209.0" stroke="var(--accent-2)" style="--len:71.0" /><line class="helix-bond helix-bond-hi" x1="346.5" y1="277.0" x2="353.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="346.5" y1="283.0" x2="353.5" y2="283.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.74s" data-node="285"><line class="helix-bp-seg helix-bp-seg-lo" x1="370" y1="325.8" x2="370" y2="280.0" stroke="var(--hue4)" style="--len:45.8" /><line class="helix-bp-seg helix-bp-seg-hi" x1="370" y1="280.0" x2="370" y2="234.2" stroke="var(--accent)" style="--len:45.8" /><line class="helix-bond helix-bond-hi" x1="366.5" y1="276.0" x2="373.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="366.5" y1="280.0" x2="373.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="366.5" y1="284.0" x2="373.5" y2="284.0" /></g>
+                
+                <use class="helix-fork-structural-instance" href="#helix-fork-structural" x="285" y="280" />
+                <path class="helix-fork-morph helix-fork-morph-a" transform="translate(285,280)" d="M -107.5 -0.0 L -96.8 -23.2 L -86.0 -44.1 L -75.2 -60.7 L -64.5 -71.3 L -53.8 -75.0 L -43.0 -71.3 L -32.2 -60.7 L -21.5 -44.1 L -10.8 -23.2 L 0.0 0.0 L 10.8 23.2 L 21.5 44.1 L 32.2 60.7 L 43.0 71.3 L 53.8 75.0 L 64.5 71.3 L 75.2 60.7 L 86.0 44.1 L 96.8 23.2 L 107.5 0.0" />
+                <path class="helix-fork-morph helix-fork-morph-b" transform="translate(285,280)" d="M -107.5 0.0 L -96.8 23.2 L -86.0 44.1 L -75.2 60.7 L -64.5 71.3 L -53.8 75.0 L -43.0 71.3 L -32.2 60.7 L -21.5 44.1 L -10.8 23.2 L 0.0 -0.0 L 10.8 -23.2 L 21.5 -44.1 L 32.2 -60.7 L 43.0 -71.3 L 53.8 -75.0 L 64.5 -71.3 L 75.2 -60.7 L 86.0 -44.1 L 96.8 -23.2 L 107.5 -0.0" />
+                <line class="helix-leader helix-leader-bottom" x1="285" y1="280" x2="285" y2="425" />
+                <circle class="helix-fork-pol1" id="pol1-285" cx="285" cy="280" r="0" style="--hue: var(--hue2); offset-path: path('M 177.5 280.0 L 199.5 205.0 L 370.5 205.0 L 392.5 280.0')" />
+                <circle class="helix-fork-pol2" cx="285" cy="280" r="0" style="--hue: var(--hue2); offset-path: path('M 177.5 280.0 L 199.5 355.0 L 370.5 355.0 L 392.5 280.0')" />
+                <circle class="helix-dot" id="pol-285" cx="285" cy="280" r="8" style="--hue: var(--hue2)" />
+                <foreignObject x="135" y="425" width="300" height="195">
+                  <div xmlns="http://www.w3.org/1999/xhtml" class="helix-label helix-label-bottom">
+                    <p class="helix-label-title" data-i18n="helix2Title">Licence Biologie</p>
+                    <p class="helix-label-sub"><span class="helix-year">2020</span> · <span data-i18n="helix2Place">Grenoble · Boston</span></p>
+                    <p class="helix-label-desc" data-i18n="helix2Desc"></p>
+                  </div>
+                </foreignObject>
               </g>
-              <g class="helix-node" style="transition-delay: 1.02s" tabindex="0" data-hue="hue4">
-                <title data-i18n="helix3Full">Master en Biologie Moléculaire et Cellulaire — stages M1 (Séville, 2021) &amp; M2 (Lyon, 2022)</title>
-                <line class="helix-leader" x1="340" y1="430" x2="435" y2="430" />
-                <circle class="helix-dot" cx="340" cy="430" r="7" style="--hue: var(--hue4)" />
-                <text class="helix-title" x="448" y="424" text-anchor="start" data-i18n="helix3Title">Master Biologie</text>
-                <text class="helix-sub" x="448" y="444" text-anchor="start"><tspan class="helix-year">2022</tspan> · <tspan data-i18n="helix3Place">Lyon</tspan></text>
+              <g class="helix-node" style="transition-delay: 1.9s; --hue: var(--hue4)" tabindex="0" data-hue="hue4" data-node="500" data-i18n-label="helix3Full" aria-label="Master en Biologie Moléculaire et Cellulaire — stages M1 (Séville, 2021) &amp; M2 (Lyon, 2022)">
+                <rect class="helix-hit-area" x="402.5" y="-60" width="195" height="680" fill="transparent" />
+                                <g class="helix-basepair" style="transition-delay: 1.79s" data-node="500"><line class="helix-bp-seg helix-bp-seg-hi" x1="410" y1="243.3" x2="410" y2="280.0" stroke="var(--hue4)" style="--len:36.7" /><line class="helix-bp-seg helix-bp-seg-lo" x1="410" y1="280.0" x2="410" y2="316.7" stroke="var(--accent)" style="--len:36.7" /><line class="helix-bond helix-bond-hi" x1="406.5" y1="276.0" x2="413.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="406.5" y1="280.0" x2="413.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="406.5" y1="284.0" x2="413.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.81s" data-node="500"><line class="helix-bp-seg helix-bp-seg-hi" x1="430" y1="213.3" x2="430" y2="280.0" stroke="var(--hue1)" style="--len:66.7" /><line class="helix-bp-seg helix-bp-seg-lo" x1="430" y1="280.0" x2="430" y2="346.7" stroke="var(--accent-2)" style="--len:66.7" /><line class="helix-bond helix-bond-hi" x1="426.5" y1="277.0" x2="433.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="426.5" y1="283.0" x2="433.5" y2="283.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.83s" data-node="500"><line class="helix-bp-seg helix-bp-seg-hi" x1="450" y1="205.4" x2="450" y2="280.0" stroke="var(--hue4)" style="--len:74.6" /><line class="helix-bp-seg helix-bp-seg-lo" x1="450" y1="280.0" x2="450" y2="354.6" stroke="var(--accent)" style="--len:74.6" /><line class="helix-bond helix-bond-hi" x1="446.5" y1="276.0" x2="453.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="446.5" y1="280.0" x2="453.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="446.5" y1="284.0" x2="453.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.86s" data-node="500"><line class="helix-bp-seg helix-bp-seg-hi" x1="470" y1="222.4" x2="470" y2="280.0" stroke="var(--hue1)" style="--len:57.6" /><line class="helix-bp-seg helix-bp-seg-lo" x1="470" y1="280.0" x2="470" y2="337.6" stroke="var(--accent-2)" style="--len:57.6" /><line class="helix-bond helix-bond-hi" x1="466.5" y1="277.0" x2="473.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="466.5" y1="283.0" x2="473.5" y2="283.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.88s" data-node="500"><line class="helix-bp-seg helix-bp-seg-hi" x1="490" y1="258.4" x2="490" y2="280.0" stroke="var(--hue4)" style="--len:21.6" /><line class="helix-bp-seg helix-bp-seg-lo" x1="490" y1="280.0" x2="490" y2="301.6" stroke="var(--accent)" style="--len:21.6" /><line class="helix-bond helix-bond-hi" x1="486.5" y1="276.0" x2="493.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="486.5" y1="280.0" x2="493.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="486.5" y1="284.0" x2="493.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.90s" data-node="500"><line class="helix-bp-seg helix-bp-seg-lo" x1="510" y1="301.6" x2="510" y2="280.0" stroke="var(--hue1)" style="--len:21.6" /><line class="helix-bp-seg helix-bp-seg-hi" x1="510" y1="280.0" x2="510" y2="258.4" stroke="var(--accent-2)" style="--len:21.6" /><line class="helix-bond helix-bond-hi" x1="506.5" y1="277.0" x2="513.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="506.5" y1="283.0" x2="513.5" y2="283.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.93s" data-node="500"><line class="helix-bp-seg helix-bp-seg-lo" x1="530" y1="337.6" x2="530" y2="280.0" stroke="var(--hue4)" style="--len:57.6" /><line class="helix-bp-seg helix-bp-seg-hi" x1="530" y1="280.0" x2="530" y2="222.4" stroke="var(--accent)" style="--len:57.6" /><line class="helix-bond helix-bond-hi" x1="526.5" y1="276.0" x2="533.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="526.5" y1="280.0" x2="533.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="526.5" y1="284.0" x2="533.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.95s" data-node="500"><line class="helix-bp-seg helix-bp-seg-lo" x1="550" y1="354.6" x2="550" y2="280.0" stroke="var(--hue1)" style="--len:74.6" /><line class="helix-bp-seg helix-bp-seg-hi" x1="550" y1="280.0" x2="550" y2="205.4" stroke="var(--accent-2)" style="--len:74.6" /><line class="helix-bond helix-bond-hi" x1="546.5" y1="277.0" x2="553.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="546.5" y1="283.0" x2="553.5" y2="283.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.97s" data-node="500"><line class="helix-bp-seg helix-bp-seg-lo" x1="570" y1="346.7" x2="570" y2="280.0" stroke="var(--hue4)" style="--len:66.7" /><line class="helix-bp-seg helix-bp-seg-hi" x1="570" y1="280.0" x2="570" y2="213.3" stroke="var(--accent)" style="--len:66.7" /><line class="helix-bond helix-bond-hi" x1="566.5" y1="276.0" x2="573.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="566.5" y1="280.0" x2="573.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="566.5" y1="284.0" x2="573.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 1.99s" data-node="500"><line class="helix-bp-seg helix-bp-seg-lo" x1="590" y1="316.7" x2="590" y2="280.0" stroke="var(--hue1)" style="--len:36.7" /><line class="helix-bp-seg helix-bp-seg-hi" x1="590" y1="280.0" x2="590" y2="243.3" stroke="var(--accent-2)" style="--len:36.7" /><line class="helix-bond helix-bond-hi" x1="586.5" y1="277.0" x2="593.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="586.5" y1="283.0" x2="593.5" y2="283.0" /></g>
+                <use class="helix-fork-structural-instance" href="#helix-fork-structural" x="500" y="280" />
+                <path class="helix-fork-morph helix-fork-morph-a" transform="translate(500,280)" d="M -107.5 -0.0 L -96.8 -23.2 L -86.0 -44.1 L -75.2 -60.7 L -64.5 -71.3 L -53.8 -75.0 L -43.0 -71.3 L -32.2 -60.7 L -21.5 -44.1 L -10.8 -23.2 L 0.0 0.0 L 10.8 23.2 L 21.5 44.1 L 32.2 60.7 L 43.0 71.3 L 53.8 75.0 L 64.5 71.3 L 75.2 60.7 L 86.0 44.1 L 96.8 23.2 L 107.5 0.0" />
+                <path class="helix-fork-morph helix-fork-morph-b" transform="translate(500,280)" d="M -107.5 0.0 L -96.8 23.2 L -86.0 44.1 L -75.2 60.7 L -64.5 71.3 L -53.8 75.0 L -43.0 71.3 L -32.2 60.7 L -21.5 44.1 L -10.8 23.2 L 0.0 -0.0 L 10.8 -23.2 L 21.5 -44.1 L 32.2 -60.7 L 43.0 -71.3 L 53.8 -75.0 L 64.5 -71.3 L 75.2 -60.7 L 86.0 -44.1 L 96.8 -23.2 L 107.5 -0.0" />
+                <line class="helix-leader helix-leader-top" x1="500" y1="280" x2="500" y2="135" />
+                <circle class="helix-fork-pol1" id="pol1-500" cx="500" cy="280" r="0" style="--hue: var(--hue4); offset-path: path('M 392.5 280.0 L 414.5 205.0 L 585.5 205.0 L 607.5 280.0')" />
+                <circle class="helix-fork-pol2" cx="500" cy="280" r="0" style="--hue: var(--hue4); offset-path: path('M 392.5 280.0 L 414.5 355.0 L 585.5 355.0 L 607.5 280.0')" />
+                <circle class="helix-dot" id="pol-500" cx="500" cy="280" r="8" style="--hue: var(--hue4)" />
+                <foreignObject x="350" y="-60" width="300" height="195">
+                  <div xmlns="http://www.w3.org/1999/xhtml" class="helix-label helix-label-top">
+                    <p class="helix-label-title" data-i18n="helix3Title">Master Biologie Moléculaire et Cellulaire</p>
+                    <p class="helix-label-sub"><span class="helix-year">2022</span> · <span data-i18n="helix3Place">Lyon</span></p>
+                  </div>
+                </foreignObject>
               </g>
-              <g class="helix-node" style="transition-delay: 1.42s" tabindex="0" data-hue="hue2">
-                <title data-i18n="helix4Full">Ingénieure d'études — Institut Biologie Valrose, CNRS Nice, 2023–2025</title>
-                <line class="helix-leader" x1="340" y1="600" x2="245" y2="600" />
-                <circle class="helix-dot" cx="340" cy="600" r="7" style="--hue: var(--hue2)" />
-                <text class="helix-title" x="232" y="594" text-anchor="end" data-i18n="helix4Title">Institut Biologie Valrose</text>
-                <text class="helix-sub" x="232" y="614" text-anchor="end"><tspan class="helix-year">2023–2025</tspan> · <tspan data-i18n="helix4Place">CNRS Nice</tspan></text>
+              <g class="helix-node" style="transition-delay: 2.59s; --hue: var(--hue2)" tabindex="0" data-hue="hue2" data-node="715" data-i18n-label="helix4Full" aria-label="Ingénieure d'études — Institut Biologie Valrose, CNRS Nice, 2023–2025">
+                <rect class="helix-hit-area" x="617.5" y="-60" width="195" height="680" fill="transparent" />
+                                
+                <g class="helix-basepair" style="transition-delay: 2.04s" data-node="715"><line class="helix-bp-seg helix-bp-seg-hi" x1="630" y1="234.2" x2="630" y2="280.0" stroke="var(--hue1)" style="--len:45.8" /><line class="helix-bp-seg helix-bp-seg-lo" x1="630" y1="280.0" x2="630" y2="325.8" stroke="var(--accent-2)" style="--len:45.8" /><line class="helix-bond helix-bond-hi" x1="626.5" y1="277.0" x2="633.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="626.5" y1="283.0" x2="633.5" y2="283.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 2.07s" data-node="715"><line class="helix-bp-seg helix-bp-seg-hi" x1="650" y1="209.0" x2="650" y2="280.0" stroke="var(--hue4)" style="--len:71.0" /><line class="helix-bp-seg helix-bp-seg-lo" x1="650" y1="280.0" x2="650" y2="351.0" stroke="var(--accent)" style="--len:71.0" /><line class="helix-bond helix-bond-hi" x1="646.5" y1="276.0" x2="653.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="646.5" y1="280.0" x2="653.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="646.5" y1="284.0" x2="653.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 2.10s" data-node="715"><line class="helix-bp-seg helix-bp-seg-hi" x1="670" y1="207.4" x2="670" y2="280.0" stroke="var(--hue1)" style="--len:72.6" /><line class="helix-bp-seg helix-bp-seg-lo" x1="670" y1="280.0" x2="670" y2="352.6" stroke="var(--accent-2)" style="--len:72.6" /><line class="helix-bond helix-bond-hi" x1="666.5" y1="277.0" x2="673.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="666.5" y1="283.0" x2="673.5" y2="283.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 2.12s" data-node="715"><line class="helix-bp-seg helix-bp-seg-hi" x1="690" y1="230.0" x2="690" y2="280.0" stroke="var(--hue4)" style="--len:50.0" /><line class="helix-bp-seg helix-bp-seg-lo" x1="690" y1="280.0" x2="690" y2="330.0" stroke="var(--accent)" style="--len:50.0" /><line class="helix-bond helix-bond-hi" x1="686.5" y1="276.0" x2="693.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="686.5" y1="280.0" x2="693.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="686.5" y1="284.0" x2="693.5" y2="284.0" /></g>
+                
+                <g class="helix-basepair" style="transition-delay: 2.18s" data-node="715"><line class="helix-bp-seg helix-bp-seg-lo" x1="730" y1="311.8" x2="730" y2="280.0" stroke="var(--hue4)" style="--len:31.8" /><line class="helix-bp-seg helix-bp-seg-hi" x1="730" y1="280.0" x2="730" y2="248.2" stroke="var(--accent)" style="--len:31.8" /><line class="helix-bond helix-bond-hi" x1="726.5" y1="276.0" x2="733.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="726.5" y1="280.0" x2="733.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="726.5" y1="284.0" x2="733.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 2.21s" data-node="715"><line class="helix-bp-seg helix-bp-seg-lo" x1="750" y1="344.0" x2="750" y2="280.0" stroke="var(--hue1)" style="--len:64.0" /><line class="helix-bp-seg helix-bp-seg-hi" x1="750" y1="280.0" x2="750" y2="216.0" stroke="var(--accent-2)" style="--len:64.0" /><line class="helix-bond helix-bond-hi" x1="746.5" y1="277.0" x2="753.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="746.5" y1="283.0" x2="753.5" y2="283.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 2.24s" data-node="715"><line class="helix-bp-seg helix-bp-seg-lo" x1="770" y1="354.9" x2="770" y2="280.0" stroke="var(--hue4)" style="--len:74.9" /><line class="helix-bp-seg helix-bp-seg-hi" x1="770" y1="280.0" x2="770" y2="205.1" stroke="var(--accent)" style="--len:74.9" /><line class="helix-bond helix-bond-hi" x1="766.5" y1="276.0" x2="773.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="766.5" y1="280.0" x2="773.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="766.5" y1="284.0" x2="773.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 2.28s" data-node="715"><line class="helix-bp-seg helix-bp-seg-lo" x1="790" y1="341.0" x2="790" y2="280.0" stroke="var(--hue1)" style="--len:61.0" /><line class="helix-bp-seg helix-bp-seg-hi" x1="790" y1="280.0" x2="790" y2="219.0" stroke="var(--accent-2)" style="--len:61.0" /><line class="helix-bond helix-bond-hi" x1="786.5" y1="277.0" x2="793.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="786.5" y1="283.0" x2="793.5" y2="283.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 2.32s" data-node="715"><line class="helix-bp-seg helix-bp-seg-lo" x1="810" y1="306.8" x2="810" y2="280.0" stroke="var(--hue4)" style="--len:26.8" /><line class="helix-bp-seg helix-bp-seg-hi" x1="810" y1="280.0" x2="810" y2="253.2" stroke="var(--accent)" style="--len:26.8" /><line class="helix-bond helix-bond-hi" x1="806.5" y1="276.0" x2="813.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="806.5" y1="280.0" x2="813.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="806.5" y1="284.0" x2="813.5" y2="284.0" /></g>
+                <use class="helix-fork-structural-instance" href="#helix-fork-structural" x="715" y="280" />
+                <path class="helix-fork-morph helix-fork-morph-a" transform="translate(715,280)" d="M -107.5 -0.0 L -96.8 -23.2 L -86.0 -44.1 L -75.2 -60.7 L -64.5 -71.3 L -53.8 -75.0 L -43.0 -71.3 L -32.2 -60.7 L -21.5 -44.1 L -10.8 -23.2 L 0.0 0.0 L 10.8 23.2 L 21.5 44.1 L 32.2 60.7 L 43.0 71.3 L 53.8 75.0 L 64.5 71.3 L 75.2 60.7 L 86.0 44.1 L 96.8 23.2 L 107.5 0.0" />
+                <path class="helix-fork-morph helix-fork-morph-b" transform="translate(715,280)" d="M -107.5 0.0 L -96.8 23.2 L -86.0 44.1 L -75.2 60.7 L -64.5 71.3 L -53.8 75.0 L -43.0 71.3 L -32.2 60.7 L -21.5 44.1 L -10.8 23.2 L 0.0 -0.0 L 10.8 -23.2 L 21.5 -44.1 L 32.2 -60.7 L 43.0 -71.3 L 53.8 -75.0 L 64.5 -71.3 L 75.2 -60.7 L 86.0 -44.1 L 96.8 -23.2 L 107.5 -0.0" />
+                <line class="helix-leader helix-leader-bottom" x1="715" y1="280" x2="715" y2="425" />
+                <circle class="helix-fork-pol1" id="pol1-715" cx="715" cy="280" r="0" style="--hue: var(--hue2); offset-path: path('M 607.5 280.0 L 629.5 205.0 L 800.5 205.0 L 822.5 280.0')" />
+                <circle class="helix-fork-pol2" cx="715" cy="280" r="0" style="--hue: var(--hue2); offset-path: path('M 607.5 280.0 L 629.5 355.0 L 800.5 355.0 L 822.5 280.0')" />
+                <circle class="helix-dot" id="pol-715" cx="715" cy="280" r="8" style="--hue: var(--hue2)" />
+                <foreignObject x="565" y="425" width="300" height="195">
+                  <div xmlns="http://www.w3.org/1999/xhtml" class="helix-label helix-label-bottom">
+                    <p class="helix-label-title" data-i18n="helix4Title">Ingénieure d'études</p>
+                    <p class="helix-label-sub"><span class="helix-year">2023–2025</span> · <span data-i18n="helix4Place">CNRS Nice</span></p>
+                    <p class="helix-label-desc" data-i18n="helix4Desc"></p>
+                  </div>
+                </foreignObject>
               </g>
-              <g class="helix-node" style="transition-delay: 1.83s" tabindex="0" data-hue="hue4">
-                <title data-i18n="helix5Full">Ingénieure en biologie — ExAdEx Innov, Nice, 2026</title>
-                <line class="helix-leader" x1="340" y1="770" x2="435" y2="770" />
-                <circle class="helix-dot" cx="340" cy="770" r="7" style="--hue: var(--hue4)" />
-                <text class="helix-title" x="448" y="764" text-anchor="start" data-i18n="helix5Title">ExAdEx Innov</text>
-                <text class="helix-sub" x="448" y="784" text-anchor="start"><tspan class="helix-year">2026</tspan> · <tspan data-i18n="helix5Place">Nice</tspan></text>
+              <g class="helix-node" style="transition-delay: 3.28s; --hue: var(--hue4)" tabindex="0" data-hue="hue4" data-node="930" data-i18n-label="helix5Full" aria-label="Ingénieure en biologie — ExAdEx Innov, Nice, 2026">
+                <rect class="helix-hit-area" x="832.5" y="-60" width="195" height="680" fill="transparent" />
+                                
+                <g class="helix-basepair" style="transition-delay: 2.40s" data-node="930"><line class="helix-bp-seg helix-bp-seg-hi" x1="850" y1="226.0" x2="850" y2="280.0" stroke="var(--hue4)" style="--len:54.0" /><line class="helix-bp-seg helix-bp-seg-lo" x1="850" y1="280.0" x2="850" y2="334.0" stroke="var(--accent)" style="--len:54.0" /><line class="helix-bond helix-bond-hi" x1="846.5" y1="276.0" x2="853.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="846.5" y1="280.0" x2="853.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="846.5" y1="284.0" x2="853.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 2.45s" data-node="930"><line class="helix-bp-seg helix-bp-seg-hi" x1="870" y1="206.2" x2="870" y2="280.0" stroke="var(--hue1)" style="--len:73.8" /><line class="helix-bp-seg helix-bp-seg-lo" x1="870" y1="280.0" x2="870" y2="353.8" stroke="var(--accent-2)" style="--len:73.8" /><line class="helix-bond helix-bond-hi" x1="866.5" y1="277.0" x2="873.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="866.5" y1="283.0" x2="873.5" y2="283.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 2.49s" data-node="930"><line class="helix-bp-seg helix-bp-seg-hi" x1="890" y1="211.0" x2="890" y2="280.0" stroke="var(--hue4)" style="--len:69.0" /><line class="helix-bp-seg helix-bp-seg-lo" x1="890" y1="280.0" x2="890" y2="349.0" stroke="var(--accent)" style="--len:69.0" /><line class="helix-bond helix-bond-hi" x1="886.5" y1="276.0" x2="893.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="886.5" y1="280.0" x2="893.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="886.5" y1="284.0" x2="893.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 2.56s" data-node="930"><line class="helix-bp-seg helix-bp-seg-hi" x1="910" y1="238.6" x2="910" y2="280.0" stroke="var(--hue1)" style="--len:41.4" /><line class="helix-bp-seg helix-bp-seg-lo" x1="910" y1="280.0" x2="910" y2="321.4" stroke="var(--accent-2)" style="--len:41.4" /><line class="helix-bond helix-bond-hi" x1="906.5" y1="277.0" x2="913.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="906.5" y1="283.0" x2="913.5" y2="283.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 2.69s" data-node="930"><line class="helix-bp-seg helix-bp-seg-lo" x1="950" y1="321.4" x2="950" y2="280.0" stroke="var(--hue4)" style="--len:41.4" /><line class="helix-bp-seg helix-bp-seg-hi" x1="950" y1="280.0" x2="950" y2="238.6" stroke="var(--accent)" style="--len:41.4" /><line class="helix-bond helix-bond-hi" x1="946.5" y1="276.0" x2="953.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="946.5" y1="280.0" x2="953.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="946.5" y1="284.0" x2="953.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 2.77s" data-node="930"><line class="helix-bp-seg helix-bp-seg-lo" x1="970" y1="349.0" x2="970" y2="280.0" stroke="var(--hue1)" style="--len:69.0" /><line class="helix-bp-seg helix-bp-seg-hi" x1="970" y1="280.0" x2="970" y2="211.0" stroke="var(--accent-2)" style="--len:69.0" /><line class="helix-bond helix-bond-hi" x1="966.5" y1="277.0" x2="973.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="966.5" y1="283.0" x2="973.5" y2="283.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 2.87s" data-node="930"><line class="helix-bp-seg helix-bp-seg-lo" x1="990" y1="353.8" x2="990" y2="280.0" stroke="var(--hue4)" style="--len:73.8" /><line class="helix-bp-seg helix-bp-seg-hi" x1="990" y1="280.0" x2="990" y2="206.2" stroke="var(--accent)" style="--len:73.8" /><line class="helix-bond helix-bond-hi" x1="986.5" y1="276.0" x2="993.5" y2="276.0" /><line class="helix-bond helix-bond-mid" x1="986.5" y1="280.0" x2="993.5" y2="280.0" /><line class="helix-bond helix-bond-lo" x1="986.5" y1="284.0" x2="993.5" y2="284.0" /></g>
+                <g class="helix-basepair" style="transition-delay: 3.00s" data-node="930"><line class="helix-bp-seg helix-bp-seg-lo" x1="1010" y1="334.0" x2="1010" y2="280.0" stroke="var(--hue1)" style="--len:54.0" /><line class="helix-bp-seg helix-bp-seg-hi" x1="1010" y1="280.0" x2="1010" y2="226.0" stroke="var(--accent-2)" style="--len:54.0" /><line class="helix-bond helix-bond-hi" x1="1006.5" y1="277.0" x2="1013.5" y2="277.0" /><line class="helix-bond helix-bond-lo" x1="1006.5" y1="283.0" x2="1013.5" y2="283.0" /></g>
+                
+                <use class="helix-fork-structural-instance" href="#helix-fork-structural" x="930" y="280" />
+                <path class="helix-fork-morph helix-fork-morph-a" transform="translate(930,280)" d="M -107.5 -0.0 L -96.8 -23.2 L -86.0 -44.1 L -75.2 -60.7 L -64.5 -71.3 L -53.8 -75.0 L -43.0 -71.3 L -32.2 -60.7 L -21.5 -44.1 L -10.8 -23.2 L 0.0 0.0 L 10.8 23.2 L 21.5 44.1 L 32.2 60.7 L 43.0 71.3 L 53.8 75.0 L 64.5 71.3 L 75.2 60.7 L 86.0 44.1 L 96.8 23.2 L 107.5 0.0" />
+                <path class="helix-fork-morph helix-fork-morph-b" transform="translate(930,280)" d="M -107.5 0.0 L -96.8 23.2 L -86.0 44.1 L -75.2 60.7 L -64.5 71.3 L -53.8 75.0 L -43.0 71.3 L -32.2 60.7 L -21.5 44.1 L -10.8 23.2 L 0.0 -0.0 L 10.8 -23.2 L 21.5 -44.1 L 32.2 -60.7 L 43.0 -71.3 L 53.8 -75.0 L 64.5 -71.3 L 75.2 -60.7 L 86.0 -44.1 L 96.8 -23.2 L 107.5 -0.0" />
+                <line class="helix-leader helix-leader-top" x1="930" y1="280" x2="930" y2="135" />
+                <circle class="helix-fork-pol1" id="pol1-930" cx="930" cy="280" r="0" style="--hue: var(--hue4); offset-path: path('M 822.5 280.0 L 844.5 205.0 L 1015.5 205.0 L 1037.5 280.0')" />
+                <circle class="helix-fork-pol2" cx="930" cy="280" r="0" style="--hue: var(--hue4); offset-path: path('M 822.5 280.0 L 844.5 355.0 L 1015.5 355.0 L 1037.5 280.0')" />
+                <circle class="helix-dot" id="pol-930" cx="930" cy="280" r="8" style="--hue: var(--hue4)" />
+                <foreignObject x="780" y="-60" width="300" height="195">
+                  <div xmlns="http://www.w3.org/1999/xhtml" class="helix-label helix-label-top">
+                    <p class="helix-label-title" data-i18n="helix5Title">ExAdEx Innov</p>
+                    <p class="helix-label-sub"><span class="helix-year">2026</span> · <span data-i18n="helix5Place">Nice</span></p>
+                    <p class="helix-label-desc" data-i18n="helix5Desc"></p>
+                  </div>
+                </foreignObject>
               </g>
             </svg>
+          </div>
+        </div>
+
+        <!-- ===== Compétences 2 ===== -->
+        <div class="panel" id="panel-comp2" role="tabpanel" aria-labelledby="tab-comp2" hidden>
+          <p class="comp2-intro" data-i18n="comp2Intro">Chaque objet coloré du bureau et du banc de laboratoire ouvre la liste des compétences associées.<br>Survolez-le pour un aperçu, cliquez pour l'épingler.</p>
+
+          <div class="comp2-scene-wrap">
+            <h3 class="comp2-title" data-i18n="comp2Title">Compétences techniques</h3>
+            <svg class="comp2-scene" viewBox="0 0 1200 535" role="img" data-i18n-label="comp2Aria" aria-label="Illustration d'un bureau avec ordinateur et d'un banc de laboratoire">
+                <!-- shared floor: height halved (was 130) — the horizon at
+                     y=470 stays put since every object's legs/feet touch it,
+                     only the empty floor margin below is trimmed. -->
+                <rect x="0" y="470" width="1200" height="65" fill="var(--comp2-floor)" />
+                <line x1="0" y1="470" x2="1200" y2="470" stroke="var(--comp2-decor)" stroke-width="2" />
+
+                <!-- ===================== DESK SIDE (decorative) ===================== -->
+                <!-- wall picture frame -->
+                <g stroke="var(--comp2-decor)" stroke-width="3" fill="none" stroke-linejoin="round">
+                  <circle cx="150" cy="42" r="4" />
+                  <path d="M150 46 V58" />
+                  <rect x="70" y="58" width="160" height="110" rx="8" fill="var(--comp2-decor-fill)" />
+                  <rect x="86" y="74" width="128" height="78" rx="4" />
+                  <path d="M112 116c8-14 16-14 22 0s14 14 20 0 14-14 20 0 12 12 18 2" stroke-linecap="round" />
+                </g>
+
+                <!-- chair (decorative): rounded pill-shaped backrest on a seat
+                     with 4 thin straight legs — office-chair proportions -->
+                <g stroke="var(--comp2-decor)" stroke-width="3" fill="var(--comp2-decor-fill)" stroke-linejoin="round" stroke-linecap="round">
+                  <rect x="214" y="256" width="72" height="94" rx="36" />
+                  <rect x="200" y="350" width="100" height="18" rx="9" />
+                  <path d="M214 368 206 470M234 368 228 470M266 368 272 470M286 368 294 470" fill="none" />
+                </g>
+
+                <!-- desk legs + top -->
+                <ellipse cx="80" cy="472" rx="15" ry="4" fill="var(--comp2-decor)" opacity="0.3" />
+                <ellipse cx="400" cy="472" rx="15" ry="4" fill="var(--comp2-decor)" opacity="0.3" />
+                <g stroke="var(--comp2-decor)" stroke-width="3" fill="var(--comp2-decor-fill)" stroke-linejoin="round" stroke-linecap="round">
+                  <rect x="72" y="330" width="16" height="140" rx="6" />
+                  <rect x="392" y="330" width="16" height="140" rx="6" />
+                  <rect x="60" y="296" width="360" height="34" rx="8" />
+                  <rect x="60" y="330" width="360" height="10" fill="var(--comp2-decor)" />
+                </g>
+
+                <!-- monitor: COLOR A — programmation -->
+                <g class="comp2-obj" tabindex="0" role="button" data-skill="ordinateur" data-cat="a" data-i18n-label="comp2AriaOrdinateur" aria-label="Ordinateur">
+                  <g class="comp2-obj-fill" stroke="var(--comp2-a)" stroke-width="3.2" fill="none" stroke-linejoin="round" stroke-linecap="round">
+                    <rect x="168" y="186" width="176" height="118" rx="12" />
+                    <rect x="182" y="200" width="148" height="90" rx="4" />
+                    <path d="M258 260 300 224M270 268 320 224" />
+                    <circle cx="256" cy="298" r="2.4" fill="var(--comp2-a)" />
+                    <path d="M232 306v18M304 306v18M212 324h120" />
+                  </g>
+                  <rect class="comp2-hit" x="160" y="178" width="192" height="172" />
+                </g>
+
+                <!-- speakers: COLOR B — formation nouveaux arrivants -->
+                <ellipse cx="115" cy="333" rx="23" ry="4.5" fill="var(--comp2-decor)" opacity="0.3" />
+                <g class="comp2-obj" tabindex="0" role="button" data-skill="enceintes" data-cat="b" data-i18n-label="comp2AriaEnceintes" aria-label="Enceintes">
+                  <g class="comp2-obj-fill" stroke="var(--comp2-b)" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round">
+                    <rect x="94" y="238" width="42" height="92" rx="8" />
+                    <rect x="99" y="243" width="32" height="82" rx="5" stroke-width="1.4" />
+                    <circle cx="115" cy="264" r="10" />
+                    <circle cx="115" cy="264" r="4" stroke-width="1.4" />
+                    <circle cx="115" cy="298" r="7" />
+                  </g>
+                  <rect class="comp2-hit" x="88" y="232" width="54" height="106" />
+                </g>
+                <ellipse cx="395" cy="333" rx="23" ry="4.5" fill="var(--comp2-decor)" opacity="0.3" />
+                <g class="comp2-obj" tabindex="0" role="button" data-skill="enceintes" data-cat="b" data-i18n-label="comp2AriaEnceintes" aria-label="Enceintes">
+                  <g class="comp2-obj-fill" stroke="var(--comp2-b)" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round">
+                    <rect x="374" y="238" width="42" height="92" rx="8" />
+                    <rect x="379" y="243" width="32" height="82" rx="5" stroke-width="1.4" />
+                    <circle cx="395" cy="264" r="10" />
+                    <circle cx="395" cy="264" r="4" stroke-width="1.4" />
+                    <circle cx="395" cy="298" r="7" />
+                  </g>
+                  <rect class="comp2-hit" x="368" y="232" width="54" height="106" />
+                </g>
+
+                <!-- ===================== LAB BENCH SIDE ===================== -->
+                <!-- upper shelf: COLOR C — reactifs. Shifted left so the much
+                     bigger incubator below has room without overlapping it. -->
+                <g transform="translate(-210,0)">
+                <g stroke="var(--comp2-decor)" stroke-width="3" fill="var(--comp2-decor-fill)" stroke-linejoin="round" stroke-linecap="round">
+                  <rect x="900" y="140" width="230" height="10" rx="3" />
+                  <path d="M900 150 890 172" />
+                  <path d="M1130 150 1140 172" />
+                </g>
+                <ellipse cx="1015" cy="142" rx="112" ry="4" fill="var(--comp2-decor)" opacity="0.22" />
+                <g class="comp2-obj" tabindex="0" role="button" data-skill="etagere" data-cat="c" data-i18n-label="comp2AriaEtagere" aria-label="Étagère — réactifs">
+                  <g class="comp2-obj-fill" stroke="var(--comp2-c)" stroke-width="2.6" fill="none" stroke-linejoin="round" stroke-linecap="round">
+                    <!-- bottle 1: small round-shoulder bottle -->
+                    <rect x="916" y="110" width="20" height="30" rx="5" />
+                    <rect x="920" y="115" width="12" height="21" rx="3" stroke-width="1.3" />
+                    <rect x="922" y="98" width="8" height="14" rx="2" />
+                    <rect x="920" y="90" width="12" height="10" rx="2" fill="var(--comp2-c)" stroke="none" />
+                    <rect x="918" y="126" width="16" height="10" rx="2" fill="var(--comp2-c-soft)" stroke="none" />
+
+                    <!-- bottle 2: tall narrow reagent bottle -->
+                    <rect x="948" y="88" width="18" height="52" rx="5" />
+                    <rect x="952" y="94" width="10" height="42" rx="3" stroke-width="1.3" />
+                    <rect x="953" y="74" width="8" height="16" rx="2" />
+                    <rect x="951" y="64" width="12" height="12" rx="2" fill="var(--comp2-c)" stroke="none" />
+                    <rect x="950" y="118" width="14" height="18" rx="2" fill="var(--comp2-c-soft)" stroke="none" />
+
+                    <!-- bottle 3: wide jar -->
+                    <rect x="978" y="100" width="26" height="40" rx="7" />
+                    <rect x="983" y="106" width="16" height="30" rx="4" stroke-width="1.3" />
+                    <rect x="985" y="86" width="12" height="16" rx="2" />
+                    <rect x="983" y="76" width="16" height="12" rx="3" fill="var(--comp2-c)" stroke="none" />
+                    <rect x="981" y="120" width="20" height="16" rx="2" fill="var(--comp2-c-soft)" stroke="none" />
+
+                    <!-- bottle 4: medium bottle -->
+                    <rect x="1016" y="96" width="20" height="44" rx="5" />
+                    <rect x="1020" y="102" width="12" height="34" rx="3" stroke-width="1.3" />
+                    <rect x="1022" y="82" width="8" height="16" rx="2" />
+                    <rect x="1020" y="72" width="12" height="12" rx="2" fill="var(--comp2-c)" stroke="none" />
+                    <rect x="1018" y="120" width="16" height="16" rx="2" fill="var(--comp2-c-soft)" stroke="none" />
+
+                    <!-- bottle 5: small squat -->
+                    <rect x="1048" y="112" width="22" height="28" rx="6" />
+                    <rect x="1053" y="117" width="12" height="19" rx="3" stroke-width="1.3" />
+                    <rect x="1055" y="100" width="8" height="14" rx="2" />
+                    <rect x="1053" y="90" width="12" height="12" rx="2" fill="var(--comp2-c)" stroke="none" />
+                    <rect x="1050" y="126" width="18" height="10" rx="2" fill="var(--comp2-c-soft)" stroke="none" />
+                  </g>
+                  <rect class="comp2-hit" x="906" y="58" width="176" height="86" />
+                </g>
+                </g>
+
+                <!-- bench top -->
+                <rect x="452" y="330" width="700" height="20" rx="6" fill="var(--comp2-decor-fill)" stroke="var(--comp2-decor)" stroke-width="3" />
+
+                <!-- merged glassware: Erlenmeyer with a rounded (not sharp) base
+                     where the cone meets the flat bottom, a round flask with a
+                     stopper (unchanged), and a small rack holding 4 Falcon-style
+                     tubes (screw cap + conical tip, sitting in circular holes) —
+                     one single clickable cluster, COLOR C -->
+                <ellipse cx="576" cy="333" rx="124" ry="4.5" fill="var(--comp2-decor)" opacity="0.3" />
+                <g class="comp2-obj" tabindex="0" role="button" data-skill="verrerie" data-cat="c" data-i18n-label="comp2AriaVerrerie" aria-label="Verrerie de laboratoire">
+                  <g class="comp2-obj-fill" stroke="var(--comp2-c)" stroke-width="2.8" fill="none" stroke-linejoin="round" stroke-linecap="round">
+                    <!-- erlenmeyer, rounded bottom corners, diagonal-hatched liquid -->
+                    <path d="M486 250h16v22L524.7 322.7Q528 330 520 330H468Q460 330 463.3 322.7Z" />
+                    <path d="M468 328h52" />
+                    <path d="M486 254h16" stroke-width="1.3" />
+                    <g stroke-width="1.4">
+                      <path d="M473 322 484 306" />
+                      <path d="M480 322 494 300" />
+                      <path d="M489 322 504 298" />
+                      <path d="M498 322 513 300" />
+                      <path d="M507 322 520 304" />
+                    </g>
+
+                    <!-- round-bottom flask with a stopper (unchanged) -->
+                    <path d="M546 248h14v18a34 34 0 1 1 -14 0Z" />
+                    <path d="M540 266h26" stroke-width="1.3" />
+                    <path d="M546 248h14" stroke-width="1.3" />
+                    <rect x="547" y="238" width="12" height="11" rx="2" />
+                    <ellipse cx="553" cy="235" rx="8" ry="5" />
+                    <ellipse cx="553" cy="300" rx="24" ry="13" fill="var(--comp2-c-soft)" stroke="none" />
+
+                    <!-- rack holding 4 Falcon tubes: a tray with round holes,
+                         each tube a wide cylinder with a screw cap and a
+                         conical tip, not thin loose test tubes -->
+                    <rect x="598" y="318" width="96" height="12" rx="3" />
+                    <circle cx="614" cy="318" r="6" fill="var(--comp2-decor-fill)" />
+                    <circle cx="636" cy="318" r="6" fill="var(--comp2-decor-fill)" />
+                    <circle cx="658" cy="318" r="6" fill="var(--comp2-decor-fill)" />
+                    <circle cx="680" cy="318" r="6" fill="var(--comp2-decor-fill)" />
+
+                    <rect x="607" y="256" width="14" height="7" rx="2" />
+                    <rect x="608" y="263" width="12" height="45" rx="3" />
+                    <path d="M608 308 L614 320 L620 308 Z" />
+                    <rect x="609" y="288" width="10" height="20" fill="var(--comp2-c-soft)" stroke="none" />
+
+                    <rect x="629" y="256" width="14" height="7" rx="2" />
+                    <rect x="630" y="263" width="12" height="45" rx="3" />
+                    <path d="M630 308 L636 320 L642 308 Z" />
+                    <rect x="631" y="296" width="10" height="12" fill="var(--comp2-c-soft)" stroke="none" />
+
+                    <rect x="651" y="256" width="14" height="7" rx="2" />
+                    <rect x="652" y="263" width="12" height="45" rx="3" />
+                    <path d="M652 308 L658 320 L664 308 Z" />
+                    <rect x="653" y="300" width="10" height="8" fill="var(--comp2-c-soft)" stroke="none" />
+
+                    <rect x="673" y="256" width="14" height="7" rx="2" />
+                    <rect x="674" y="263" width="12" height="45" rx="3" />
+                    <path d="M674 308 L680 320 L686 308 Z" />
+                    <rect x="675" y="284" width="10" height="24" fill="var(--comp2-c-soft)" stroke="none" />
+                  </g>
+                  <rect class="comp2-hit" x="452" y="224" width="248" height="110" />
+                </g>
+
+                <!-- centrifuge: shifted right to sit evenly spaced after the
+                     glassware — a bench-top device with a hinged round lid +
+                     rotor, COLOR C -->
+                <g transform="translate(146,0)">
+                <ellipse cx="628" cy="333" rx="38" ry="5" fill="var(--comp2-decor)" opacity="0.3" />
+                <g class="comp2-obj" tabindex="0" role="button" data-skill="centrifugeuse" data-cat="c" data-i18n-label="comp2AriaCentrifugeuse" aria-label="Centrifugeuse">
+                  <g class="comp2-obj-fill" stroke="var(--comp2-c)" stroke-width="2.8" fill="none" stroke-linejoin="round" stroke-linecap="round">
+                    <!-- boxy body -->
+                    <rect x="592" y="286" width="72" height="44" rx="9" />
+                    <rect x="598" y="292" width="60" height="32" rx="6" stroke-width="1.3" />
+                    <!-- hinge connecting lid to body -->
+                    <rect x="618" y="280" width="20" height="10" rx="3" />
+                    <!-- round hinged lid -->
+                    <circle cx="628" cy="254" r="30" />
+                    <circle cx="628" cy="254" r="22" stroke-width="1.4" />
+                    <!-- rotor sample slots (classic centrifuge tell) -->
+                    <circle cx="628" cy="238" r="3.4" />
+                    <circle cx="643" cy="247" r="3.4" />
+                    <circle cx="643" cy="262" r="3.4" />
+                    <circle cx="628" cy="270" r="3.4" />
+                    <circle cx="613" cy="262" r="3.4" />
+                    <circle cx="613" cy="247" r="3.4" />
+                    <!-- lid seam suggesting it opens -->
+                    <path d="M600 254a28 28 0 0 0 56 0" stroke-width="1.3" stroke-dasharray="1 4" />
+                    <!-- control panel on the front face -->
+                    <rect x="602" y="300" width="26" height="16" rx="3" />
+                    <circle cx="609" cy="308" r="4" stroke-width="1.4" />
+                    <path d="M609 305v6M606 308h6" stroke-width="1.2" />
+                    <!-- power indicator button -->
+                    <circle cx="648" cy="308" r="3.6" fill="var(--comp2-c)" stroke="none" />
+                  </g>
+                  <rect class="comp2-hit" x="586" y="220" width="84" height="116" />
+                </g>
+                </g>
+
+                <!-- microscope: rebuilt with the reference's actual topology —
+                     a flat base, a trapezoid pedestal carrying a small stage,
+                     a separate arm curving up from the base to a hub circle,
+                     and from that SAME hub: a diagonal eyepiece tube going
+                     up-left, and a short objective tube going down-left to a
+                     lens pointing at the stage. Three things meet at the hub,
+                     not two, which is what the earlier attempt got wrong. -->
+                <ellipse cx="875" cy="333" rx="34" ry="4.5" fill="var(--comp2-decor)" opacity="0.3" />
+                <g class="comp2-obj" tabindex="0" role="button" data-skill="microscope" data-cat="c" data-i18n-label="comp2AriaMicroscope" aria-label="Microscope">
+                  <g transform="translate(828,202)">
+                  <g class="comp2-obj-fill" stroke="var(--comp2-c)" stroke-width="2.8" fill="none" stroke-linejoin="round" stroke-linecap="round">
+                    <!-- flat base -->
+                    <rect x="14" y="116" width="56" height="12" rx="5" />
+                    <rect x="20" y="119" width="44" height="5" rx="2" stroke-width="1.3" />
+                    <!-- pedestal carrying the stage -->
+                    <path d="M32 116 L40 92 L54 92 L62 116 Z" />
+                    <!-- stage (slide platform) + clip -->
+                    <rect x="28" y="84" width="38" height="9" rx="2" />
+                    <circle cx="47" cy="88" r="3" fill="var(--comp2-c)" stroke="none" />
+                    <!-- arm: curves up from the base to the hub -->
+                    <path d="M60 108 C78 104 84 84 78 66 C74 54 64 48 56 48" stroke-width="7" />
+                    <!-- hub: where the arm, eyepiece and objective all meet -->
+                    <circle cx="56" cy="48" r="8" />
+                    <circle cx="56" cy="48" r="3" stroke-width="1.3" />
+                    <!-- objective: short tube from the hub down to the lens -->
+                    <path d="M50 54 L38 72" stroke-width="6" />
+                    <path d="M32 72 L44 72 L41 82 L35 82 Z" />
+                    <circle cx="38" cy="75" r="1.8" fill="var(--comp2-c)" stroke="none" />
+                    <!-- eyepiece: thick diagonal tube from the hub, angled cap -->
+                    <path d="M50 42 L26 4" stroke-width="10" />
+                    <ellipse cx="23" cy="0" rx="7" ry="3.6" />
+                  </g>
+                  </g>
+                  <rect class="comp2-hit" x="836" y="192" width="86" height="142" />
+                </g>
+
+                <!-- incubator: replaces the storage box, considerably bigger
+                     now — a substantial rectangular body on small feet, a
+                     control panel (screen + dials) top-left, and a door with
+                     a square window + handle centre-right, COLOR B -->
+                <ellipse cx="1029" cy="336" rx="80" ry="5" fill="var(--comp2-decor)" opacity="0.3" />
+                <g class="comp2-obj" tabindex="0" role="button" data-skill="incubateur" data-cat="b" data-i18n-label="comp2AriaIncubateur" aria-label="Incubateur">
+                  <g class="comp2-obj-fill" stroke="var(--comp2-b)" stroke-width="2.8" fill="none" stroke-linejoin="round" stroke-linecap="round">
+                    <rect x="954" y="180" width="150" height="150" rx="8" />
+                    <!-- control panel: mini screen + 3 dial knobs, top-left -->
+                    <rect x="964" y="192" width="34" height="20" rx="3" fill="var(--comp2-b-soft)" />
+                    <circle cx="1016" cy="202" r="8" stroke-width="1.4" />
+                    <path d="M1016 197v5" stroke-width="1.2" />
+                    <circle cx="1038" cy="202" r="8" stroke-width="1.4" />
+                    <path d="M1038 197v5" stroke-width="1.2" />
+                    <circle cx="1060" cy="202" r="8" stroke-width="1.4" />
+                    <path d="M1060 197v5" stroke-width="1.2" />
+                    <!-- door with square window + handle, centre-right -->
+                    <rect x="964" y="222" width="132" height="98" rx="6" stroke-width="1.6" />
+                    <rect x="1004" y="234" width="56" height="48" rx="5" />
+                    <rect x="1080" y="248" width="10" height="36" rx="5" fill="var(--comp2-b)" stroke="none" />
+                    <!-- small feet -->
+                    <rect x="970" y="328" width="14" height="8" rx="3" />
+                    <rect x="1090" y="328" width="14" height="8" rx="3" />
+                  </g>
+                  <rect class="comp2-hit" x="946" y="172" width="166" height="172" />
+                </g>
+
+                <!-- bench legs -->
+                <g stroke="var(--comp2-decor)" stroke-width="3" fill="var(--comp2-decor-fill)" stroke-linejoin="round" stroke-linecap="round">
+                  <rect x="464" y="452" width="16" height="18" rx="4" />
+                  <rect x="1128" y="452" width="16" height="18" rx="4" />
+                </g>
+
+                <!-- 4 drawers: all COLOR B, all sharing one popup (data-skill="tiroirs") -->
+                <g stroke="var(--comp2-decor)" stroke-width="3" fill="var(--comp2-decor-fill)">
+                  <rect x="452" y="350" width="700" height="102" />
+                </g>
+                <g class="comp2-obj" tabindex="0" role="button" data-skill="tiroirs" data-cat="b" data-i18n-label="comp2AriaTiroirs" aria-label="Tiroirs">
+                  <g class="comp2-obj-fill" stroke="var(--comp2-b)" stroke-width="2.6" fill="none">
+                    <rect x="460" y="358" width="164" height="86" rx="6" />
+                    <rect x="522" y="396" width="40" height="8" rx="4" fill="var(--comp2-b)" stroke="none" />
+                  </g>
+                  <rect class="comp2-hit" x="460" y="358" width="164" height="86" />
+                </g>
+                <g class="comp2-obj" tabindex="0" role="button" data-skill="tiroirs" data-cat="b" data-i18n-label="comp2AriaTiroirs" aria-label="Tiroirs">
+                  <g class="comp2-obj-fill" stroke="var(--comp2-b)" stroke-width="2.6" fill="none">
+                    <rect x="630" y="358" width="164" height="86" rx="6" />
+                    <rect x="692" y="396" width="40" height="8" rx="4" fill="var(--comp2-b)" stroke="none" />
+                  </g>
+                  <rect class="comp2-hit" x="630" y="358" width="164" height="86" />
+                </g>
+                <g class="comp2-obj" tabindex="0" role="button" data-skill="tiroirs" data-cat="b" data-i18n-label="comp2AriaTiroirs" aria-label="Tiroirs">
+                  <g class="comp2-obj-fill" stroke="var(--comp2-b)" stroke-width="2.6" fill="none">
+                    <rect x="800" y="358" width="164" height="86" rx="6" />
+                    <rect x="862" y="396" width="40" height="8" rx="4" fill="var(--comp2-b)" stroke="none" />
+                  </g>
+                  <rect class="comp2-hit" x="800" y="358" width="164" height="86" />
+                </g>
+                <g class="comp2-obj" tabindex="0" role="button" data-skill="tiroirs" data-cat="b" data-i18n-label="comp2AriaTiroirs" aria-label="Tiroirs">
+                  <g class="comp2-obj-fill" stroke="var(--comp2-b)" stroke-width="2.6" fill="none">
+                    <rect x="970" y="358" width="164" height="86" rx="6" />
+                    <rect x="1032" y="396" width="40" height="8" rx="4" fill="var(--comp2-b)" stroke="none" />
+                  </g>
+                  <rect class="comp2-hit" x="970" y="358" width="164" height="86" />
+                </g>
+              </svg>
+
+            <div class="comp2-legend">
+              <div class="comp2-legend-item"><span class="comp2-legend-dot" style="background:var(--comp2-a)"></span><span data-i18n="comp2CatA">Programmation &amp; codage</span></div>
+              <div class="comp2-legend-item"><span class="comp2-legend-dot" style="background:var(--comp2-b)"></span><span data-i18n="comp2CatB">Conduite d'études &amp; laboratoire</span></div>
+              <div class="comp2-legend-item"><span class="comp2-legend-dot" style="background:var(--comp2-c)"></span><span data-i18n="comp2CatC">Techniques expérimentales</span></div>
+            </div>
+          </div>
+
+          <!-- Translated content lives here, hidden — the popup JS reads it at
+               open time so it always reflects the current language, the same
+               way the rest of the site's i18n system works. -->
+          <div class="comp2-data" hidden aria-hidden="true">
+            <span class="comp2-cat-label" data-cat="a" data-i18n="comp2CatA">Programmation &amp; codage</span>
+            <span class="comp2-cat-label" data-cat="b" data-i18n="comp2CatB">Conduite d'études &amp; laboratoire</span>
+            <span class="comp2-cat-label" data-cat="c" data-i18n="comp2CatC">Techniques expérimentales</span>
+
+            <ul data-key="ordinateur" data-i18n="comp2SkillsOrdinateur"></ul>
+            <ul data-key="enceintes" data-i18n="comp2SkillsEnceintes"></ul>
+            <ul data-key="tiroirs" data-i18n="comp2SkillsTiroirs"></ul>
+            <ul data-key="etagere" data-i18n="comp2SkillsEtagere"></ul>
+            <ul data-key="centrifugeuse" data-i18n="comp2SkillsCentrifugeuse"></ul>
+            <ul data-key="verrerie" data-i18n="comp2SkillsVerrerie"></ul>
+            <ul data-key="microscope" data-i18n="comp2SkillsMicroscope"></ul>
+            <ul data-key="incubateur" data-i18n="comp2SkillsIncubateur"></ul>
+          </div>
+
+          <div class="comp2-popup" id="comp2Popup" hidden>
+            <button type="button" class="comp2-popup-close" id="comp2PopupClose" data-i18n-label="comp2CloseAria" aria-label="Fermer">✕</button>
+            <p class="comp2-popup-cat" id="comp2PopupCat"></p>
+            <ul class="comp2-popup-skills" id="comp2PopupSkills"></ul>
           </div>
         </div>
       </main>
