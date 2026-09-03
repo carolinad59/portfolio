@@ -332,6 +332,84 @@
       window.addEventListener("resize", requestTick);
       updateParallax();
     }
+
+    /* Touch devices don't have a real :hover, and the replication-fork
+       animation depends on it staying engaged for its whole (~1s+) timed
+       sequence — a tap's :hover is too short-lived/unreliable for that.
+       Tapping a node toggles a real .is-active class instead (the CSS
+       already treats it exactly like :hover/:focus-visible everywhere),
+       tapping it again or tapping elsewhere closes it. */
+    const helixNodes = helixWrap.querySelectorAll(".helix-node");
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchMoved = false;
+    const TOUCH_MOVE_THRESHOLD = 10; // px — beyond this, it's a scroll/drag, not a tap
+    let lastToggleAt = 0;
+    const TOGGLE_DEBOUNCE_MS = 400; // guards against a duplicate touch→click firing twice
+    let forkOpenTimer = null;
+    const isMobileHelix = () => window.matchMedia("(max-width: 640px)").matches;
+
+    helixNodes.forEach((node) => {
+      node.addEventListener("touchstart", (e) => {
+        touchMoved = false;
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+
+      node.addEventListener("touchmove", (e) => {
+        const dx = e.touches[0].clientX - touchStartX;
+        const dy = e.touches[0].clientY - touchStartY;
+        if (Math.hypot(dx, dy) > TOUCH_MOVE_THRESHOLD) touchMoved = true;
+      }, { passive: true });
+
+      node.addEventListener("click", (e) => {
+        if (touchMoved) {
+          touchMoved = false;
+          return;
+        }
+        /* On some iOS Safari versions a single tap can dispatch a second,
+           near-instant "click" (e.g. a touch-derived one followed by a
+           synthetic mouse-compat one). That second call would immediately
+           re-toggle .is-active off — invisible for the hydrogen bonds
+           (their fade has no delay) but fatal for the strand-unwind
+           animation, which only starts 0.46s later and would never get to
+           render at all. Ignoring a repeat within 400ms fixes both. */
+        const now = performance.now();
+        if (now - lastToggleAt < TOGGLE_DEBOUNCE_MS) return;
+        lastToggleAt = now;
+        const willOpen = !node.classList.contains("is-active");
+        helixNodes.forEach((n) => n.classList.remove("is-active"));
+        clearTimeout(forkOpenTimer);
+        helixNodes.forEach((n) => n.classList.remove("fork-open"));
+        if (willOpen) {
+          node.classList.add("is-active");
+          if (isMobileHelix()) {
+            /* node.scrollIntoView() lets the browser pick which ancestor to
+               scroll and how — on iOS Safari that can silently misbehave
+               inside a -webkit-overflow-scrolling: touch container, so
+               instead this scrolls .helix-v-wrap itself directly, by
+               exactly the distance needed to center the tapped node. */
+            const wrapRect = helixWrap.getBoundingClientRect();
+            const nodeRect = node.getBoundingClientRect();
+            const delta = (nodeRect.left + nodeRect.width / 2) - (wrapRect.left + wrapRect.width / 2);
+            helixWrap.scrollBy({ left: delta, behavior: "smooth" });
+
+            /* The strand-unwind reveal is driven here instead of by CSS
+               transition-delay (see style.css) — .is-active alone no
+               longer shows it on mobile, this timer is what does. */
+            forkOpenTimer = setTimeout(() => {
+              node.classList.add("fork-open");
+            }, 120);
+          }
+        }
+        e.stopPropagation();
+      });
+    });
+    document.addEventListener("click", () => {
+      helixNodes.forEach((n) => n.classList.remove("is-active"));
+      clearTimeout(forkOpenTimer);
+      helixNodes.forEach((n) => n.classList.remove("fork-open"));
+    });
   }
 
   /* ------------------------------------------------------------------ */
