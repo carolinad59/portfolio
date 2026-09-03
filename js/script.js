@@ -379,6 +379,111 @@
       if (b) b.setAttribute("d", FORK_OPEN_D_B);
     };
 
+    /* Polymerase markers: same story as the fork shape above — the desktop
+       version rides a CSS offset-path with a keyframe animation, which
+       (like the `d` property before it) never actually appeared on real
+       iOS Safari. Replaced here with a plain requestAnimationFrame loop
+       computing cx/cy/r every frame from the node's own offset-path
+       points (parsed straight out of its inline style, so this stays in
+       sync if the geometry ever changes) — no CSS motion feature involved
+       at all, just arithmetic and attribute writes. */
+    const CYCLE_MS = 4400;
+    const parseOffsetPathPoints = (el) => {
+      const raw = el.style.offsetPath || el.style.getPropertyValue("offset-path");
+      const match = raw && raw.match(/path\(['"]([^'"]+)['"]\)/);
+      if (!match) return null;
+      const nums = match[1].match(/-?[\d.]+/g).map(Number);
+      const points = [];
+      for (let i = 0; i < nums.length; i += 2) points.push({ x: nums[i], y: nums[i + 1] });
+      return points;
+    };
+    const pointAtFraction = (points, frac) => {
+      const segLens = [];
+      let total = 0;
+      for (let i = 0; i < points.length - 1; i++) {
+        const dx = points[i + 1].x - points[i].x;
+        const dy = points[i + 1].y - points[i].y;
+        const len = Math.hypot(dx, dy);
+        segLens.push(len);
+        total += len;
+      }
+      let target = Math.max(0, Math.min(1, frac)) * total;
+      for (let i = 0; i < segLens.length; i++) {
+        if (target <= segLens[i] || i === segLens.length - 1) {
+          const t = segLens[i] === 0 ? 0 : target / segLens[i];
+          return {
+            x: points[i].x + (points[i + 1].x - points[i].x) * t,
+            y: points[i].y + (points[i + 1].y - points[i].y) * t,
+          };
+        }
+        target -= segLens[i];
+      }
+      return points[points.length - 1];
+    };
+    // Mirrors @keyframes helix-pol-lead / helix-pol-lag in style.css.
+    const leadState = (u) => {
+      let r, distFrac;
+      if (u < 0.08) { r = (u / 0.08) * 3; distFrac = 1; }
+      else if (u < 0.18) { r = 3 + ((u - 0.08) / 0.10) * 6.5; distFrac = 1; }
+      else if (u < 0.82) { r = 9.5; distFrac = 1 - (u - 0.18) / 0.64; }
+      else if (u < 0.92) { r = 9.5 - ((u - 0.82) / 0.10) * 6.5; distFrac = 0; }
+      else { r = 3 - ((u - 0.92) / 0.08) * 3; distFrac = 0; }
+      return { r, distFrac };
+    };
+    const lagState = (u) => {
+      let r, distFrac;
+      if (u < 0.08) { r = (u / 0.08) * 2; distFrac = 0; }
+      else if (u < 0.18) { r = 2 + ((u - 0.08) / 0.10) * 3; distFrac = 0; }
+      else if (u < 0.82) {
+        r = 5;
+        const local = (u - 0.18) / 0.64;
+        distFrac = Math.min(Math.floor(local * 6), 6) / 6;
+      }
+      else if (u < 0.92) { r = 5 - ((u - 0.82) / 0.10) * 3; distFrac = 1; }
+      else { r = 2 - ((u - 0.92) / 0.08) * 2; distFrac = 1; }
+      return { r, distFrac };
+    };
+    let polRAF = null;
+    let polStartTime = 0;
+    const stopPolAnimation = () => {
+      if (polRAF !== null) cancelAnimationFrame(polRAF);
+      polRAF = null;
+      helixNodes.forEach((n) => {
+        const p1 = n.querySelector(".helix-fork-pol1");
+        const p2 = n.querySelector(".helix-fork-pol2");
+        if (p1) p1.style.r = "";
+        if (p2) p2.style.r = "";
+      });
+    };
+    const startPolAnimation = (node) => {
+      const pol1 = node.querySelector(".helix-fork-pol1");
+      const pol2 = node.querySelector(".helix-fork-pol2");
+      const points1 = pol1 && parseOffsetPathPoints(pol1);
+      const points2 = pol2 && parseOffsetPathPoints(pol2);
+      if (!points1 || !points2) return;
+      polStartTime = performance.now();
+      const tick = (now) => {
+        const u = ((now - polStartTime) % CYCLE_MS) / CYCLE_MS;
+        const s1 = leadState(u);
+        const p1 = pointAtFraction(points1, s1.distFrac);
+        pol1.setAttribute("cx", p1.x);
+        pol1.setAttribute("cy", p1.y);
+        /* r is also set by a CSS rule (r: 0, for the resting state), and a
+           CSS property always wins over the plain attribute — so the
+           attribute alone would get silently overridden back to 0. Inline
+           style outranks an external stylesheet rule, so this is set on
+           .style instead to actually take effect every frame. */
+        pol1.style.r = s1.r;
+        const s2 = lagState(u);
+        const p2 = pointAtFraction(points2, s2.distFrac);
+        pol2.setAttribute("cx", p2.x);
+        pol2.setAttribute("cy", p2.y);
+        pol2.style.r = s2.r;
+        polRAF = requestAnimationFrame(tick);
+      };
+      polRAF = requestAnimationFrame(tick);
+    };
+
     helixNodes.forEach((node) => {
       node.addEventListener("touchstart", (e) => {
         touchMoved = false;
@@ -411,6 +516,7 @@
         helixNodes.forEach((n) => n.classList.remove("is-active"));
         clearTimeout(forkOpenTimer);
         closeForkOpen();
+        stopPolAnimation();
         if (willOpen) {
           node.classList.add("is-active");
           if (isMobileHelix()) {
@@ -429,6 +535,7 @@
                longer shows it on mobile, this timer is what does. */
             forkOpenTimer = setTimeout(() => {
               openForkFor(node);
+              startPolAnimation(node);
             }, 120);
           }
         }
@@ -439,6 +546,7 @@
       helixNodes.forEach((n) => n.classList.remove("is-active"));
       clearTimeout(forkOpenTimer);
       closeForkOpen();
+      stopPolAnimation();
     });
   }
 
