@@ -349,6 +349,36 @@
     let forkOpenTimer = null;
     const isMobileHelix = () => window.matchMedia("(max-width: 640px)").matches;
 
+    /* The strand-unwind shape, set via the CSS `d` property in style.css,
+       wasn't rendering on some real iOS Safari devices even though it
+       tested fine elsewhere — each path also carries a presentation
+       `transform="translate(...)"` attribute, and that specific
+       combination (CSS `d` override + attribute `transform`) is a
+       plausible repaint gap in WebKit. Setting the `d` *attribute*
+       directly is the oldest, most universally-supported way to change
+       an SVG path's shape, so it sidesteps that combination entirely. */
+    const FORK_OPEN_D_A = "M -107.5 -0.0 L -96.8 -36.6 L -86.0 -73.3 L -75.2 -75.0 L -64.5 -75.0 L -53.8 -75.0 L -43.0 -75.0 L -32.2 -75.0 L -21.5 -75.0 L -10.8 -75.0 L 0.0 -75.0 L 10.8 -75.0 L 21.5 -75.0 L 32.2 -75.0 L 43.0 -75.0 L 53.8 -75.0 L 64.5 -75.0 L 75.2 -75.0 L 86.0 -73.3 L 96.8 -36.6 L 107.5 -0.0";
+    const FORK_OPEN_D_B = "M -107.5 0.0 L -96.8 36.6 L -86.0 73.3 L -75.2 75.0 L -64.5 75.0 L -53.8 75.0 L -43.0 75.0 L -32.2 75.0 L -21.5 75.0 L -10.8 75.0 L 0.0 75.0 L 10.8 75.0 L 21.5 75.0 L 32.2 75.0 L 43.0 75.0 L 53.8 75.0 L 64.5 75.0 L 75.2 75.0 L 86.0 73.3 L 96.8 36.6 L 107.5 0.0";
+    const forkOriginalD = new WeakMap();
+    const closeForkOpen = () => {
+      helixNodes.forEach((n) => {
+        n.classList.remove("fork-open");
+        const a = n.querySelector(".helix-fork-morph-a");
+        const b = n.querySelector(".helix-fork-morph-b");
+        if (a && forkOriginalD.has(a)) a.setAttribute("d", forkOriginalD.get(a));
+        if (b && forkOriginalD.has(b)) b.setAttribute("d", forkOriginalD.get(b));
+      });
+    };
+    const openForkFor = (node) => {
+      const a = node.querySelector(".helix-fork-morph-a");
+      const b = node.querySelector(".helix-fork-morph-b");
+      if (a && !forkOriginalD.has(a)) forkOriginalD.set(a, a.getAttribute("d"));
+      if (b && !forkOriginalD.has(b)) forkOriginalD.set(b, b.getAttribute("d"));
+      node.classList.add("fork-open");
+      if (a) a.setAttribute("d", FORK_OPEN_D_A);
+      if (b) b.setAttribute("d", FORK_OPEN_D_B);
+    };
+
     helixNodes.forEach((node) => {
       node.addEventListener("touchstart", (e) => {
         touchMoved = false;
@@ -380,7 +410,7 @@
         const willOpen = !node.classList.contains("is-active");
         helixNodes.forEach((n) => n.classList.remove("is-active"));
         clearTimeout(forkOpenTimer);
-        helixNodes.forEach((n) => n.classList.remove("fork-open"));
+        closeForkOpen();
         if (willOpen) {
           node.classList.add("is-active");
           if (isMobileHelix()) {
@@ -398,7 +428,7 @@
                transition-delay (see style.css) — .is-active alone no
                longer shows it on mobile, this timer is what does. */
             forkOpenTimer = setTimeout(() => {
-              node.classList.add("fork-open");
+              openForkFor(node);
             }, 120);
           }
         }
@@ -408,7 +438,7 @@
     document.addEventListener("click", () => {
       helixNodes.forEach((n) => n.classList.remove("is-active"));
       clearTimeout(forkOpenTimer);
-      helixNodes.forEach((n) => n.classList.remove("fork-open"));
+      closeForkOpen();
     });
   }
 
