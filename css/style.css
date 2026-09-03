@@ -1484,6 +1484,20 @@ svg.comp2-scene { width: 100%; height: auto; display: block; }
     opacity: 1;
     transition: opacity 0.2s ease;
   }
+
+  /* Same story for the polymerase markers: the desktop version starts
+     their looping animation 0.85s after :is(...) matches — on mobile
+     that never actually started, so drive it off .fork-open too. */
+  .helix-node.is-active .helix-fork-pol1,
+  .helix-node.is-active .helix-fork-pol2 {
+    animation: none;
+  }
+  .helix-node.fork-open .helix-fork-pol1 {
+    animation: helix-pol-lead 4.4s linear 0.05s infinite;
+  }
+  .helix-node.fork-open .helix-fork-pol2 {
+    animation: helix-pol-lag 4.4s linear 0.05s infinite;
+  }
 }
 
 /* No longer needed on the narrowest phones — .role-sizer already reserves
