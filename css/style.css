@@ -1298,7 +1298,7 @@ svg.comp2-scene { width: 100%; height: auto; display: block; }
 .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
 .card.is-hidden { display: none; }
 
-.card-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.4rem; }
+.card-top { display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem; }
 .badge { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; padding: 0.3em 0.65em; border-radius: 999px; }
 .badge-dev { background: var(--accent-soft); color: var(--accent); }
 .badge-tech { background: var(--accent-2-soft); color: var(--accent-2); }
