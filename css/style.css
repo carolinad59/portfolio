@@ -447,6 +447,21 @@ a.contact-row:hover { background: var(--bg-soft); }
 .lang-option:hover { background: var(--bg-soft); color: var(--text); }
 .lang-option.is-active { color: var(--accent); font-weight: 700; background: var(--accent-soft); }
 
+.cv-switch { position: relative; }
+.cv-menu {
+  position: absolute; top: calc(100% + 8px); right: 0;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-md); box-shadow: var(--shadow-md);
+  padding: 0.35rem; min-width: 150px; z-index: 30;
+}
+.cv-option {
+  display: block; width: 100%; text-align: left;
+  padding: 0.55em 0.7em; border-radius: 8px;
+  font-size: 0.85rem; font-weight: 500; color: var(--text-muted);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.cv-option:hover { background: var(--bg-soft); color: var(--text); }
+
 .gradient-bar { display: flex; gap: 4px; height: 7px; margin-top: 1.3rem; }
 .gradient-bar span {
   flex: 1; border-radius: 4px;

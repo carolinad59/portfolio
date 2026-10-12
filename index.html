@@ -142,10 +142,17 @@
       </div>
 
       <div class="cv-btn-wrap">
-        <a class="btn btn-primary cv-btn" href="assets/CV_Caroline_Darche-Olsson.pdf" download>
-          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M4 19.5h16" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span data-i18n="cvBtn">Télécharger le CV</span>
-        </a>
+        <div class="cv-switch">
+          <button type="button" class="btn btn-primary cv-btn" id="cv-toggle-sidebar" aria-haspopup="listbox" aria-expanded="false" data-i18n-label="cvDownloadAria" aria-label="Télécharger le CV">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M4 19.5h16" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-i18n="cvBtn">Télécharger le CV</span>
+          </button>
+          <ul class="cv-menu" id="cv-menu-sidebar" role="listbox" aria-label="Choisir la langue du CV" data-i18n-label="cvLangChooseAria" hidden>
+            <li role="option"><a class="cv-option" href="assets/CV_Caroline_Darche-Olsson_FR.pdf" download>Français</a></li>
+            <li role="option"><a class="cv-option" href="assets/CV_Caroline_Darche-Olsson_EN.pdf" download>English</a></li>
+            <li role="option"><a class="cv-option" href="assets/CV_Caroline_Darche-Olsson_ES.pdf" download>Español</a></li>
+          </ul>
+        </div>
       </div>
     </aside>
 
@@ -186,9 +193,16 @@
               <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" fill="currentColor"/></svg>
             </button>
 
-            <a class="icon-btn cv-download-toggle" href="assets/CV_Caroline_Darche-Olsson.pdf" download aria-label="Télécharger le CV" data-i18n-label="cvDownloadAria" title="Télécharger le CV">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M4 19.5h16" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+            <div class="cv-switch">
+              <button type="button" class="icon-btn cv-download-toggle" id="cv-toggle-header" aria-haspopup="listbox" aria-expanded="false" aria-label="Télécharger le CV" data-i18n-label="cvDownloadAria" title="Télécharger le CV">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M4 19.5h16" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <ul class="cv-menu" id="cv-menu-header" role="listbox" aria-label="Choisir la langue du CV" data-i18n-label="cvLangChooseAria" hidden>
+                <li role="option"><a class="cv-option" href="assets/CV_Caroline_Darche-Olsson_FR.pdf" download>Français</a></li>
+                <li role="option"><a class="cv-option" href="assets/CV_Caroline_Darche-Olsson_EN.pdf" download>English</a></li>
+                <li role="option"><a class="cv-option" href="assets/CV_Caroline_Darche-Olsson_ES.pdf" download>Español</a></li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="gradient-bar" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>

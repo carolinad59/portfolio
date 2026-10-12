@@ -111,6 +111,41 @@
   });
 
   /* ------------------------------------------------------------------ */
+  /* CV download language switcher                                       */
+  /* ------------------------------------------------------------------ */
+  const cvSwitches = [
+    { toggle: document.getElementById("cv-toggle-sidebar"), menu: document.getElementById("cv-menu-sidebar") },
+    { toggle: document.getElementById("cv-toggle-header"), menu: document.getElementById("cv-menu-header") },
+  ];
+
+  function closeCvMenu(entry) {
+    entry.menu.hidden = true;
+    entry.toggle.setAttribute("aria-expanded", "false");
+  }
+  function closeAllCvMenus(except) {
+    cvSwitches.forEach((entry) => { if (entry !== except) closeCvMenu(entry); });
+  }
+
+  cvSwitches.forEach((entry) => {
+    entry.toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const willOpen = entry.menu.hidden;
+      closeAllCvMenus();
+      if (willOpen) {
+        entry.menu.hidden = false;
+        entry.toggle.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".cv-switch")) closeAllCvMenus();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeAllCvMenus();
+  });
+
+  /* ------------------------------------------------------------------ */
   /* Mobile sidebar drawer                                               */
   /* ------------------------------------------------------------------ */
   const appEl = document.querySelector(".app");
