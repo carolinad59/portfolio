@@ -461,6 +461,7 @@ a.contact-row:hover { background: var(--bg-soft); }
   transition: background var(--transition-fast), color var(--transition-fast);
 }
 .cv-option:hover { background: var(--bg-soft); color: var(--text); }
+.cv-menu-up { top: auto; bottom: calc(100% + 8px); left: 0; right: 0; }
 
 .gradient-bar { display: flex; gap: 4px; height: 7px; margin-top: 1.3rem; }
 .gradient-bar span {
